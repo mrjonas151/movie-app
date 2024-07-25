@@ -56,6 +56,22 @@ class UserService{
         })
         return user
     }
+
+    static async addFavoriteMovie(user_id: string, movieId: number) {
+        return await prisma.userFavorites.create({
+            data: {
+                userId: user_id,
+                movieId: movieId,
+            },
+        });
+    }
+
+    static async listFavoriteMovies(user_id: string) {
+        return await prisma.userFavorites.findMany({
+            where: { userId: user_id },
+            include: { movie: true },
+        });
+    }
 }
 
 export { UserService };
