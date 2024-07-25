@@ -1,0 +1,17 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.2em;
+    text-decoration: none;
+    color: #A31717;
+    font-weight: 600;
+}
+
+a:visited {
+    color: #A31717;
+}
+
+a:active {
+    color: #A31717;
+}

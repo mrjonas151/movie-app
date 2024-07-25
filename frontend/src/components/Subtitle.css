@@ -1,0 +1,16 @@
+.subtitle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subtitle-container h3 {
+    font-size: 1.5em;
+    margin: 0.6em 0 0 0;
+}
+
+.subtitle-container p {
+    color: #6C6C6C;
+    font-size: 0.8em;
+    margin-top: 0.4em;
+}

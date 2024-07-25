@@ -1,0 +1,30 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 1em 1.5em;
+}
+
+.form-container input {
+    width: 96%;
+    height: 3em;
+    margin: 0.5em 0;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    padding-left: 0.8em;
+    outline: none;
+}
+
+.form-container label {
+    color: #6C6C6C
+}
+
+.form-container button {
+    height: 3em;
+    background: #A31717;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2em;
+}

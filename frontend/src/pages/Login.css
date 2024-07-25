@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background: linear-gradient(90deg, #E01515, #A31717);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.login-container {
+    background: #FFFFFF;
+    width: 46vh;
+    height: 52vh;
+    margin: auto;
+    border: none;
+    border-radius: 20px;
+}
