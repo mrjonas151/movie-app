@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import admin from "../config/firebase"; 
 
-interface CustomRequest extends Request {
+export interface CustomRequest extends Request {
     user_id?: string;
     user_email?: string;
 }

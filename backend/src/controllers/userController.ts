@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserService } from "../services/userServices";
-
+import { CustomRequest } from "../middleware/authenticate";
 
 class UserController{
 
@@ -12,9 +12,13 @@ class UserController{
         return res.json(user);
     }
 
-    static async getUserController(req: Request, res:Response){
+    static async getUserController(req: CustomRequest, res:Response){
 
         const user_id = req.user_id;
+
+        if (!user_id) {
+            return res.status(400).json({ error: "User Id undefined" });
+        }
 
         const user = await UserService.getUserService(user_id);
 

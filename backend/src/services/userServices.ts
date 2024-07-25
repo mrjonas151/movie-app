@@ -37,6 +37,7 @@ class UserService{
                 last_name: true
             }
         })
+        console.log("Salvo no banco")
         return user;
     }
 
@@ -53,7 +54,6 @@ class UserService{
                 last_name: true
             }
         })
-
         return user
     }
 }
