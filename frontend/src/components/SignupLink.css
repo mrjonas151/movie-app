@@ -8,10 +8,9 @@
     font-weight: 600;
 }
 
-a:visited {
+.link-signup {
+    text-decoration: none;
     color: #A31717;
 }
 
-a:active {
-    color: #A31717;
-}
+

@@ -1,0 +1,36 @@
+button {
+    height: 3em;
+    width: 90%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2em;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-button {
+    background-color: #A31717;
+    color: #FFFFFF;
+    border: none;
+}
+
+.signin-button:hover {
+    background-color: #e60f0f;  
+}
+
+.google-button {
+    background-color: #ffffff;
+    border: 1px solid #afafaf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.google-button svg {
+    font-size: 1.4em;
+    margin-right: 7px;
+}

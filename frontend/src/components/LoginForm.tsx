@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./LoginForm.css";
+
+import "./LoginForm.css"
 
 const LoginForm = () => {
 
@@ -14,14 +15,15 @@ const LoginForm = () => {
                     type="email"
                     value={email}
                     placeholder="Enter your email"
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <label htmlFor="password">Password</label>
                 <input
                     type="password"
                     value={password}
                     placeholder="Enter your password"
+                    onChange={(e) => setPassword(e.target.value)}
                 />
-                <button>SIGN IN</button>
             </form>
         </div>
     );

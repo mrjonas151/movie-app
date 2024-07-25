@@ -1,10 +1,10 @@
 import "./Subtitle.css";
 
-const Subtitle = () => {
+const Subtitle = ( {title, text }: {title: string, text: string}) => {
     return (
         <div className="subtitle-container">
-            <h3>SIGN IN</h3>
-            <p>Enter your credentials to access your account</p>
+            <h3>{title}</h3>
+            <p>{text}</p>
         </div>
     );
 };

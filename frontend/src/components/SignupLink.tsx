@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
 import "./SignupLink.css";
 
 const SignupLink = () => {
+    
     return (
         <div className="signup-container">
-            <a href="">Don't have an account yet? try Sign Up.</a>
+           <Link className="link-signup" to="/signup">Don't have an account yet? Sign up here</Link>
         </div>
     );
 };
