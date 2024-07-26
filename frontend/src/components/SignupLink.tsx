@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
 import "./SignupLink.css";
 
-const SignupLink = () => {
+const SignupLink = ( { title, link }: { title: string, link: string }) => {
+    
     return (
         <div className="signup-container">
-            <a href="">Don't have an account yet? try Sign Up.</a>
+           <Link className="link-signup" to={link}>{title}</Link>
         </div>
     );
 };

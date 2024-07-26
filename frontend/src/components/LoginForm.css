@@ -18,13 +18,3 @@
 .form-container label {
     color: #6C6C6C
 }
-
-.form-container button {
-    height: 3em;
-    background: #A31717;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 2em;
-}

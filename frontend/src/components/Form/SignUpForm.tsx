@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Button from "./Button/Button"
-
-import "./LoginForm.css"
-import handleSignIn from "../hooks/handleSignIn";
+import Button from "../Button/Button"
+import handleSignUp from "../../hooks/handleSignUp";
+import "./Form.css"
 
 const LoginForm = () => {
 
@@ -11,7 +10,7 @@ const LoginForm = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        handleSignIn({ email, password });
+        handleSignUp({ email, password });
     }
 
     return (
@@ -32,7 +31,7 @@ const LoginForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <Button 
-                    title="SIGN IN"
+                    title="SIGN UP"
                     onClick={handleSubmit}
                     className="signin-button"
                 />

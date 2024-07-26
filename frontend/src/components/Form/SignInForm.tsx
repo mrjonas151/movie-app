@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Button from "./Button/Button"
+import Button from "../Button/Button"
+import handleSignIn from "../../hooks/handleSignIn";
 
-import "./LoginForm.css"
-import handleSignIn from "../hooks/handleSignIn";
+import "./Form.css"
 
 const LoginForm = () => {
 
@@ -23,6 +23,7 @@ const LoginForm = () => {
                     value={email}
                     placeholder="Enter your email"
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                 />
                 <label htmlFor="password">Password</label>
                 <input
@@ -30,6 +31,7 @@ const LoginForm = () => {
                     value={password}
                     placeholder="Enter your password"
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
                 <Button 
                     title="SIGN IN"

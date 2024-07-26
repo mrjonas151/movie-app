@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-    background: linear-gradient(90deg, #E01515, #A31717);
+    background: linear-gradient(45deg, #ff0000, #e94040);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,10 +10,22 @@ body {
 }
 
 .login-container {
-    background: #FFFFFF;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 05px 15px rgb(0, 0, 0, .5);
     width: 46vh;
-    height: 52vh;
+    height: 56vh;
     margin: auto;
     border: none;
     border-radius: 20px;
+}
+
+@media (max-width: 758px) {
+
+    .login-container {
+        width: 80vw;
+        height: 55vh;
+        font-size: 0.9rem;
+    }
+
+   
 }
