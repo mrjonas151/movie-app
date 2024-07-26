@@ -1,10 +1,9 @@
 import TitleBar from "../../components/TitleBar";
 import Subtitle from "../../components/Subtitle";
-import LoginForm from "../../components/LoginForm";
-import SignButton from "../../components/SignButton";
+import SignInForm from "../../components/Form/SignInForm";
+import Button from "../../components/Button";
 import SignupLink from "../../components/SignupLink";
 import handleGoogleSignIn from "../../hooks/handleGoogleSignIn";
-import handleSignIn from "../../hooks/handleSignIn";
 import { FcGoogle } from "react-icons/fc";
 import "./Login.css";
 
@@ -14,19 +13,14 @@ const Login = () => {
         <div className="login-container">
             <TitleBar />
             <Subtitle title="SIGN IN" text="Enter your credentials to access your account"/>
-            <LoginForm />
-            <SignButton 
-                title="SIGN IN" 
-                onClick={handleSignIn} 
-                className="signin-button"
-            />
-            <SignButton 
+            <SignInForm />
+            <Button 
                 title="Sign up with Google" 
                 onClick={handleGoogleSignIn} 
                 className="google-button" 
                 Icon={FcGoogle}
             />
-            <SignupLink />
+            <SignupLink link="/signup" title="Don't have an account yet? Sign up"/>
         </div>
     );
 };

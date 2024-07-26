@@ -1,6 +1,27 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 1em 1.5em;
+}
+
+.form-container input {
+    width: 96%;
+    height: 3em;
+    margin: 0.5em 0;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    padding-left: 0.8em;
+    outline: none;  
+}
+
+.form-container label {
+    color: #6C6C6C
+}
+
 button {
     height: 3em;
-    width: 90%;
+    width: 100%;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 2em;
@@ -28,9 +49,15 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 90%;
+    margin-top: 0;
 }
 
 .google-button svg {
     font-size: 1.4em;
     margin-right: 7px;
+}
+
+.google-button:hover {
+    border: 1px solid #6C6C6C;
 }

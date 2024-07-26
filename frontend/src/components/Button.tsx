@@ -1,5 +1,3 @@
-import "./SignButton.css";
-
 const SignButton = ( {title, onClick, className, Icon }: {title: string, className: string, onClick: () => void} ) => {
 
     return (
