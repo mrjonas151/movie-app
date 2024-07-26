@@ -2,11 +2,12 @@
     padding: 0.2em 1.8em;
 }
 
-h1 {
+.title-container h1 {
     position: relative;
     padding-left: 15px;
 }
-h1::before {
+
+.title-container h1::before {
     content: "";
     position: absolute;
     left: 0;
