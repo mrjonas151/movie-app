@@ -8,36 +8,29 @@ generator client {
 }
 
 model Movie {
-  id              Int       @id @default(autoincrement())
+  id              Int           @id @default(autoincrement())
   title           String
   director        String
   duration        Int
   release_year    Int
-  category        Category  @relation(fields: [categoryId], references: [id])
-  categoryId      Int
-  User            User?     @relation(fields: [userId], references: [id])
-  userId          String?
-  date_of_include DateTime? @default(now())
-  updated_at      DateTime? @default(now())
+  category        String
+  userId          String 
+  user            User           @relation(fields: [userId], references: [id])
+  date_of_include DateTime?      @default(now())
+  updated_at      DateTime?      @default(now())
 
   @@map("Movies")
 }
 
-model Category {
-  id     Int     @id @default(autoincrement())
-  name   String  @unique
-  movies Movie[]
-  date_of_include DateTime? @default(now())
-  updated_at      DateTime? @default(now())
-
-  @@map("Categories")
-}
-
 model User {
-  id        String  @id
-  favorites Movie[]
-  date_of_include DateTime? @default(now())
-  updated_at      DateTime? @default(now())
+  id              String         @id
+  email           String         @unique
+  name            String?
+  last_name       String?
+  movies          Movie[]
+  date_of_include DateTime?      @default(now())
+  updated_at      DateTime?      @default(now())
 
   @@map("Users")
 }
+
