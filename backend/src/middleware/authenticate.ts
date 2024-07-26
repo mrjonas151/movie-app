@@ -21,7 +21,7 @@ const authenticate = async (req: CustomRequest, res: Response, next: NextFunctio
 
         next();
     } catch (error) {
-        return res.status(403).send("Forbidden");
+        return res.status(403).send("Error: "+error);
     }
 };
 

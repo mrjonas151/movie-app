@@ -1,5 +1,5 @@
 import { IsString, IsEmail, IsNotEmpty } from "class-validator";
-import { Favorites } from "../types/favorites";
+import { Favorites } from "../utils/types/favorites";
 
 class User {
     @IsString({ message: "Id must be String" })
@@ -44,20 +44,24 @@ class UserRegister {
 
     @IsString({ message: "Name must be String" })
     name: string;
+
+    @IsString({ message: "Last Name must be String" })
+    last_name: string;
   
     @IsEmail({}, { message: "Invalid Email" })
     @IsNotEmpty({ message: "Email must be not null " })
     @IsString({ message: "Email must be String" })
     email: string;
   
-    favorites: Favorites;
+    favorites?: Favorites;
   
     constructor(payload: UserRegister) {
         this.id = payload.id;
-        this.name = payload.name;
         this.email = payload.email;
+        this.name = payload.name;
+        this.last_name = payload.last_name;
         this.favorites = payload.favorites;
     }
-  }
+}
 
-export { User };
+export { User, UserRegister };

@@ -14,9 +14,10 @@ model Movie {
   duration        Int
   release_year    Int
   category        String
-  users           UserFavorites[]
-  date_of_include DateTime?     @default(now())
-  updated_at      DateTime?     @default(now())
+  userId          String 
+  user            User           @relation(fields: [userId], references: [id])
+  date_of_include DateTime?      @default(now())
+  updated_at      DateTime?      @default(now())
 
   @@map("Movies")
 }
@@ -26,20 +27,10 @@ model User {
   email           String         @unique
   name            String?
   last_name       String?
-  favorites       UserFavorites[]
+  movies          Movie[]
   date_of_include DateTime?      @default(now())
   updated_at      DateTime?      @default(now())
 
   @@map("Users")
-}
-
-model UserFavorites {
-  userId          String
-  movieId         Int
-  user            User           @relation(fields: [userId], references: [id])
-  movie           Movie          @relation(fields: [movieId], references: [id])
-  
-  @@id([userId, movieId])
-  @@map("UserFavorites")
 }
 

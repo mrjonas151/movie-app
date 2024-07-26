@@ -1,14 +1,10 @@
 import prisma from "../prisma/prismaClient";
+import { UserRegister } from "../models/userModel";
+import { MovieRegister, MovieUpdate } from "../models/movieModel";
 
-interface UserRequest{
-    id: string;
-    email: string;
-    name: string;
-    last_name: string;
-}
 
 class UserService{
-    static async createUserService({id, email, name, last_name}: UserRequest){
+    static async createUserService({id, email, name, last_name}: UserRegister){
         if(!id || !email){
             throw new Error("ID Or Email is missing");
         }
@@ -37,11 +33,15 @@ class UserService{
                 last_name: true
             }
         })
-        console.log("Salvo no banco")
+        
         return user;
     }
 
     static async getUserService(user_id: string){
+
+        if (!user_id) {
+            throw new Error("User ID is missing");
+        }
 
         const user = await prisma.user.findFirst({
             where:{
@@ -54,23 +54,93 @@ class UserService{
                 last_name: true
             }
         })
+
+        if(!user){
+            throw new Error("User not found");
+        }
+
         return user
     }
 
-    static async addFavoriteMovie(user_id: string, movieId: number) {
-        return await prisma.userFavorites.create({
+    static async addMovie(user_id: string, { title, director, duration, release_year, category }: MovieRegister) {
+        if (!user_id || !title || !director || !duration || !release_year || !category) {
+            throw new Error("All fields must be not null");
+        }
+
+        const movie = await prisma.movie.create({
             data: {
+                title,
+                director,
+                duration,
+                release_year,
+                category,
                 userId: user_id,
-                movieId: movieId,
             },
         });
+
+        return movie;
     }
 
-    static async listFavoriteMovies(user_id: string) {
-        return await prisma.userFavorites.findMany({
-            where: { userId: user_id },
-            include: { movie: true },
+    static async listMovies(user_id: string) {
+        if (!user_id) {
+            throw new Error("User Id must be not null");
+        }
+
+        const movies = await prisma.movie.findMany({
+            where: {
+                userId: user_id, 
+            },
         });
+
+        return movies;
+    }
+
+    static async deleteMovie(user_id: string, movie_id: number) {
+        if(!user_id || !movie_id){
+            throw new Error("User or Movie Id must be not null");
+        }
+
+        const movie = await prisma.movie.delete({
+            where:{
+                id: movie_id
+            }
+        })
+    }
+
+    static async updateMovie(user_id: string, movie_id: number, { title, director, duration, release_year, category }: MovieUpdate) {
+        if (!user_id || !movie_id) {
+            throw new Error("User or Movie Id must be not null");
+        }
+
+        const movie = await prisma.movie.update({
+            where: {
+                id: movie_id,
+            },
+            data: {
+                title,
+                director,
+                duration,
+                release_year,
+                category,
+            },
+        });
+
+        return movie;
+    }
+
+    static async getMovieById(user_id: string, movie_id: number) {
+        if (!user_id || !movie_id) {
+            throw new Error("User or Movie Id must be not null");
+        }
+
+        const movie = await prisma.movie.findFirst({
+            where: {
+                id: movie_id,
+                userId: user_id,
+            },
+        });
+
+        return movie;
     }
 }
 
