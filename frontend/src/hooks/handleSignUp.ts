@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 
-const handleSignUp = async ( { email, password }: {email: string, password: string}) => {
+const handleSignUp = async ( { firstName, lastName, email, password }: {firstName: string, lastName: string, email: string, password: string}) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
@@ -12,8 +12,8 @@ const handleSignUp = async ( { email, password }: {email: string, password: stri
         const userObj = {
             id: user.uid,
             email: user.email,
-            name: user.displayName || "Name",
-            last_name: user.displayName || "Surname",
+            name: firstName,
+            last_name: lastName,
         };
 
         try {

@@ -12,7 +12,7 @@
     border: 1px solid #ebebeb;
     border-radius: 5px;
     padding-left: 0.8em;
-    outline: none;  
+    outline: none;
 }
 
 .form-container label {
@@ -60,4 +60,15 @@ button {
 
 .google-button:hover {
     border: 1px solid #6C6C6C;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 98%;
+}
+
+.name-subcontainer {
+    width: 46%;
 }

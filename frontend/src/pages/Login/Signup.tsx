@@ -6,7 +6,6 @@ import Button from "../../components/Button";
 import { FcGoogle } from "react-icons/fc";
 import handleGoogleSignIn from "../../hooks/handleGoogleSignIn";
 import { ToastContainer } from "react-toastify";
-
 import "./Login.css";
 
 const Signup = () => {
