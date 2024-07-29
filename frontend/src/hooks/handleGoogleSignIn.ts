@@ -1,21 +1,42 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { toast } from "react-toastify";
 import { auth } from "../services/firebase";
+import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 
-const handleGoogleSignIn = (e) => {
+const handleGoogleSignIn = async (e) => {
     e.preventDefault();
     const provider = new GoogleAuthProvider();
 
-    signInWithPopup(auth, provider)
-    .then((result) => {
-        console.log(result);
-        toast.success("Signed in successfully");
-    })
-    .catch((error) => {
+    try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        const [name, last_name] = user.displayName.split(" ", 2);
+
+        const userPhoto = user.photoURL;
+
+        const userObj = {
+            id: user.uid,
+            email: user.email,
+            name: name || "",
+            last_name: last_name || "",
+        };
+
+        try {
+            await axios.post("http://localhost:3333/users", userObj);
+            console.log(result);
+            console.log(userObj);
+            console.log(userPhoto);
+            toast.success("Account created!");
+        } catch (error) {
+            console.log(error);
+            toast.error("Signed in, but failed to save user to database");
+        }
+    } catch (error) {
         console.log(error);
         toast.error("Failed to sign in");
-    }); 
+    }
 };
 
 export default handleGoogleSignIn;

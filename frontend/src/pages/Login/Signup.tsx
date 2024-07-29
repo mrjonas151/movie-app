@@ -5,6 +5,7 @@ import SignupLink from "../../components/SignupLink";
 import Button from "../../components/Button";
 import { FcGoogle } from "react-icons/fc";
 import handleGoogleSignIn from "../../hooks/handleGoogleSignIn";
+import { ToastContainer } from "react-toastify";
 
 import "./Login.css";
 
@@ -22,6 +23,14 @@ const Signup = () => {
                 Icon={FcGoogle}
             />
             <SignupLink link="/" title="Alredy have an account? Sign in"/>
+            <ToastContainer>
+                position="top-center" 
+                autoClose={3000}
+                hideProgressBar={false}
+                closeOnClick 
+                pauseOnFocusLoss 
+                pauseOnHover
+            </ToastContainer>
         </div>
     );
 };
