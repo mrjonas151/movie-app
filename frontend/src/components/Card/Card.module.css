@@ -1,0 +1,30 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}   
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50vw;
+    max-width: 260px; 
+    height: 23vh;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #CECECE;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.icon{
+    height: 30%;
+    width: 23%;
+}
+
+.number{
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: right;
+}
