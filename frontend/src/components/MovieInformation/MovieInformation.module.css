@@ -1,0 +1,56 @@
+.main {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #FFF;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 10vh;
+    width: 100%;
+}
+
+.teste{
+    margin-left: 40vh;
+    min-width: 160vh;
+}
+
+.photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 2vh;
+}
+
+.text {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.text span {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+    padding: 6vh;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 6vh;
+}
+
+.button i{
+    color: #A31717;
+}
