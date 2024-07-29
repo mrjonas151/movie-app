@@ -12,7 +12,7 @@ const handleGoogleSignIn = async (e) => {
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
 
-        const [name, last_name] = user.displayName.split(" ", 2);
+        const [name, last_name] = user.displayName!.split(" ", 2);
 
         const userPhoto = user.photoURL;
 

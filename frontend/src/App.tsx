@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Login/Signup";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Home/Dashboard";
 import "react-toastify/dist/ReactToastify.css";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Home/Dashboard";
 
 function App() {
     return (
