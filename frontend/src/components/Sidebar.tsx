@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { CiHeart } from "react-icons/ci";
+import { HiOutlineHome } from "react-icons/hi2";
+import { FiMenu } from "react-icons/fi";
 import homeIcon from "../assets/home.png";
-import heartIcon from "../assets/heart.png"
 import logoutIcon from "../assets/logout.png"
 import styles from "./Sidebar.module.css";
 
@@ -10,15 +12,14 @@ const Sidebar = () => {
     const toggleSidebar = () => {
         setSidebarIcon(!sidebarIcon);
     };
-
   return (
     <>                  
-    <div className={`${styles.hamburger} ${sidebarIcon ? styles.hidden : ""}`} onClick={toggleSidebar}>
-        <div></div>
-        <div></div>
-        <div></div>
+    <div 
+        className={`${styles.hamburger}`}
+        onClick={toggleSidebar}>
+        <FiMenu />
     </div>
-    <div className={`${styles.sidebar} ${sidebarIcon ? "" : styles.closed}`}>
+    <div className={`${styles.sidebar} ${sidebarIcon ? styles.closed : ""}`}>
         <div className={styles.sideTitle}>
             <h1>MovieApp</h1>
         </div>
@@ -31,7 +32,7 @@ const Sidebar = () => {
                 <li>
                     <div className={styles.navLinks}>
                         <NavLink className={({isActive}) => (isActive ? styles.activeLink : "")} to="/dashboard">
-                            <img src={homeIcon} alt="" />
+                            <HiOutlineHome className={styles.icon}/>
                             Home
                         </NavLink>
                     </div>
@@ -39,7 +40,7 @@ const Sidebar = () => {
                 <li>
                     <div className={styles.navLinks}>
                         <NavLink className={({isActive}) => (isActive ? styles.activeLink : "")} to="/myMovies">
-                            <img src={heartIcon} alt="" />
+                            <CiHeart className={styles.icon}/>
                             My Movies
                         </NavLink>
                     </div>
