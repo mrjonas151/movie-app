@@ -73,10 +73,13 @@
     justify-content: center;
     width: 80%;
     color:#000000;
+    transition: all ease 0.3s;
 }
 
-.navLinks:hover{
+.sidebarNav .navLinks:hover,
+.logout:hover{
     font-weight: bold;
+    transform: scale(1.1);
 }
 
 .sidebarNav ul{
@@ -130,6 +133,7 @@
     align-items: center;
     justify-content: center;
     padding: 1em;
+    transition: all ease 0.3s;
 }
 
 .logout a{
