@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import Sidebar from "../../components/Sidebar"
 import Card from "../../components/Card/Card";
-import heart from "../assets/heart.png";
+import heart from "../../assets/heart.png";
 
 const Dashboard: React.FC = () => {
     useEffect(() => {
