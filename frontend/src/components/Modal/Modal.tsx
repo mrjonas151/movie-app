@@ -19,11 +19,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, setModalOpen  }) => {
             <div className="style-background">
                 <div className="modal">
                 <div className="top-bar">
-                    <TitleBar />
+                    <TitleBar title="Add new movie" />
                     <button onClick={setModalOpen} className="button-close">X</button>
                 </div>
-                <div>
-                    <form className="modal-form">
+                <div className="modal-form">
+                    <form>
                         <div className="form-group">
                             <label className="form-label" htmlFor="title">Title</label>
                             <input
@@ -46,7 +46,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, setModalOpen  }) => {
                             <div className="form-group">
                                 <label className="form-label" htmlFor="duration">Duration</label>
                                 <input
-                                    className="form-input" 
+                                    className="form-input-1" 
                                     type="number" 
                                     value={duration}
                                     onChange={(e) => setDuration(Number(e.target.value))}
@@ -55,7 +55,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, setModalOpen  }) => {
                             <div className="form-group">
                                 <label className="form-label" htmlFor="release-year">Release Year</label>
                                 <input 
-                                    className="form-input"
+                                    className="form-input-1"
                                     type="number" 
                                     value={releaseYear}
                                     onChange={(e) => setReleaseYear(Number(e.target.value))}
@@ -81,16 +81,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, setModalOpen  }) => {
                                 <option value="Romance">Romance</option>
                             </select>
                         </div>
-                        
-                        
-                        
                         <div className="end-button">
                             <button className="button-modal">Save</button>
                         </div>
-                        
                     </form>
                 </div>    
-            </div>
+                </div>
             </div>
             
         );

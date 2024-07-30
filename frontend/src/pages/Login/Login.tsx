@@ -13,7 +13,7 @@ const Login = () => {
     return (
         <div className="screen-background">
             <div className="login-container">
-                <TitleBar />
+                <TitleBar title="MovieApp"/>
                 <Subtitle title="SIGN IN" text="Enter your credentials to access your account"/>
                 <SignInForm />
                 <Button 

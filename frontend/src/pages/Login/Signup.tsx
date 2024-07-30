@@ -13,7 +13,7 @@ const Signup = () => {
     return (
         <div className="screen-background ">
             <div className="login-container">
-                <TitleBar />
+                <TitleBar title="MovieApp"/>
                 <Subtitle title="SIGN UP" text="Enter your credentials to create your account"/>
                 <SingUpForm />
                 <Button 
