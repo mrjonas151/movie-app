@@ -6,6 +6,7 @@ import { FiMenu } from "react-icons/fi";
 import logoutIcon from "../../assets/logout.png";
 import styles from "./Sidebar.module.css";
 import axios from "axios"
+import { getAuth } from "firebase/auth";
 
 const Sidebar = () => {
     const [sidebarIcon, setSidebarIcon] = useState(true);
@@ -19,13 +20,26 @@ const Sidebar = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:3333/users/");
-                const { name, last_name } = response.data;
-                const fullName = `${name} ${last_name}`;
-                setUsername(fullName);
+                const auth = getAuth();
+                const currentUser = auth.currentUser;
+                if (currentUser) {
+                    const token = await currentUser.getIdToken(true);
 
-                const userInitials = `${name[0].toUpperCase()}${last_name[0].toUpperCase()}`;
-                setInitials(userInitials);
+                    const response = await axios.get("http://localhost:3333/users/", {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    const { name, last_name } = response.data;
+                    const fullName = `${name} ${last_name}`;
+                    setUsername(fullName);
+
+                    const userInitials = `${name[0].toUpperCase()}${last_name[0].toUpperCase()}`;
+                    setInitials(userInitials);
+                } else {
+                    console.error("User is not logged in");
+                }
             } catch (error) {
                 console.error(error);
             }
