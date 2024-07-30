@@ -8,3 +8,9 @@
     box-sizing: border-box;
     padding: 20px;
 }
+
+@media (min-width: 1920px) {
+    .container {
+        align-items: center;
+    }
+}

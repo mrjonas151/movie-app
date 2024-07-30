@@ -54,3 +54,23 @@
 .button i{
     color: #A31717;
 }
+
+@media (min-width: 1920px) {
+    .text span {
+        padding: 9vh;
+    }
+
+    .main{
+        height: 10vh;
+    }
+
+    .alignContainer{
+        min-width: 170vh;
+        margin-left: 33vh;
+    }
+
+    .button {
+        margin-right: 4vh;
+        margin-bottom: 4vh;
+    }
+}
