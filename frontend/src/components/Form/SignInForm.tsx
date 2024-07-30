@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Button from "../Button/Button"
 import handleSignIn from "../../hooks/handleSignIn";
-
-import "./Form.css"
+import styles from "./Form.module.css"
 
 const LoginForm = () => {
 
@@ -16,27 +15,29 @@ const LoginForm = () => {
 
     return (
         <div>
-            <form className="form-container" onSubmit={handleSubmit}>
-                <label htmlFor="email">Email</label>
+            <form className={styles.formContainer} onSubmit={handleSubmit}>
+                <label className={styles.signInLabel} htmlFor="email">Email</label>
                 <input
                     type="email"
                     value={email}
                     placeholder="Enter your email"
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    className={styles.signInInput}
                 />
-                <label htmlFor="password">Password</label>
+                <label className={styles.signInLabel} htmlFor="password">Password</label>
                 <input
                     type="password"
                     value={password}
                     placeholder="Enter your password"
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    className={styles.signInInput}
                 />
                 <Button 
                     title="SIGN IN"
                     onClick={handleSubmit}
-                    className="signin-button"
+                    className={styles.signInButton}
                 />
             </form>
         </div>

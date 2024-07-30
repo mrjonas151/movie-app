@@ -1,13 +1,13 @@
-.title-container {
+.titleContainer {
     padding: 0.2em 1.8em;
 }
 
-.title-container h1 {
+.titleContainer h1 {
     position: relative;
     padding-left: 15px;
 }
 
-.title-container h1::before {
+.titleContainer h1::before {
     content: "";
     position: absolute;
     left: 0;

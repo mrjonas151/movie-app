@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../Button/Button"
 import handleSignUp from "../../hooks/handleSignUp";
-import "./Form.css"
+import styles from "./Form.module.css"
 
 const LoginForm = () => {
 
@@ -17,47 +17,63 @@ const LoginForm = () => {
 
     return (
         <div>
-            <form className="form-container" onSubmit={handleSubmit}>
-                <div className="name-container">
-                    <div className="name-subcontainer">
-                        <label htmlFor="first-name">First Name</label>
+            <form className={styles.formContainer} onSubmit={handleSubmit}>
+                <div className={styles.nameContainer}>
+                    <div className={styles.nameSubcontainer}>
+                        <label 
+                            className={styles.signInLabel}
+                             htmlFor="first-name">
+                            First Name
+                        </label>
                         <input 
                             type="text" 
                             value={firstName}
                             placeholder="First Name"
                             onChange={(e) => setFirstName(e.target.value)}
+                            className={styles.signInInput}
                         />
                     </div>
-                    <div className="name-subcontainer">
-                    <label htmlFor="last-name">Last Name</label>
-                    <input 
-                        type="text" 
-                        value={lastName}
-                        placeholder="Last Name"
-                        onChange={(e) => setLastName(e.target.value)}
-                    />
+                    <div className={styles.nameSubcontainer}>
+                        <label 
+                            className={styles.signInLabel}
+                            htmlFor="last-name">
+                            Last Name
+                        </label>
+                        <input 
+                            type="text" 
+                            value={firstName}
+                            placeholder="Last Name"
+                            onChange={(e) => setFirstName(e.target.value)}
+                            className={styles.signInInput}
+                        />
                     </div>
                     
                 </div>
 
-                <label htmlFor="email">Email</label>
+                <label
+                    className={styles.signInLabel} 
+                    htmlFor="email">Email</label>
                 <input
                     type="email"
                     value={email}
                     placeholder="Enter your email"
                     onChange={(e) => setEmail(e.target.value)}
+                    className={styles.signInInput}
                 />
-                <label htmlFor="password">Password</label>
+                <label 
+                    className={styles.signInLabel}
+                    htmlFor="password">Password</label>
                 <input
                     type="password"
                     value={password}
                     placeholder="Enter your password"
                     onChange={(e) => setPassword(e.target.value)}
+                    className={styles.signInInput}
                 />
                 <Button 
                     title="SIGN UP"
                     onClick={handleSubmit}
-                    className="signin-button"
+                    className={styles.signInButton}
                 />
             </form>
         </div>
