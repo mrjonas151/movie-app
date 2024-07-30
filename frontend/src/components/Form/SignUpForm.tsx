@@ -41,9 +41,9 @@ const LoginForm = () => {
                         </label>
                         <input 
                             type="text" 
-                            value={firstName}
+                            value={lastName}
                             placeholder="Last Name"
-                            onChange={(e) => setFirstName(e.target.value)}
+                            onChange={(e) => setLastName(e.target.value)}
                             className={styles.signInInput}
                         />
                     </div>

@@ -1,4 +1,4 @@
-.signup-container {
+.signupContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +8,7 @@
     font-weight: 600;
 }
 
-.link-signup {
+.linkSignup {
     text-decoration: none;
     color: #A31717;
 }

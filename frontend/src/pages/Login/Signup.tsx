@@ -2,7 +2,7 @@ import TitleBar from "../../components/TitleBar/TitleBar";
 import Subtitle from "../../components/Subtitle/Subtitle";
 import SingUpForm from "../../components/Form/SignUpForm";
 import SignupLink from "../../components/SignUp/SignupLink";
-import Button from "../../components/ButtonForm/Button";
+import Button from "../../components/Button/Button";
 import { FcGoogle } from "react-icons/fc";
 import handleGoogleSignIn from "../../hooks/handleGoogleSignIn";
 import { ToastContainer } from "react-toastify";

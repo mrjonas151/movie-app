@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import "./SignupLink.css";
+import styles from "./SignupLink.module.css";
 
 const SignupLink = ( { title, link }: { title: string, link: string }) => {
     
     return (
-        <div className="signup-container">
-           <Link className="link-signup" to={link}>{title}</Link>
+        <div className={styles.signupContainer}>
+           <Link className={styles.linkSignup} to={link}>{title}</Link>
         </div>
     );
 };

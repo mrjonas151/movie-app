@@ -1,8 +1,8 @@
-import "./Subtitle.css";
+import styles from "./Subtitle.module.css";
 
 const Subtitle = ( {title, text }: {title: string, text: string}) => {
     return (
-        <div className="subtitle-container">
+        <div className={styles.subtitleContainer}>
             <h3>{title}</h3>
             <p>{text}</p>
         </div>

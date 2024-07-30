@@ -1,4 +1,4 @@
-.style-background {
+.containerBackground {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -24,7 +24,7 @@
     border: none;
 }
 
-.top-bar {
+.topBar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,7 +33,7 @@
     margin: 1.2em 0;
 }
 
-.button-close {
+.buttonClose {
     font-size: 1.5em;
     border: none;
     width: 2vw;
@@ -43,23 +43,23 @@
     background-color: #EBE9E9;
 }
 
-.modal-form {
+.modalForm {
     display: flex;
     flex-direction: column;
 }
 
-.form-group {
+.formGroup {
     position: relative;
     margin-bottom: 1rem;
     display: flex;
 }
 
-.form-line {
+.formLine {
     display: flex;
     justify-content: space-between;
 }
 
-.form-input {
+.formInput {
     height: 2em;
     padding: 1rem 1rem 0.25rem 0.5rem; 
     font-size: 14px;
@@ -70,7 +70,7 @@
     flex: 1;
 }
 
-.form-input-1 {
+.formInputSameLine {
     height: 2em;
     padding: 1rem 1rem 0.25rem 0.5rem; 
     font-size: 14px;
@@ -81,7 +81,7 @@
     width: 8vw;
 }
 
-.form-label {
+.formLabel {
     position: absolute;
     top: 0.1rem; 
     left: 0.5rem;
@@ -92,8 +92,8 @@
     transition: all 0.2s ease-out;
 }
 
-.form-input:focus + .form-label,
-.form-input:not(:placeholder-shown) + .form-label {
+.formInput:focus + .formLabel,
+.formInput:not(:placeholder-shown) + .formLabel {
     top: 0.3rem;
     left: 0.5rem;
     font-size: 0.65rem;
@@ -101,7 +101,7 @@
     padding: 0 0.25rem;
 }
 
-.button-modal {
+.buttonModal {
     background-color: #A31717;
     color: white;
     border: none;
@@ -114,18 +114,18 @@
     font-weight: 500;
 }
 
-.end-button {
+.endButton {
     display: flex;
     justify-content: flex-end;
 }
 
-.form-line {
+.formLine {
     display: flex;
     gap: 1rem;
     justify-content: space-between;
 }
 
-.form-select {
+.formSelect {
     flex: 1;
     height: 3.3em;
     border-radius: 0.25rem;
@@ -142,7 +142,7 @@ option {
     margin: 2em 2em;
 }
 
-.custom-option {
+.customOption {
     margin: 2em 2em;
 }
 
