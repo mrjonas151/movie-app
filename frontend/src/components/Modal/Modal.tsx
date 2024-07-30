@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TitleBar from "../TitleBar";
+import TitleBar from "../TitleBar/TitleBar";
 import "./Modal.css";
 
 interface ModalProps {

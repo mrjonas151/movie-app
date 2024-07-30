@@ -1,5 +1,5 @@
 import MovieInformation from "../../components/MovieInformation/MovieInformation"
-import Sidebar from "../../components/Sidebar"
+import Sidebar from "../../components/SideBar/Sidebar"
 import styles from "./MyMovies.module.css"
 
 const MyMovies = () => {
