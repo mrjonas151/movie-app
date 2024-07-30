@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const MovieInformation = () => {
   return (
-    <div className={styles.teste}>
+    <div className={styles.alignContainer}>
         <div className={styles.main}>
         <img className={styles.photo} src={heart} />
         <div className={styles.text}>

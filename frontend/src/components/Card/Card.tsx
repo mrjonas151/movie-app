@@ -8,16 +8,20 @@ interface CardProps{
 
 const Card: React.FC<CardProps> = ({ icon, title, number }) => {
   return (
-    <div className={styles.main}>
-        <div className={styles.card}>
-            <img src={icon} className={styles.icon} />
-            <p>{title}</p>
-            <div className={styles.number}>
-                <h2>{number}</h2>
+    <div className={styles.alignContainer}>
+            <div>
+                <button>
+                    <div className={styles.card}>
+                        <img src={icon} className={styles.icon} />
+                        <p>{title}</p>
+                        <div className={styles.number}>
+                            <h2>{number}</h2>
+                        </div>
+                    </div>
+                </button>
             </div>
-            
         </div>
-    </div>
+    
   )
 }
 
