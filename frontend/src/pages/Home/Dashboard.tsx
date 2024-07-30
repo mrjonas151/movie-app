@@ -5,7 +5,7 @@ import heart from "../../assets/heart.png";
 import Modal from "../../components/Modal/Modal";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { IoIosSearch } from "react-icons/io";
-import "./Dashboard.css";
+import styles from "./Dashboard.module.css";
 
 
 const Dashboard: React.FC = () => {
@@ -18,12 +18,11 @@ const Dashboard: React.FC = () => {
     return (
         <>
             <Sidebar />
-            <Card icon={heart} title="My Movies" number={222} />
-            <SearchBar Icon={IoIosSearch} />	
-            <div>
-                <button className="button-add" onClick={() => setOpenModal(true)}>ADD NEW MOVIE</button>
-            </div>
-            <Modal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}/>
+            <SearchBar Icon={IoIosSearch} />
+            <div className={styles.card}>
+                <Card icon={heart} title="My Movies" number={222} />
+            </div>	
+            
         </>
     );
 };

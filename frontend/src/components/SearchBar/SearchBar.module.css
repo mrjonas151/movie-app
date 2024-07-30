@@ -30,3 +30,15 @@
     right: 4%;
     color: #969696;
 }
+
+@media screen and (max-width: 1366px) {
+    .searchContainer, .searchIcon{
+        margin-right: 15vh;
+    }
+
+    .searchBar {
+        width: 15em;
+        margin-right: 2em;
+        margin-top: 1em;
+    }
+}
