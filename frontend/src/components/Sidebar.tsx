@@ -1,17 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { HiOutlineHome } from "react-icons/hi2";
 import { FiMenu } from "react-icons/fi";
-import homeIcon from "../assets/home.png";
 import logoutIcon from "../assets/logout.png"
 import styles from "./Sidebar.module.css";
+import axios from "axios"
 
 const Sidebar = () => {
     const [sidebarIcon, setSidebarIcon] = useState(true);
+    const [username, setUsername] = useState("");
+    const [initials, setInitials] = useState("");
+
     const toggleSidebar = () => {
         setSidebarIcon(!sidebarIcon);
     };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get("http://localhost:3333/users/");
+                const { name, last_name } = response.data;
+                const fullName = `${name} ${last_name}`;
+                setUsername(fullName);
+
+                const userInitials = `${name[0].toUpperCase()}${last_name[0].toUpperCase()}`;
+                setInitials(userInitials);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+    }, []);
+
   return (
     <>                  
     <div 
@@ -24,8 +45,8 @@ const Sidebar = () => {
             <h1>MovieApp</h1>
         </div>
         <div className={styles.profileContainer}>
-          <img src={homeIcon} alt="foto" className={styles.userPhoto} />
-          <p className={styles.username}>Karthi Madesh</p>
+            <div className={styles.userInitials}>{initials}</div>
+            <p className={styles.username}>{username}</p>
         </div>
         <div className={styles.sidebarNav}>
             <ul>
@@ -55,4 +76,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default Sidebar;
