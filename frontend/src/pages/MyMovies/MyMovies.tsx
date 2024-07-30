@@ -1,8 +1,8 @@
 import MovieInformation from "../../components/MovieInformation/MovieInformation"
 import Sidebar from "../../components/Sidebar"
-import styles from "./UserMovies.module.css"
+import styles from "./MyMovies.module.css"
 
-const UserMovies = () => {
+const MyMovies = () => {
   return (
     <>
         <Sidebar />
@@ -17,4 +17,4 @@ const UserMovies = () => {
   )
 }
 
-export default UserMovies
+export default MyMovies
