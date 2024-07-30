@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.button-add {
+    background-color: #A31717;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 10vw;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    
+}

@@ -11,25 +11,27 @@ import "./Login.css";
 const Login = () => {
 
     return (
-        <div className="login-container">
-            <TitleBar />
-            <Subtitle title="SIGN IN" text="Enter your credentials to access your account"/>
-            <SignInForm />
-            <Button 
-                title="Sign up with Google" 
-                onClick={handleGoogleSignIn} 
-                className="google-button" 
-                Icon={FcGoogle}
-            />
-            <SignupLink link="/signup" title="Don't have an account yet? Sign up"/>
-            <ToastContainer>
-                position="top-center" 
-                autoClose={3000}
-                hideProgressBar={false}
-                closeOnClick 
-                pauseOnFocusLoss 
-                pauseOnHover
-            </ToastContainer>
+        <div className="screen-background">
+            <div className="login-container">
+                <TitleBar />
+                <Subtitle title="SIGN IN" text="Enter your credentials to access your account"/>
+                <SignInForm />
+                <Button 
+                    title="Sign up with Google" 
+                    onClick={handleGoogleSignIn} 
+                    className="google-button" 
+                    Icon={FcGoogle}
+                />
+                <SignupLink link="/signup" title="Don't have an account yet? Sign up"/>
+                <ToastContainer>
+                    position="top-center" 
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    closeOnClick 
+                    pauseOnFocusLoss 
+                    pauseOnHover
+                </ToastContainer>
+            </div>
         </div>
     );
 };
