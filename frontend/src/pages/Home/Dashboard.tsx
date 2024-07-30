@@ -3,7 +3,10 @@ import Sidebar from "../../components/Sidebar";
 import Card from "../../components/Card/Card";
 import heart from "../../assets/heart.png";
 import Modal from "../../components/Modal/Modal";
+import SearchBar from "../../components/SearchBar";
+import { IoIosSearch } from "react-icons/io";
 import "./Dashboard.css";
+
 
 const Dashboard: React.FC = () => {
     useEffect(() => {
@@ -16,6 +19,7 @@ const Dashboard: React.FC = () => {
         <>
             <Sidebar />
             <Card icon={heart} title="My Movies" number={222} />
+            <SearchBar Icon={IoIosSearch} />	
             <div>
                 <button className="button-add" onClick={() => setOpenModal(true)}>ADD NEW MOVIE</button>
             </div>
