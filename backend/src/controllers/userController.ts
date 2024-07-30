@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { UserService } from "../services/userServices";
 import { CustomRequest } from "../middleware/authenticate";
+import admin from "../config/firebase";
 
 class UserController{
 
@@ -107,6 +108,19 @@ class UserController{
             return res.status(200).json(movie);
         } catch (error) {
             return res.status(500).json({ error: "Error getting movie" });
+        }
+    }
+
+    static async revokeTokenController(req: CustomRequest, res: Response) {
+        const user_id = req.user_id;
+        if (!user_id) {
+            return res.status(400).json({ error: "User Id must be not null" });
+        }
+        try {
+            await admin.auth().revokeRefreshTokens(user_id);
+            res.status(200).send("Token revoked successfully!!!");
+        } catch (error) {
+            res.status(500).send("Error revoking token: " + error);
         }
     }
 }
