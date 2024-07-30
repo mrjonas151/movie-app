@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "../../components/SideBar/Sidebar";
 import Card from "../../components/Card/Card";
 import heart from "../../assets/heart.png";
 import Modal from "../../components/Modal/Modal";
-import SearchBar from "../../components/SearchBar";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import { IoIosSearch } from "react-icons/io";
 import "./Dashboard.css";
 

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { HiOutlineHome } from "react-icons/hi2";
 import { FiMenu } from "react-icons/fi";
-import logoutIcon from "../assets/logout.png"
+import logoutIcon from "../../assets/logout.png";
 import styles from "./Sidebar.module.css";
 import axios from "axios"
 
