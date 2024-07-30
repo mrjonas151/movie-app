@@ -3,6 +3,7 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Login/Signup";
 import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "./pages/Home/Dashboard";
+import UserMovies from "./pages/UserMovies/UserMovies";
 import Modal from "./components/Modal/Modal";
 
 function App() {
@@ -11,7 +12,6 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/modal" element={<Modal />} />
         </Routes>
     );
 }
