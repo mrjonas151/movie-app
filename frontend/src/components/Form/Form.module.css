@@ -1,11 +1,11 @@
-.form-container {
+.formContainer {
     display: flex;
     flex-direction: column;
     align-items: left;
     margin: 1em 1.5em;
 }
 
-.form-container input {
+.signInInput {
     width: 96%;
     height: 3em;
     margin: 0.5em 0;
@@ -15,16 +15,8 @@
     outline: none;
 }
 
-.form-container label {
+.signInLabel {
     color: #6C6C6C
-}
-
-button {
-    height: 3em;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 2em;
 }
 
 .button-container {
@@ -33,17 +25,22 @@ button {
     align-items: center;
 }
 
-.signin-button {
+.signInButton {
     background-color: #A31717;
     color: #FFFFFF;
     border: none;
+    height: 3em;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2em;
 }
 
-.signin-button:hover {
+.signinButton:hover {
     background-color: #e60f0f;  
 }
 
-.google-button {
+.googleButton {
     background-color: #ffffff;
     border: 1px solid #afafaf;
     display: flex;
@@ -53,22 +50,22 @@ button {
     margin-top: 0;
 }
 
-.google-button svg {
+.googleButton svg {
     font-size: 1.4em;
     margin-right: 7px;
 }
 
-.google-button:hover {
+.googleButton:hover {
     border: 1px solid #6C6C6C;
 }
 
-.name-container {
+.nameContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 98%;
 }
 
-.name-subcontainer {
+.nameSubcontainer {
     width: 46%;
 }
