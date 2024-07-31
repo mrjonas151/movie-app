@@ -26,7 +26,7 @@
 
 .searchIcon {
     position: absolute;
-    /* right: 0; */
+    right: 4vw;
     top: 50%;
     transform: translateY(-50%);
     font-size: 22px;
@@ -34,13 +34,19 @@
 }
 
 @media screen and (max-width: 1366px) {
-    .searchContainer, .searchIcon{
-        margin-right: 15vh;
-    }
-
+    
     .searchBar {
         width: 15em;
-        margin-right: 2em;
-        margin-top: 1em;
+        margin-right: 4em;
+        margin-top: 2em;
+    }
+
+    .searchIcon {
+        position: absolute;
+        right: 5vw;
+        top: 75%;
+        transform: translateY(-50%);
+        font-size: 22px;
+        color: #969696;
     }
 }

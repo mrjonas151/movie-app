@@ -71,3 +71,17 @@ body {
         height: 92vh;
     }
 }
+
+@media (max-width: 430px) {
+
+    .loginContainer {
+        width: 80vw;
+        height: 58vh;
+    }
+
+    .signUpContainer {
+        width: 80vw;
+        height: 66vh;
+    }
+    
+}

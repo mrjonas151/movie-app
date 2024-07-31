@@ -44,7 +44,13 @@
 }
 
 @media (min-width: 1920px) {
-    .container {
-        margin-left: 0;
+
+    .movieContent{
+        display: flex;
+        width: 70%;
+        height: 50%;
+        margin: 0 auto;
+        overflow: hidden;
+        margin-bottom: 10vh;
     }
 }

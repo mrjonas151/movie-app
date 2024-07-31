@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    
 }
 
 button {
@@ -12,7 +13,6 @@ button {
     cursor: pointer;
     outline: none;
     width: 57%;
-
     transition: all 0.3s ease;
 }
 
@@ -51,4 +51,30 @@ button:hover .number {
     font-size: 1.2rem;
     font-weight: 700;
     text-align: right;
+}
+
+@media (min-width: 1920px) {
+
+    button {
+        border: none;
+        padding: 0;
+        background: none;
+        cursor: pointer;
+        outline: none;
+        width: 80%;
+        transition: all 0.3s ease;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        min-width: 300px;
+        height: 20vh;
+        margin-left: 30%;
+        padding: 1rem;
+        border-radius: 10px;
+        background-color: #CECECE;
+    }
 }
