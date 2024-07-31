@@ -166,45 +166,20 @@ option {
     pointer-events: none;
 }
 
-@media (min-width: 430px) {
-
+@media (max-width: 1366px) {
     .modal {
-        background-color: #EBE9E9;
-        padding: 0 1.5em;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        width: 80vw;
-        height: 43vh;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 0.5em;
-        border: none;
+        width: 26vw;
+        height: 63vh;
     }
 
     .formInputSameLine {
-        height: 2em;
-        padding: 1rem 1rem 0.25rem 0.5rem; 
-        font-size: 14px;
-        border: 1px solid #ced4da;
-        border-radius: 0.25rem;
-        outline: none;
-        border: 1px solid #969696;
-        width: 32vw;
+        width: 10vw;
     }
 
     .buttonModal {
-        background-color: #A31717;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        height: 2.2rem;
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-        margin: 0;
-        width: 20vw;
-        font-weight: 500;
+        width: 8vw;
     }
 }
+
+
 
