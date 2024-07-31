@@ -5,12 +5,47 @@ import heart from "../../assets/heart.png";
 import Modal from "../../components/Modal/Modal";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { IoIosSearch } from "react-icons/io";
-import "./Dashboard.css";
+import styles from "./Dashboard.module.css";
+import { getAuth, onAuthStateChanged, updateCurrentUser } from "firebase/auth";
+import axios from "axios";
 
 
 const Dashboard: React.FC = () => {
+    const [title, setTitle] = useState<string>("");
+    const [number, setNumber] = useState<number>(0);
+
     useEffect(() => {
         document.title = "MovieApp - Home";
+
+        const fetchData = async () => {
+            try{
+                const auth = getAuth();
+                const unsubscribe = onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        try {
+                            const token = await user.getIdToken(true);
+                            const response = await axios.get("http://localhost:3333/users/movies", {
+                                headers: {
+                                    'Authorization': `Bearer ${token}`
+                                }
+                            });
+        
+                            setTitle("My Movies");
+                            setNumber(response.data.length);
+                        } catch (error) {
+                            console.error(error);
+                        }
+                    } else {
+                        console.error("User is not logged in");
+                    }
+                });
+        
+                return () => unsubscribe();
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchData();
     }, []);
 
     const [openModal, setOpenModal] = useState<boolean>(false);
@@ -18,12 +53,11 @@ const Dashboard: React.FC = () => {
     return (
         <>
             <Sidebar />
-            <Card icon={heart} title="My Movies" number={222} />
-            <SearchBar Icon={IoIosSearch} />	
-            <div>
-                <button className="button-add" onClick={() => setOpenModal(true)}>ADD NEW MOVIE</button>
-            </div>
-            <Modal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}/>
+            <SearchBar Icon={IoIosSearch} />
+            <div className={styles.card}>
+                <Card icon={heart} title={title} number={number} />
+            </div>	
+            
         </>
     );
 };

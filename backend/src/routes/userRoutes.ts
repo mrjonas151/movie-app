@@ -10,12 +10,14 @@ router.post("/", UserController.createUserController);
 
 router.post("/movies", authenticate, UserController.addMovieController); 
 
-router.get("/movies", authenticate, UserController.listMoviesController); //aq 
+router.get("/movies", authenticate, UserController.listMoviesController); 
 
 router.delete("/movies/:id", authenticate, UserController.deleteMovieController); 
 
 router.put("/movies/:id", authenticate, UserController.updateMovieController);
 
 router.get("/movies/:id", authenticate, UserController.getMovieByIdController);
+
+router.post('/revokeToken', authenticate, UserController.revokeTokenController);
 
 export default router;
