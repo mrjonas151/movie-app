@@ -4,15 +4,15 @@ import axios from 'axios';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 export type AuthContextData = {
-    user: UserProps | undefined;
+    userProvider: UserProps | undefined;
     isAuthenticated: boolean;
+    loading: boolean;
     signOut: () => void;
 }
 
 type UserProps = {
     id: string;
     name: string;
-    lastName: string;
     email: string;
 }
 
@@ -23,8 +23,9 @@ type AuthProviderProps = {
 export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps) {
-    const [user, setUser] = useState<UserProps>();
-    const isAuthenticated = !!user;
+    const [userProvider, setUserProvider] = useState<UserProps>();
+    const [loading, setLoading] = useState(true);
+    const isAuthenticated = !!userProvider;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -39,8 +40,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
                                 'Authorization': `Bearer ${token}`
                             }
                         }).then(response => {
-                            const { id, name, lastName, email } = response.data;
-                            setUser({ id, name, lastName, email });
+                            const { id, name, email } = response.data;
+                            setUserProvider({ id, name, email });
+                            navigate('/dashboard');
                         }).catch(error => {
                             console.error("Error user:", error);
                         });
@@ -49,8 +51,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     console.error("Error token:", error);
                 }
             } else {
-                setUser(undefined);
+                setUserProvider(undefined);
             }
+            setLoading(false);
         });
 
         return () => unsubscribe();
@@ -68,7 +71,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     }
                 });
                 await auth.signOut();
-                setUser(undefined);
+                setUserProvider(undefined);
                 navigate('/');
             } else {
                 console.error("User is not logged in");
@@ -79,7 +82,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     };
 
     return (
-        <AuthContext.Provider value={{ user, isAuthenticated, signOut }}>
+        <AuthContext.Provider value={{ userProvider, isAuthenticated, loading, signOut }}>
             {children}
         </AuthContext.Provider>
     );

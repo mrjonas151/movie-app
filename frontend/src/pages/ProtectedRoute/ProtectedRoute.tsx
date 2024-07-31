@@ -7,7 +7,15 @@ type ProtectedRouteProps = {
 };
 
 export function ProtectedRoute({ element }: ProtectedRouteProps) {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated, loading } = useContext(AuthContext);
+    
+    if(loading) {
+        return;
+    }
 
-    return isAuthenticated ? element : <Navigate to="/" />;
+    if (isAuthenticated) {
+        return element;
+    } else {
+        return <Navigate to="/" />;
+    }
 }
