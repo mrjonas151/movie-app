@@ -11,7 +11,8 @@ const MyMovies = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   
   return (
-    <div className={styles.movieContent}>
+    <div className={styles.bodyMovie}>
+      <div className={styles.movieContent}>
         <Sidebar />
         <div className={styles.mainContent}>
           <SearchBar Icon={IoIosSearch} />
@@ -20,18 +21,25 @@ const MyMovies = () => {
             <button className={styles.buttonAdd} onClick={() => setOpenModal(true)}>ADD NEW MOVIE</button>
             <Modal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}/>
           </div>
-          <div className={styles.container}>
+          <table className={styles.container}>
+            <thead className={styles.titlesContainer}>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Director</th>
+                <th>Duration</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+                <th>Date of include</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
               <MovieInformation />
-              <MovieInformation />
-              <MovieInformation />
-              <MovieInformation />
-              <MovieInformation />
-              <MovieInformation />
-              <MovieInformation />
-              <MovieInformation />
-              <MovieInformation />
-          </div>
+            </tbody>
+          </table>
         </div>
+    </div>
     </div>
     
   )

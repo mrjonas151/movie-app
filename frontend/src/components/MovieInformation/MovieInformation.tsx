@@ -3,7 +3,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const MovieInformation = () => {
   return (
-    <div className={styles.alignContainer}>
+    <tr className={styles.alignContainer}>
         <div className={styles.main}>
           <div className={styles.photo}>MM</div>
           <div className={styles.text}>
@@ -23,7 +23,7 @@ const MovieInformation = () => {
             </button>
           </div>
         </div>
-    </div>
+    </tr>
     
   )
 }
