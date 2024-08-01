@@ -73,3 +73,19 @@
     }
 
 }
+
+@media (max-width: 430px) {
+
+    .deleteModal {
+        
+        padding: 0 1em;
+        width: 80%;
+        height: 18vh;
+    } 
+    
+    .title {
+        
+        text-align: center;
+    }
+
+}

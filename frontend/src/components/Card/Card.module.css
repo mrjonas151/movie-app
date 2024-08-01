@@ -1,80 +1,71 @@
-.alignContainer {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.cardContainer {
+    position: fixed;
+    top: 10vh;
+    left: 18vw;
+    width: 15vw;
+    height: 18vh;
+    border-radius: 10px;
+    background-color: #CECECE;
+    z-index: 1000;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    
-}
-
-button {
-    border: none;
-    padding: 0;
-    background: none;
     cursor: pointer;
-    outline: none;
-    width: 57%;
-    transition: all 0.3s ease;
 }
 
-p{
-    text-align: left;
+.cardText {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 0 1rem;
 }
 
-p, .number{
-    transition: color 0.7s ease;
-}
-
-button:hover p,
-button:hover .number {
+.cardIcon {
+    margin: 0.5rem;
+    font-size: 3.5em;
     color: #A31717;
 }
 
-.card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.cardTitle {
+    font-size: 1em;
+    text-align: center;
+    margin-top: 0;;
     width: 100%;
-    min-width: 230px;
-    height: 23vh;
-    padding: 1rem;
-    border-radius: 10px;
-    background-color: #CECECE;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
 }
 
-.icon {
-    height: 30%;
-    width: 23%;
-}
-
-.number {
+.cardNumber {
+    width: 50%;
+    padding: 0 1em;
     font-size: 1.2rem;
     font-weight: 700;
-    text-align: right;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-right: 1vw;
 }
 
-@media (min-width: 1920px) {
+.cardContainer:hover .cardIcon {
+    color: #d32727;
+}
 
-    button {
-        border: none;
-        padding: 0;
-        background: none;
-        cursor: pointer;
-        outline: none;
-        width: 80%;
-        transition: all 0.3s ease;
-    }
 
-    .card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 100%;
-        min-width: 300px;
-        height: 20vh;
-        margin-left: 30%;
-        padding: 1rem;
-        border-radius: 10px;
-        background-color: #CECECE;
+
+@media (max-width: 1366px) {
+
+    .cardContainer {
+        top: 15vh;
+        left: 24vw;
+        width: 19vw;
+        height: 24vh;
     }
 }

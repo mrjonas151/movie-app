@@ -36,8 +36,8 @@
     margin-top: 2em;
 }
 
-.signinButton:hover {
-    background-color: #e60f0f;  
+.signInButton:hover {
+    background-color: #d32727;  
 }
 
 .googleButton {

@@ -21,7 +21,11 @@
     padding: 0.5em;
     position: fixed;
     margin-right: 5em;
-    color: red;
+    outline: none;
+}
+
+.searchBar:focus {
+    outline: 1px solid #d32727; 
 }
 
 .searchIcon {

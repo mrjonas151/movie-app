@@ -67,6 +67,11 @@
     color: #A31717;
 }
 
+.button i:hover {
+    color: #d32727;  
+}
+
+
 @media (min-width: 1920px) {
 
     .main{

@@ -17,7 +17,7 @@ const handleSignUp = async ( { firstName, lastName, email, password }: {firstNam
         };
 
         try {
-            await axios.post("http://localhost:3333/users", userObj);
+            await axios.post("http://localhost:3333/users", {userObj});
             console.log(userCredential);
             console.log(userObj);
             toast.success("Account created!");

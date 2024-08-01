@@ -6,9 +6,13 @@ import SignupLink from "../../components/SignUp/SignupLink";
 import handleGoogleSignIn from "../../hooks/handleGoogleSignIn";
 import { FcGoogle } from "react-icons/fc";
 import { ToastContainer } from "react-toastify";
+import Loader from "../../components/Loader/Loader";
+import { useState } from "react";
 import styles from "./Login.module.css";
 
 const Login = () => {
+
+    const [isLoading, setIsLoading] = useState(false);
 
     return (
         <div className={styles.screenBackground}>
@@ -32,6 +36,7 @@ const Login = () => {
                     pauseOnHover
                 </ToastContainer>
             </div>
+            {isLoading && <Loader />}
         </div>
     );
 };
