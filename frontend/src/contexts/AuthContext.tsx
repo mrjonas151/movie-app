@@ -1,7 +1,7 @@
-import { createContext, ReactNode, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { createContext, ReactNode, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export type AuthContextData = {
     userProvider: UserProps | undefined;
@@ -62,8 +62,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     useEffect(() => {
         if (!loading && isAuthenticated) {
             const path = window.location.pathname;
-            if (path === '/') {
-                navigate('/dashboard');
+            if (path === "/" || path === "/signup") {
+                navigate("/dashboard");
             }
         }
     }, [isAuthenticated, loading, navigate]);
