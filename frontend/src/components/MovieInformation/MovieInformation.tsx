@@ -1,28 +1,28 @@
 import styles from './MovieInformation.module.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-const MovieInformation = () => {
+const MovieInformation = ({ movie }) => {
   return (
     <tr className={styles.alignContainer}>
-        <div className={styles.main}>
-          <div className={styles.photo}>MM</div>
-          <div className={styles.text}>
-              <span>Interstellar</span>
-              <span>Christopher Nolan</span>
-              <span>198min</span>
-              <span>Sci-fi</span>
-              <span>2014</span>
-              <span>08-dec-2021</span>
-          </div>
-          <div className={styles.actions}>
+        <td className={styles.main}>
+          <td className={styles.photo}>MM</td>
+          <td className={styles.text}>
+              <span>{movie.title}</span>
+              <span>{movie.director}</span>
+              <span>{movie.duration}min</span>
+              <span>{movie.category}</span>
+              <span>{movie.release_year}</span>
+              <span>{movie.date_of_include}</span>
+          </td>
+          <td className={styles.actions}>
             <button className={styles.button}>
               <i className="fas fa-edit"></i>
             </button>
             <button className={styles.button}>
               <i className="fas fa-trash"></i>
             </button>
-          </div>
-        </div>
+          </td>
+        </td>
     </tr>
     
   )
