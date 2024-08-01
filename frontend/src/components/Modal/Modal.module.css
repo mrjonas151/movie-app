@@ -21,7 +21,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 0.5em;
-    border: none;
 }
 
 .topBar {
@@ -52,6 +51,7 @@
     position: relative;
     margin-bottom: 1rem;
     display: flex;
+    
 }
 
 .formLine {
@@ -68,6 +68,7 @@
     outline: none;
     border: 1px solid #969696;
     flex: 1;
+    
 }
 
 .formInputSameLine {
@@ -112,6 +113,10 @@
     margin: 0;
     width: 6vw;
     font-weight: 500;
+}
+
+.buttonModal:hover {
+    background-color: #d32727;
 }
 
 .endButton {
@@ -179,6 +184,28 @@ option {
     .buttonModal {
         width: 8vw;
     }
+}
+
+@media (max-width: 430px) {
+
+    .containerBackground {
+        width: 100%;
+        display: flex;
+    }
+
+    .modal {
+        width: 80vw;
+        height: 43vh;
+        padding: 0 1em;
+    }
+
+    .formInputSameLine {
+        width: 29vw;
+    }
+
+    .buttonModal {
+        width: 18vw;
+    } 
 }
 
 
