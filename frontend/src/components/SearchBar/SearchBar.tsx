@@ -1,14 +1,25 @@
 import { useState } from "react";
 import styles from "./SearchBar.module.css";
 
-function SearchBar( { Icon }: { Icon: React.ElementType } ) {
+type SearchBarProps = {
+    Icon: React.ElementType;
+    onSearchChange: (newValue: string) => void;
+};
+
+function SearchBar( { Icon, onSearchChange }: SearchBarProps ) {
 
     const [word, setWord] = useState<string>("");
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = e.target.value;
+        setWord(newValue);
+        onSearchChange(newValue);
+    };
 
     return (
         <div className={styles.searchContainer}>
             <input 
-                onChange={(e) => setWord(e.target.value)} 
+                onChange={handleChange}
                 placeholder="Search..."
                 className={styles.searchBar}
             />

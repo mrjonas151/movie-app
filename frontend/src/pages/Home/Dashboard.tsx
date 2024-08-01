@@ -11,9 +11,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
+type Card = {
+    title: string;
+    id: number;
+}
+
 const Dashboard: React.FC = () => {
     const [title, setTitle] = useState<string>("");
     const [number, setNumber] = useState<number>(0);
+    const [searchTerm, setSearchTerm] = useState<string>("");
+    const [cards, setCards] = useState<any[]>([]);
     const navigate = useNavigate();
     const { userProvider } = useContext(AuthContext);
 
@@ -34,6 +41,12 @@ const Dashboard: React.FC = () => {
 
                     setTitle("My Movies");
                     setNumber(response.data.length);
+                    setCards([
+                        {
+                            title: title,
+                            number: number
+                        }
+                    ]);
                 } else {
                     console.error("User is not logged in");
                 }
@@ -53,12 +66,22 @@ const Dashboard: React.FC = () => {
         navigate("/myMovies");
     }
 
+    const handleSearchChange = (value: string) => {
+        setSearchTerm(value);
+    };
+
+    const filteredCards = cards.filter(card =>
+        card.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <>
             <Sidebar />
-            <SearchBar Icon={IoIosSearch} />
+            <SearchBar Icon={IoIosSearch} onSearchChange={handleSearchChange} />
             <div className={styles.card}>
-                <Card icon={heart} title={title} number={number} handleClick={handleClick} />
+                {filteredCards.map((card) => (
+                    <Card icon={heart} title={card.title} number={number} handleClick={handleClick} />
+                ))}             
             </div>	
             
         </>

@@ -10,9 +10,19 @@ import axios from "axios";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
 
+type Movie = {
+  id: string;
+  title: string;
+  director: string;
+  duration: number;
+  release_year: number;
+  category: string;
+}
+
 const MyMovies = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const { userProvider } = useContext(AuthContext);
 
   useEffect(() => {
@@ -45,13 +55,21 @@ const MyMovies = () => {
     }
     
   }, [userProvider]);
+
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value);
+  };
+
+  const filteredMovies = movies.filter(movie => 
+      movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   
   return (
     <div className={styles.bodyMovie}>
       <div className={styles.movieContent}>
         <Sidebar />
         <div className={styles.mainContent}>
-          <SearchBar Icon={IoIosSearch} />
+          <SearchBar Icon={IoIosSearch} onSearchChange={handleSearchChange} />
           <div className={styles.tb}>
             <h2>My Movies</h2>
             <button className={styles.buttonAdd} onClick={() => setOpenModal(true)}>ADD NEW MOVIE</button>
@@ -60,7 +78,7 @@ const MyMovies = () => {
           <table className={styles.container}>
             <TitleList/>
             <tbody>
-            {movies.map((movie) => (
+            {filteredMovies.map((movie) => (
               <MovieInformation key={movie.id} movie={movie} />
             ))}
             </tbody>
