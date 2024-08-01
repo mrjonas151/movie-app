@@ -4,13 +4,14 @@ interface CardProps{
     icon: string;
     title: string;
     number: number;
+    handleClick: () => void;
 }
 
-const Card: React.FC<CardProps> = ({ icon, title, number }) => {
+const Card: React.FC<CardProps> = ({ icon, title, number, handleClick }) => {
   return (
     <div className={styles.alignContainer}>
             <div>
-                <button>
+                <button onClick={handleClick}>
                     <div className={styles.card}>
                         <img src={icon} className={styles.icon} />
                         <p>{title}</p>

@@ -8,11 +8,13 @@ import { IoIosSearch } from "react-icons/io";
 import styles from "./Dashboard.module.css";
 import { getAuth, onAuthStateChanged, updateCurrentUser } from "firebase/auth";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const Dashboard: React.FC = () => {
     const [title, setTitle] = useState<string>("");
     const [number, setNumber] = useState<number>(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         document.title = "MovieApp - Home";
@@ -50,12 +52,16 @@ const Dashboard: React.FC = () => {
 
     const [openModal, setOpenModal] = useState<boolean>(false);
 
+    const handleClick = () => {
+        navigate("/myMovies");
+    }
+
     return (
         <>
             <Sidebar />
             <SearchBar Icon={IoIosSearch} />
             <div className={styles.card}>
-                <Card icon={heart} title={title} number={number} />
+                <Card icon={heart} title={title} number={number} handleClick={handleClick} />
             </div>	
             
         </>
