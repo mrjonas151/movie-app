@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -8,14 +8,15 @@ type ProtectedRouteProps = {
 
 export function ProtectedRoute({ element }: ProtectedRouteProps) {
     const { isAuthenticated, loading } = useContext(AuthContext);
-    
-    if(loading) {
-        return;
+    const location = useLocation();
+
+    if (loading) {
+        return <div>Loading...</div>;
     }
 
     if (isAuthenticated) {
         return element;
     } else {
-        return <Navigate to="/" />;
+        return <Navigate to="/" state={{ from: location }} />;
     }
 }

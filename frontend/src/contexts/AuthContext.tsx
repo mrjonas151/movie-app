@@ -23,7 +23,7 @@ type AuthProviderProps = {
 export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps) {
-    const [userProvider, setUserProvider] = useState<UserProps>();
+    const [userProvider, setUserProvider] = useState<UserProps | undefined>();
     const [loading, setLoading] = useState(true);
     const isAuthenticated = !!userProvider;
     const navigate = useNavigate();
@@ -35,17 +35,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 try {
                     const token = await user.getIdToken(true);
                     if (token) {
-                        axios.get("http://localhost:3333/users", {
-                            headers: {
-                                'Authorization': `Bearer ${token}`
-                            }
-                        }).then(response => {
+                        try {
+                            const response = await axios.get("http://localhost:3333/users", {
+                                headers: {
+                                    'Authorization': `Bearer ${token}`
+                                }
+                            });
                             const { id, name, email } = response.data;
                             setUserProvider({ id, name, email });
-                            navigate('/dashboard');
-                        }).catch(error => {
+                        } catch (error) {
                             console.error("Error user:", error);
-                        });
+                        }
                     }
                 } catch (error) {
                     console.error("Error token:", error);
@@ -58,6 +58,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
         return () => unsubscribe();
     }, []);
+
+    useEffect(() => {
+        if (!loading && isAuthenticated) {
+            const path = window.location.pathname;
+            if (path === '/') {
+                navigate('/dashboard');
+            }
+        }
+    }, [isAuthenticated, loading, navigate]);
 
     const signOut = async () => {
         const auth = getAuth();
@@ -77,7 +86,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 console.error("User is not logged in");
             }
         } catch (error) {
-            console.error("Error token or sign out", error);
+            console.error("Error during sign out:", error);
         }
     };
 
