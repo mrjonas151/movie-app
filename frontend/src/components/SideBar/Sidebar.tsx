@@ -1,17 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { HiOutlineHome } from "react-icons/hi2";
 import { FiMenu } from "react-icons/fi";
 import logoutIcon from "../../assets/logout.png";
 import styles from "./Sidebar.module.css";
-import axios from "axios"
+import axios from "axios";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Sidebar = () => {
     const [sidebarIcon, setSidebarIcon] = useState(true);
     const [username, setUsername] = useState("");
     const [initials, setInitials] = useState("");
+    const { signOut } = useContext(AuthContext);
 
     const toggleSidebar = () => {
         setSidebarIcon(!sidebarIcon);
@@ -21,36 +23,44 @@ const Sidebar = () => {
         const fetchData = async () => {
             try {
                 const auth = getAuth();
-                const unsubscribe = onAuthStateChanged(auth, async (user) => {
-                    if(user){
-                        try{
-                            const token = await user.getIdToken(true);
-                            const response = await axios.get("http://localhost:3333/users", {
-                                headers: {
-                                    'Authorization': `Bearer ${token}`
-                                }
-                            });
+                const user = auth.currentUser;
 
-                            const { name, last_name } = response.data;
-                            const fullName = `${name} ${last_name}`;
-                            setUsername(fullName);
+                if (user) {
+                    try {
+                        const token = await user.getIdToken(true);
+                        const response = await axios.get("http://localhost:3333/users", {
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        });
 
-                            const userInitials = `${name[0].toUpperCase()}${last_name[0].toUpperCase()}`;
-                            setInitials(userInitials);
-                        }catch(error){
-                            console.error(error);
-                        }
-                    }else{
-                        console.error("User is not logged in");
+                        const { name, last_name } = response.data;
+                        const fullName = `${name} ${last_name}`;
+                        setUsername(fullName);
+
+                        const userInitials = `${name[0].toUpperCase()}${last_name[0].toUpperCase()}`;
+                        setInitials(userInitials);
+                    } catch (error) {
+                        console.error("Error user data:", error);
                     }
-                });
-                return () => unsubscribe();
-            }catch(error){
-                console.error(error);
+                } else {
+                    console.error("User is not logged in");
+                }
+            } catch (error) {
+                console.error("Error getting auth token:", error);
             }
-        }
+        };
+
         fetchData();
     }, []);
+
+    const handleLogout = async () => {
+        try {
+            await signOut(); 
+        } catch (error) {
+            return;
+        }
+    };
 
   return (
     <>                  
@@ -88,7 +98,7 @@ const Sidebar = () => {
             </ul>
         </div>
         <div className={styles.logout}>
-            <a href="">Logout<img src={logoutIcon} alt="" /></a>
+            <button onClick={handleLogout}>Logout<img src={logoutIcon} alt="" /></button>
         </div>
     </div>
     </>

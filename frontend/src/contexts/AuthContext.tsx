@@ -25,6 +25,7 @@ export const AuthContext = createContext({} as AuthContextData);
 export function AuthProvider({ children }: AuthProviderProps) {
     const [userProvider, setUserProvider] = useState<UserProps | undefined>();
     const [loading, setLoading] = useState(true);
+    const [token, setToken] = useState<string | null>(null);
     const isAuthenticated = !!userProvider;
     const navigate = useNavigate();
 
@@ -33,25 +34,27 @@ export function AuthProvider({ children }: AuthProviderProps) {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 try {
-                    const token = await user.getIdToken(true);
-                    if (token) {
+                    const newToken = await user.getIdToken(true);
+                    if (newToken) {
+                        setToken(newToken);
                         try {
                             const response = await axios.get("http://localhost:3333/users", {
                                 headers: {
-                                    'Authorization': `Bearer ${token}`
+                                    'Authorization': `Bearer ${newToken}`
                                 }
                             });
                             const { id, name, email } = response.data;
                             setUserProvider({ id, name, email });
                         } catch (error) {
-                            console.error("Error user:", error);
+                            console.error("Error fetching user:", error);
                         }
                     }
                 } catch (error) {
-                    console.error("Error token:", error);
+                    console.error("Error getting token:", error);
                 }
             } else {
                 setUserProvider(undefined);
+                setToken(null);
             }
             setLoading(false);
         });
@@ -73,17 +76,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
         try {
             const user = auth.currentUser;
             if (user) {
-                const token = await user.getIdToken(true);
+                const currentToken = await user.getIdToken(true);
                 await axios.post("http://localhost:3333/users/revokeToken", {}, {
                     headers: {
-                        'Authorization': `Bearer ${token}`
+                        'Authorization': `Bearer ${currentToken}`
                     }
                 });
                 await auth.signOut();
                 setUserProvider(undefined);
+                setToken(null);
                 navigate('/');
-            } else {
-                console.error("User is not logged in");
             }
         } catch (error) {
             console.error("Error during sign out:", error);

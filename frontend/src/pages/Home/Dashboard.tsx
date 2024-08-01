@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Sidebar from "../../components/SideBar/Sidebar";
 import Card from "../../components/Card/Card";
 import heart from "../../assets/heart.png";
@@ -6,49 +6,46 @@ import Modal from "../../components/Modal/Modal";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { IoIosSearch } from "react-icons/io";
 import styles from "./Dashboard.module.css";
-import { getAuth, onAuthStateChanged, updateCurrentUser } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Dashboard: React.FC = () => {
     const [title, setTitle] = useState<string>("");
     const [number, setNumber] = useState<number>(0);
     const navigate = useNavigate();
+    const { userProvider } = useContext(AuthContext);
 
     useEffect(() => {
         document.title = "MovieApp - Home";
 
         const fetchData = async () => {
-            try{
+            try {
                 const auth = getAuth();
-                const unsubscribe = onAuthStateChanged(auth, async (user) => {
-                    if (user) {
-                        try {
-                            const token = await user.getIdToken(true);
-                            const response = await axios.get("http://localhost:3333/users/movies", {
-                                headers: {
-                                    'Authorization': `Bearer ${token}`
-                                }
-                            });
-        
-                            setTitle("My Movies");
-                            setNumber(response.data.length);
-                        } catch (error) {
-                            console.error(error);
+                const user = auth.currentUser;
+                if (user) {
+                    const token = await user.getIdToken(true);
+                    const response = await axios.get("http://localhost:3333/users/movies", {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
                         }
-                    } else {
-                        console.error("User is not logged in");
-                    }
-                });
-        
-                return () => unsubscribe();
+                    });
+
+                    setTitle("My Movies");
+                    setNumber(response.data.length);
+                } else {
+                    console.error("User is not logged in");
+                }
             } catch (error) {
-                console.error(error);
+                console.error("Error fetching movies:", error);
             }
+        };
+
+        if (userProvider) {
+            fetchData();
         }
-        fetchData();
-    }, []);
+    }, [userProvider]);
 
     const [openModal, setOpenModal] = useState<boolean>(false);
 

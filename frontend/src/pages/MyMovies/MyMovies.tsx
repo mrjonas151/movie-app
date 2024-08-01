@@ -1,46 +1,50 @@
 import MovieInformation from "../../components/MovieInformation/MovieInformation";
-import SearchBar from "../../components/SearchBar/SearchBar"
+import SearchBar from "../../components/SearchBar/SearchBar";
 import { IoIosSearch } from "react-icons/io";
-import Sidebar from "../../components/SideBar/Sidebar"
-import styles from "./MyMovies.module.css"
+import Sidebar from "../../components/SideBar/Sidebar";
+import styles from "./MyMovies.module.css";
 import Modal from "../../components/Modal/Modal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import TitleList from "../../components/TitleList/TitleList";
-import axios from "axios"
+import axios from "axios";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const MyMovies = () => {
-
   const [movies, setMovies] = useState([]);
-
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const { userProvider } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const auth = getAuth();
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-          if (user) {
+        const user = auth.currentUser;
+
+        if (user) {
+          try {
             const token = await user.getIdToken(true);
             const response = await axios.get("http://localhost:3333/users/movies", {
               headers: {
                 'Authorization': `Bearer ${token}`
               }
             });
-            
             setMovies(response.data);
-          } else {
-            console.error("User is not logged in");
+          } catch (error) {
+            console.error("Error movies:", error);
           }
-      });
-      return () => unsubscribe();
+        } else {
+          console.error("User is not logged in");
+        }
       } catch (error) {
-        console.error("Error fetching movies:", error);
+        console.error("Error getting auth token:", error);
       }
     };
-
-    fetchData();
-  }, []);
+    if(userProvider){
+      fetchData();
+    }
+    
+  }, [userProvider]);
   
   return (
     <div className={styles.bodyMovie}>
