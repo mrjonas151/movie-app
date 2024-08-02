@@ -17,6 +17,7 @@ type Movie = {
   duration: number;
   release_year: number;
   category: string;
+  date_of_include: string;
 }
 
 const MyMovies = () => {
