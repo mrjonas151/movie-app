@@ -28,7 +28,7 @@ const handleGoogleSignIn = async (e) => {
             console.log(result);
             console.log(userObj);
             console.log(userPhoto);
-            toast.success("Account created!");
+            toast.success("Signed in successfully");
         } catch (error) {
             console.log(error);
             toast.error("Signed in, but failed to save user to database");

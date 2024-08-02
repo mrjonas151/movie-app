@@ -13,6 +13,12 @@ const LoginForm = () => {
         handleSignIn({ email, password });
     }
 
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === "Enter") {
+            handleSubmit(e);
+        }
+    }
+
     return (
         <div>
             <form className={styles.formContainer} onSubmit={handleSubmit}>
@@ -33,6 +39,7 @@ const LoginForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     className={styles.signInInput}
+                    onKeyDown={handleKeyDown}
                 />
                 <Button 
                     title="SIGN IN"

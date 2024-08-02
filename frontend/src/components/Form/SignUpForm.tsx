@@ -15,6 +15,12 @@ const LoginForm = () => {
         handleSignUp({ firstName, lastName, email, password });
     }
 
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === "Enter") {
+            handleSubmit(e);
+        }
+    }
+
     return (
         <div>
             <form className={styles.formContainer} onSubmit={handleSubmit}>
@@ -69,6 +75,7 @@ const LoginForm = () => {
                     placeholder="Enter your password"
                     onChange={(e) => setPassword(e.target.value)}
                     className={styles.signInInput}
+                    onKeyDown={handleKeyDown}
                 />
                 <Button 
                     title="SIGN UP"
