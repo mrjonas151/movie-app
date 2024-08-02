@@ -4,11 +4,30 @@ import { useState } from "react";
 import Modal from "../Modal/Modal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import { format } from "date-fns";
+
+type MovieProps = {
+    movie: {
+        id: string;
+        title: string;
+        director: string;
+        duration: number;
+        release_year: number;
+        category: string;
+        date_of_include: string;
+    };
+    onDelete: (id: string) => void;
+    onUpdate: (id: string) => void;
+};
  
-const MovieInformation = ({ movie }) => {
+const MovieInformation = ({ movie, onDelete, onUpdate }:MovieProps) => {
     const [openModal, setOpenModal] = useState<boolean>(false);
     const [openDeleteModal, setDeleteOpenModal] = useState<boolean>(false);
     const formattedDate = format(new Date(movie.date_of_include), "dd-MM-yyyy");
+
+    const handleDelete = () => {
+        onDelete(movie.id);
+        setDeleteOpenModal(false);
+    };
 
     const setInitials = (title: string) => {
         const ignoredWords = ["and", "the", "of", "a", "in", "with", "for", "at", "an", "or", "by"];
@@ -54,6 +73,7 @@ const MovieInformation = ({ movie }) => {
                     <DeleteModal
                         isOpen={openDeleteModal}
                         setDeleteModal={() => setDeleteOpenModal(false)}
+                        onDelete={handleDelete}
                     />
                 </td>
             </tr>

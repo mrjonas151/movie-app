@@ -9,6 +9,8 @@ import TitleList from "../../components/TitleList/TitleList";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type Movie = {
   id: string;
@@ -61,6 +63,26 @@ const MyMovies = () => {
     setSearchTerm(value);
   };
 
+  const handleDeleteMovie = async (movieId: Number) => {
+    try {
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (user) {
+        const token = await user.getIdToken(true);
+        await axios.delete(`http://localhost:3333/users/movies/${movieId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        setMovies((prevMovies) => prevMovies.filter(movie => parseInt(movie.id) !== movieId));
+        toast.success("Movie deleted successfully!");
+      }
+    } catch (error) {
+      console.error("Error delete movie!!!:", error);
+    }
+  };
+
   const filteredMovies = movies.filter(movie => 
       movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -80,12 +102,13 @@ const MyMovies = () => {
             <TitleList/>
             <tbody>
             {filteredMovies.map((movie) => (
-              <MovieInformation key={movie.id} movie={movie} />
+              <MovieInformation key={movie.id} movie={movie} onDelete={handleDeleteMovie} />
             ))}
             </tbody>
           </table>
         </div>
     </div>
+    <ToastContainer />
     </div>
     
   )
