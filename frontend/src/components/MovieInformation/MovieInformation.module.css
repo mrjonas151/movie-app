@@ -7,17 +7,18 @@
     margin: 10px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
+    box-sizing: border-box;
 }
 
 .alignContainer{
-    min-width: 96%;
+    width: 90%;
     display: flex;
     justify-content: center;
 }
 
 .photo {
-    width: 6vh;
-    height: 6vh;
+    width: 3em;
+    height: 3em;
     border-radius: 10px;
     background: #D9D9D9;
     border: 1px solid #ACACAC;
@@ -27,12 +28,12 @@
     font-size: 1em;
     font-weight: bold;
     margin-right: 15px;
+    box-sizing: border-box;
 }
 
 .text {
     flex: 1;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
@@ -42,7 +43,7 @@
     font-size: 14px;
     color: #333;
     padding: 0 10px;
-    width: 10%
+    width: 15%;
 }
 
 .actions {

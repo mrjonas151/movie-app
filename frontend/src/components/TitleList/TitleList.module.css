@@ -1,7 +1,7 @@
 .titlesContainer{
     border-top: 1px solid #E5E5E5;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 10px;
     margin-top: 6vh;
@@ -14,11 +14,19 @@
 .titlesContainer tr{
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: green; */
 }
 
 .titlesContainer th{
     margin: 0 10px;
     text-align: center;
-    padding: 10px;
+    padding: 0 10px;
+    /* background-color: purple; */
+    flex: 2;
+}
+
+.titlesContainer .empty{
+    flex: 1;
 }

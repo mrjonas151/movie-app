@@ -10,10 +10,22 @@ const MovieInformation = ({ movie }) => {
     const [openDeleteModal, setDeleteOpenModal] = useState<boolean>(false);
     const formattedDate = format(new Date(movie.date_of_include), "dd-MM-yyyy");
 
+    const setInitials = (title: string) => {
+        const ignoredWords = ["and", "the", "of", "a", "in", "with", "for", "at", "an", "or", "by"];
+        const cleanTitle = title.replace(/[^a-zA-Z\s:]/g, "").toLowerCase();
+        const words = cleanTitle.split(/\s+|:/).filter(word => word.length > 0 && !ignoredWords.includes(word));
+
+       const initials = words.slice(0, 2).map(word => word[0].toUpperCase());
+
+        return initials.join("");
+    };
+
+    const movieInitials = setInitials(movie.title);
+
     return (
         <tr className={styles.alignContainer}>
             <tr className={styles.main}>
-                <td className={styles.photo}>MM</td>
+                <td className={styles.photo}>{movieInitials}</td>
                 <td className={styles.text}>
                     <span>{movie.title}</span>
                     <span>{movie.director}</span>
