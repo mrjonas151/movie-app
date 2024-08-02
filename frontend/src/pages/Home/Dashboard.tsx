@@ -1,14 +1,14 @@
 import { useEffect, useState, useContext } from "react";
 import Sidebar from "../../components/SideBar/Sidebar";
 import Card from "../../components/Card/Card";
-import heart from "../../assets/heart.png";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { IoIosSearch } from "react-icons/io";
-import styles from "./Dashboard.module.css";
+import { CiHeart } from "react-icons/ci";
 import { getAuth } from "firebase/auth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import styles from "./Dashboard.module.css";
 
 type Card = {
     title: string;
@@ -75,7 +75,12 @@ const Dashboard: React.FC = () => {
             <SearchBar Icon={IoIosSearch} onSearchChange={handleSearchChange} />
             <div className={styles.card}>
                 {filteredCards.map((card) => (
-                    <Card key={card.title} icon={heart} title={card.title} number={number} handleClick={handleClick} />
+                    <Card 
+                        key={card.title} 
+                        Icon={CiHeart} 
+                        title={card.title} 
+                        number={number} 
+                        handleClick={handleClick} />
                 ))}             
             </div>	
             

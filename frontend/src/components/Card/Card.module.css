@@ -1,80 +1,76 @@
-.alignContainer {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.cardContainer {
+    position: fixed;
+    top: 10vh;
+    left: 17vw;
+    width: 14vw;
+    height: 18vh;
+    background-color: #CECECE;
+    border-radius: 10px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    
-}
-
-button {
     border: none;
-    padding: 0;
-    background: none;
-    cursor: pointer;
-    outline: none;
-    width: 57%;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    color: black;
 }
 
-p{
-    text-align: left;
-}
-
-p, .number{
-    transition: color 0.7s ease;
-}
-
-button:hover p,
-button:hover .number {
-    color: #A31717;
-}
-
-.card {
+.cardText {
+    width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    min-width: 230px;
-    height: 23vh;
-    padding: 1rem;
-    border-radius: 10px;
-    background-color: #CECECE;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    justify-content: start;
+    align-items: center;
 }
 
-.icon {
-    height: 30%;
-    width: 23%;
+.cardIcon {
+    font-size: 4em;
+    color: #A31717;
+    padding: 0;
+    margin-top: 0.2em;
 }
 
-.number {
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-align: right;
+.cardContainer:hover .cardIcon {
+    color: #d32727;
+  }
+
+.cardTitle {
+   font-size: 1.2em;
+   padding: 0;
+   margin: 0;
+   font-family: 'Montserrat', sans-serif;
 }
 
-@media (min-width: 1920px) {
+.cardNumber {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    margin-right: 1em;
+    font-size: 1.3em;
+}
 
-    button {
-        border: none;
-        padding: 0;
-        background: none;
-        cursor: pointer;
-        outline: none;
-        width: 80%;
-        transition: all 0.3s ease;
+Link {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+@media (max-width: 1366px) {
+
+    .cardContainer {
+        top: 15vh;
+        left: 25vw;
+        width: 18vw;
+        height: 24vh;
     }
 
-    .card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 100%;
-        min-width: 300px;
-        height: 20vh;
-        margin-left: 30%;
-        padding: 1rem;
-        border-radius: 10px;
-        background-color: #CECECE;
+    .cardIcon {
+        font-size: 3em;
     }
+    .cardTitle {
+        font-size: 1em;
+    }
+    
 }
