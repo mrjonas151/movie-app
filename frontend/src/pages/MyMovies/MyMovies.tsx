@@ -7,7 +7,7 @@ import Modal from "../../components/Modal/Modal";
 import { useState, useEffect, useContext } from "react";
 import TitleList from "../../components/TitleList/TitleList";
 import axios from "axios";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
 
 type Movie = {

@@ -2,11 +2,10 @@ import { useEffect, useState, useContext } from "react";
 import Sidebar from "../../components/SideBar/Sidebar";
 import Card from "../../components/Card/Card";
 import heart from "../../assets/heart.png";
-import Modal from "../../components/Modal/Modal";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { IoIosSearch } from "react-icons/io";
 import styles from "./Dashboard.module.css";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -17,7 +16,6 @@ type Card = {
 }
 
 const Dashboard: React.FC = () => {
-    const [title, setTitle] = useState<string>("");
     const [number, setNumber] = useState<number>(0);
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [cards, setCards] = useState<any[]>([]);
@@ -39,11 +37,10 @@ const Dashboard: React.FC = () => {
                         }
                     });
 
-                    setTitle("My Movies");
                     setNumber(response.data.length);
                     setCards([
                         {
-                            title: title,
+                            title: "My Movies",
                             number: number
                         }
                     ]);
@@ -59,8 +56,6 @@ const Dashboard: React.FC = () => {
             fetchData();
         }
     }, [userProvider]);
-
-    const [openModal, setOpenModal] = useState<boolean>(false);
 
     const handleClick = () => {
         navigate("/myMovies");
@@ -80,7 +75,7 @@ const Dashboard: React.FC = () => {
             <SearchBar Icon={IoIosSearch} onSearchChange={handleSearchChange} />
             <div className={styles.card}>
                 {filteredCards.map((card) => (
-                    <Card icon={heart} title={card.title} number={number} handleClick={handleClick} />
+                    <Card key={card.title} icon={heart} title={card.title} number={number} handleClick={handleClick} />
                 ))}             
             </div>	
             

@@ -6,7 +6,7 @@ import { FiMenu } from "react-icons/fi";
 import logoutIcon from "../../assets/logout.png";
 import styles from "./Sidebar.module.css";
 import axios from "axios";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
 
 const Sidebar = () => {
