@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { HiOutlineHome } from "react-icons/hi2";
 import { FiMenu } from "react-icons/fi";
-import logoutIcon from "../../assets/logout.png";
+import { IoLogOutOutline } from "react-icons/io5";
 import styles from "./Sidebar.module.css";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
@@ -98,7 +98,7 @@ const Sidebar = () => {
             </ul>
         </div>
         <div className={styles.logout}>
-            <button onClick={handleLogout}>Logout<img src={logoutIcon} alt="" /></button>
+            <button className={styles.buttonLogout} onClick={handleLogout}>Logout <span className={styles.buttonIcon}><IoLogOutOutline /></span></button>
         </div>
     </div>
     </>
