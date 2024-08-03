@@ -8,17 +8,17 @@ export type AuthContextData = {
     isAuthenticated: boolean;
     loading: boolean;
     signOut: () => void;
-}
+};
 
 type UserProps = {
     id: string;
     name: string;
     email: string;
-}
+};
 
 type AuthProviderProps = {
     children: ReactNode;
-}
+};
 
 export const AuthContext = createContext({} as AuthContextData);
 
@@ -38,11 +38,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
                     if (newToken) {
                         setToken(newToken);
                         try {
-                            const response = await axios.get("http://localhost:3333/users", {
-                                headers: {
-                                    'Authorization': `Bearer ${newToken}`
+                            const response = await axios.get(
+                                "http://localhost:3333/users",
+                                {
+                                    headers: {
+                                        Authorization: `Bearer ${newToken}`,
+                                    },
                                 }
-                            });
+                            );
                             const { id, name, email } = response.data;
                             setUserProvider({ id, name, email });
                         } catch (error) {
@@ -77,15 +80,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
             const user = auth.currentUser;
             if (user) {
                 const currentToken = await user.getIdToken(true);
-                await axios.post("http://localhost:3333/users/revokeToken", {}, {
-                    headers: {
-                        'Authorization': `Bearer ${currentToken}`
+                await axios.post(
+                    "http://localhost:3333/users/revokeToken",
+                    {},
+                    {
+                        headers: {
+                            Authorization: `Bearer ${currentToken}`,
+                        },
                     }
-                });
+                );
                 await auth.signOut();
                 setUserProvider(undefined);
                 setToken(null);
-                navigate('/');
+                navigate("/");
             }
         } catch (error) {
             console.error("Error during sign out:", error);
@@ -93,7 +100,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     };
 
     return (
-        <AuthContext.Provider value={{ userProvider, isAuthenticated, loading, signOut }}>
+        <AuthContext.Provider
+            value={{ userProvider, isAuthenticated, loading, signOut }}
+        >
             {children}
         </AuthContext.Provider>
     );

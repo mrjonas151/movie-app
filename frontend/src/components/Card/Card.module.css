@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 .cardContainer {
     position: fixed;
@@ -6,7 +6,7 @@
     left: 18vw;
     width: 14vw;
     height: 18vh;
-    background-color: #CECECE;
+    background-color: #cecece;
     border-radius: 10px;
     display: flex;
     border: none;
@@ -24,20 +24,20 @@
 
 .cardIcon {
     font-size: 4em;
-    color: #A31717;
+    color: #a31717;
     padding: 0;
     margin-top: 0.2em;
 }
 
 .cardContainer:hover .cardIcon {
     color: #d32727;
-  }
+}
 
 .cardTitle {
-   font-size: 1.2em;
-   padding: 0;
-   margin: 0;
-   font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
 }
 
 .cardNumber {
@@ -55,10 +55,7 @@ Link {
     color: black;
 }
 
-
-
 @media (max-width: 1366px) {
-
     .cardContainer {
         top: 15vh;
         left: 20vw;
@@ -72,5 +69,4 @@ Link {
     .cardTitle {
         font-size: 1em;
     }
-    
 }

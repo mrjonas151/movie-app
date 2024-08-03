@@ -13,13 +13,13 @@
     left: 0;
     top: 0;
     bottom: 0;
-    width: 7px; 
+    width: 7px;
 }
 
 .titleContainerRed h1::before {
-    background-color: #A31717;
+    background-color: #a31717;
 }
 
 .titleContainerBlue h1::before {
-    background-color: #0D80BF;;
+    background-color: #0d80bf;
 }

@@ -11,34 +11,41 @@ import ToggleButton from "../../components/ToggleButton/ToggleButton";
 import { useState } from "react";
 
 const Login = () => {
-
     const [isRed, setIsRed] = useState<boolean>(true);
 
     const toggleColor = () => {
         setIsRed(!isRed);
-    }
+    };
 
     return (
-        <div className={`${styles.screenBackground} ${isRed ? styles.redBackground : styles.blueBackground}`}>
+        <div
+            className={`${styles.screenBackground} ${
+                isRed ? styles.redBackground : styles.blueBackground
+            }`}
+        >
             <div className={styles.loginContainer}>
-                <TitleBar title="MovieApp" isRed={isRed}/>
-                <ToggleButton isRed={isRed} toggleColor={toggleColor}/>
-                <Subtitle title="SIGN IN" text="Enter your credentials to access your account"/>
-                <SignInForm isRed={isRed}/>
-                <Button 
-                    title="Sign up with Google" 
-                    onClick={handleGoogleSignIn} 
-                    className={styles.googleButton} 
+                <TitleBar title="MovieApp" isRed={isRed} />
+                <ToggleButton isRed={isRed} toggleColor={toggleColor} />
+                <Subtitle
+                    title="SIGN IN"
+                    text="Enter your credentials to access your account"
+                />
+                <SignInForm isRed={isRed} />
+                <Button
+                    title="Sign up with Google"
+                    onClick={handleGoogleSignIn}
+                    className={styles.googleButton}
                     Icon={FcGoogle}
                 />
-                <SignupLink link="/signup" title="Don't have an account yet? Sign up" isRed={isRed}/>
+                <SignupLink
+                    link="/signup"
+                    title="Don't have an account yet? Sign up"
+                    isRed={isRed}
+                />
                 <ToastContainer>
-                    position="top-center" 
-                    autoClose={3000}
+                    position="top-center" autoClose={3000}
                     hideProgressBar={false}
-                    closeOnClick 
-                    pauseOnFocusLoss 
-                    pauseOnHover
+                    closeOnClick pauseOnFocusLoss pauseOnHover
                 </ToastContainer>
             </div>
         </div>

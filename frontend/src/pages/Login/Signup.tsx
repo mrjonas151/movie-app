@@ -10,33 +10,35 @@ import styles from "./Login.module.css";
 import { useState } from "react";
 
 const Signup = () => {
-
     const [isRed, setIsRed] = useState<boolean>(true);
 
     return (
-        <div className={`${styles.screenBackground} ${isRed ? styles.redBackground : styles.blueBackground}`}>
+        <div
+            className={`${styles.screenBackground} ${
+                isRed ? styles.redBackground : styles.blueBackground
+            }`}
+        >
             <div className={styles.signUpContainer}>
-                <TitleBar title="MovieApp" isRed={isRed}/>
-                <Subtitle title="SIGN UP" text="Enter your credentials to create your account"/>
-                <SingUpForm isRed={isRed}/>
-                <Button 
-                    title="Sign up with Google" 
-                    onClick={handleGoogleSignIn} 
-                    className={styles.googleButton} 
+                <TitleBar title="MovieApp" isRed={isRed} />
+                <Subtitle
+                    title="SIGN UP"
+                    text="Enter your credentials to create your account"
+                />
+                <SingUpForm isRed={isRed} />
+                <Button
+                    title="Sign up with Google"
+                    onClick={handleGoogleSignIn}
+                    className={styles.googleButton}
                     Icon={FcGoogle}
                 />
-                <SignupLink link="/" title="Alredy have an account? Sign in"/>
+                <SignupLink link="/" title="Alredy have an account? Sign in" />
                 <ToastContainer>
-                    position="top-center" 
-                    autoClose={3000}
+                    position="top-center" autoClose={3000}
                     hideProgressBar={false}
-                    closeOnClick 
-                    pauseOnFocusLoss 
-                    pauseOnHover
+                    closeOnClick pauseOnFocusLoss pauseOnHover
                 </ToastContainer>
             </div>
         </div>
-        
     );
 };
 

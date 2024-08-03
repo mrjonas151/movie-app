@@ -1,117 +1,143 @@
-import MovieInformation from "../../components/MovieInformation/MovieInformation";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import { IoIosSearch } from "react-icons/io";
 import Sidebar from "../../components/SideBar/Sidebar";
-import styles from "./MyMovies.module.css";
-import Modal from "../../components/Modal/Modal";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import TopBar from "../../components/TopBar/TopBar";
+import TitleList2 from "../../components/TitleList/TitleList";
+import MovieInformation from "../../components/MovieInformation/MovieInformation";
 import { useState, useEffect, useContext } from "react";
-import TitleList from "../../components/TitleList/TitleList";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
+import ReactPaginate from "react-paginate";
+import styles from "./MyMovies.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 type Movie = {
-  id: string;
-  title: string;
-  director: string;
-  duration: number;
-  release_year: number;
-  category: string;
-  date_of_include: string;
-}
+    id: string;
+    title: string;
+    director: string;
+    duration: number;
+    release_year: number;
+    category: string;
+    date_of_include: string;
+};
 
 const MyMovies = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [openModal, setOpenModal] = useState<boolean>(false);
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const { userProvider } = useContext(AuthContext);
+    const [movies, setMovies] = useState<Movie[]>([]);
+    const [searchTerm, setSearchTerm] = useState<string>("");
+    const { userProvider } = useContext(AuthContext);
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 6;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const auth = getAuth();
-        const user = auth.currentUser;
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const auth = getAuth();
+                const user = auth.currentUser;
 
-        if (user) {
-          try {
-            const token = await user.getIdToken(true);
-            const response = await axios.get("http://localhost:3333/users/movies", {
-              headers: {
-                'Authorization': `Bearer ${token}`
-              }
-            });
-            setMovies(response.data);
-          } catch (error) {
-            console.error("Error movies:", error);
-          }
-        } else {
-          console.error("User is not logged in");
+                if (user) {
+                    try {
+                        const token = await user.getIdToken(true);
+                        const response = await axios.get(
+                            "http://localhost:3333/users/movies",
+                            {
+                                headers: {
+                                    Authorization: `Bearer ${token}`,
+                                },
+                            }
+                        );
+                        setMovies(response.data);
+                    } catch (error) {
+                        console.error("Error movies:", error);
+                    }
+                } else {
+                    console.error("User is not logged in");
+                }
+            } catch (error) {
+                console.error("Error getting auth token:", error);
+            }
+        };
+        if (userProvider) {
+            fetchData();
         }
-      } catch (error) {
-        console.error("Error getting auth token:", error);
-      }
+    }, [userProvider]);
+
+    const handleSearchChange = (value: string) => {
+        setSearchTerm(value);
+        setCurrentPage(0);
     };
-    if(userProvider){
-      fetchData();
-    }
-    
-  }, [userProvider]);
 
-  const handleSearchChange = (value: string) => {
-    setSearchTerm(value);
-  };
+    const handleDeleteMovie = async (movieId: Number) => {
+        try {
+            const auth = getAuth();
+            const user = auth.currentUser;
 
-  const handleDeleteMovie = async (movieId: Number) => {
-    try {
-      const auth = getAuth();
-      const user = auth.currentUser;
+            if (user) {
+                const token = await user.getIdToken(true);
+                await axios.delete(
+                    `http://localhost:3333/users/movies/${movieId}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+                setMovies((prevMovies) =>
+                    prevMovies.filter((movie) => parseInt(movie.id) !== movieId)
+                );
+                toast.success("Movie deleted successfully!");
+            }
+        } catch (error) {
+            console.error("Error delete movie!!!:", error);
+        }
+    };
 
-      if (user) {
-        const token = await user.getIdToken(true);
-        await axios.delete(`http://localhost:3333/users/movies/${movieId}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-        setMovies((prevMovies) => prevMovies.filter(movie => parseInt(movie.id) !== movieId));
-        toast.success("Movie deleted successfully!");
-      }
-    } catch (error) {
-      console.error("Error delete movie!!!:", error);
-    }
-  };
+    const filteredMovies = movies.filter((movie) =>
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-  const filteredMovies = movies.filter(movie => 
-      movie.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-  
-  return (
-    <div className={styles.bodyMovie}>
-      <div className={styles.movieContent}>
-        <Sidebar />
-        <div className={styles.mainContent}>
-          <SearchBar Icon={IoIosSearch} onSearchChange={handleSearchChange} />
-          <div className={styles.tb}>
-            <h2>My Movies</h2>
-            <button className={styles.buttonAdd} onClick={() => setOpenModal(true)}>ADD NEW MOVIE</button>
-            <Modal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}/>
-          </div>
-          <table className={styles.container}>
-            <TitleList/>
-            <tbody>
-            {filteredMovies.map((movie) => (
-              <MovieInformation key={movie.id} movie={movie} onDelete={handleDeleteMovie} />
-            ))}
-            </tbody>
-          </table>
+    const offset = currentPage * itemsPerPage;
+    const currentItems = filteredMovies.slice(offset, offset + itemsPerPage);
+    const pageCount = Math.ceil(filteredMovies.length / itemsPerPage);
+
+    const handlePageClick = ({ selected }) => {
+        setCurrentPage(selected);
+    };
+
+    return (
+        <div className={styles.mymoviesContainer}>
+            <Sidebar />
+            <SearchBar onSearchChange={handleSearchChange} />
+            <TopBar title="My Movies" titleButton="ADD NEW MOVIE" />
+            <TitleList2 />
+            <div className={styles.movieListContainer}>
+                {currentItems.map((movie) => (
+                    <MovieInformation
+                        key={movie.id}
+                        movie={movie}
+                        onDelete={handleDeleteMovie}
+                    />
+                ))}
+            </div>
+            <div className={styles.paginate}>
+                <ReactPaginate
+                    previousLabel={"previous"}
+                    nextLabel={"next"}
+                    breakLabel={"..."}
+                    breakClassName={"break-me"}
+                    pageCount={pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={3}
+                    onPageChange={handlePageClick}
+                    containerClassName={styles.pagination}
+                    subContainerClassName={"pages pagination"}
+                    activeClassName={styles.active}
+                />
+            </div>
+
+            <ToastContainer />
         </div>
-    </div>
-    <ToastContainer />
-    </div>
-    
-  )
-}
+    );
+};
 
-export default MyMovies
+export default MyMovies;

@@ -1,9 +1,9 @@
 .redBackground {
-    background: linear-gradient(45deg, #bd3939, #e94040);    
+    background: linear-gradient(45deg, #bd3939, #e94040);
 }
 
 .blueBackground {
-    background: linear-gradient(45deg, #94CEFA, #0066B3);
+    background: linear-gradient(45deg, #94cefa, #0066b3);
 }
 
 .toggleButton {

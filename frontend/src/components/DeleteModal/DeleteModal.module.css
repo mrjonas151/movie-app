@@ -10,7 +10,7 @@
 }
 
 .deleteModal {
-    background-color: #EBE9E9;
+    background-color: #ebe9e9;
     padding: 0 1.5em;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
@@ -37,7 +37,7 @@
 }
 
 .deleteButton {
-    background-color: #A31717;
+    background-color: #a31717;
     color: white;
     border: none;
     padding: 0.5em 1em;
@@ -52,7 +52,7 @@
 }
 
 .cancelButton {
-    background-color: #EBE9E9;
+    background-color: #ebe9e9;
     color: black;
     border: 1px solid gray;
     padding: 0.5em 1em;
@@ -63,21 +63,17 @@
 }
 
 .cancelButton:hover {
-    background-color: #ffffff;  
+    background-color: #ffffff;
 }
 
 @media (max-width: 1366px) {
-
     .deleteModal {
-        
         padding: 0 1em;
         width: 20vw;
         height: 18vh;
-    } 
-    
-    .title {
-        
-        text-align: center;
     }
 
+    .title {
+        text-align: center;
+    }
 }

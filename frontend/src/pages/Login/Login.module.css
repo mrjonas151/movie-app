@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
-    margin: 0;    
-    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
 }
 
 .redBackground {
-    background: linear-gradient(45deg, #ff0000, #e94040);    
+    background: linear-gradient(45deg, #ff0000, #e94040);
 }
 
 .blueBackground {
-    background: linear-gradient(45deg, #94CEFA, #0066B3);
+    background: linear-gradient(45deg, #94cefa, #0066b3);
 }
 
 .screenBackground {
@@ -18,14 +18,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
 }
 
 .loginContainer {
     background: rgb(255, 255, 255);
-    box-shadow: 0 05px 15px rgb(0, 0, 0, .5);
+    box-shadow: 0 05px 15px rgb(0, 0, 0, 0.5);
     width: 46vh;
     height: 56vh;
     margin: auto;
@@ -35,12 +35,12 @@ body {
 
 .signUpContainer {
     background: rgb(255, 255, 255);
-    box-shadow: 0 05px 15px rgb(0, 0, 0, .5);
+    box-shadow: 0 05px 15px rgb(0, 0, 0, 0.5);
     width: 46vh;
     height: 64vh;
     margin: auto;
     border: none;
-    border-radius: 20px;    
+    border-radius: 20px;
 }
 
 .googleButton {
@@ -63,11 +63,10 @@ body {
 }
 
 .googleButton:hover {
-    border: 1px solid #6C6C6C;
+    border: 1px solid #6c6c6c;
 }
 
 @media (max-width: 1366px) {
-
     .loginContainer {
         width: 28vw;
         height: 80vh;
@@ -80,7 +79,6 @@ body {
 }
 
 @media (max-width: 430px) {
-
     .loginContainer {
         width: 80vw;
         height: 58vh;
@@ -90,5 +88,4 @@ body {
         width: 80vw;
         height: 66vh;
     }
-    
 }

@@ -13,7 +13,7 @@ import styles from "./Dashboard.module.css";
 type Card = {
     title: string;
     id: number;
-}
+};
 
 const Dashboard: React.FC = () => {
     const [number, setNumber] = useState<number>(0);
@@ -31,18 +31,21 @@ const Dashboard: React.FC = () => {
                 const user = auth.currentUser;
                 if (user) {
                     const token = await user.getIdToken(true);
-                    const response = await axios.get("http://localhost:3333/users/movies", {
-                        headers: {
-                            'Authorization': `Bearer ${token}`
+                    const response = await axios.get(
+                        "http://localhost:3333/users/movies",
+                        {
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                            },
                         }
-                    });
+                    );
 
                     setNumber(response.data.length);
                     setCards([
                         {
                             title: "My Movies",
-                            number: number
-                        }
+                            number: number,
+                        },
                     ]);
                 } else {
                     console.error("User is not logged in");
@@ -59,13 +62,13 @@ const Dashboard: React.FC = () => {
 
     const handleClick = () => {
         navigate("/myMovies");
-    }
+    };
 
     const handleSearchChange = (value: string) => {
         setSearchTerm(value);
     };
 
-    const filteredCards = cards.filter(card =>
+    const filteredCards = cards.filter((card) =>
         card.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -75,15 +78,15 @@ const Dashboard: React.FC = () => {
             <SearchBar Icon={IoIosSearch} onSearchChange={handleSearchChange} />
             <div className={styles.card}>
                 {filteredCards.map((card) => (
-                    <Card 
-                        key={card.title} 
-                        Icon={CiHeart} 
-                        title={card.title} 
-                        number={number} 
-                        handleClick={handleClick} />
-                ))}             
-            </div>	
-            
+                    <Card
+                        key={card.title}
+                        Icon={CiHeart}
+                        title={card.title}
+                        number={number}
+                        handleClick={handleClick}
+                    />
+                ))}
+            </div>
         </>
     );
 };
