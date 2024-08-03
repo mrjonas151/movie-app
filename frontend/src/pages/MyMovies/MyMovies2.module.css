@@ -29,6 +29,12 @@
     font-weight: bold;
 }
 
+.pagination li.active a {
+    background-color: #d32727;
+    color: white;
+    border-radius: 100%;
+}
+
 .pagination li {
     margin: 0 0.25rem;
     list-style: none;
