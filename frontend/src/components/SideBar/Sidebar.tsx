@@ -9,11 +9,13 @@ import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
 import logout from "../../assets/logout.svg";
+import TitleBar from "../TitleBar/TitleBar";
 
 const Sidebar = () => {
     const [sidebarIcon, setSidebarIcon] = useState(true);
     const [username, setUsername] = useState("");
     const [initials, setInitials] = useState("");
+    const [isRed, setIsRed] = useState<boolean>(true);
     const { signOut } = useContext(AuthContext);
 
     const toggleSidebar = () => {
@@ -71,8 +73,9 @@ const Sidebar = () => {
         <FiMenu />
     </div>
     <div className={`${styles.sidebar} ${sidebarIcon ? styles.closed : ""}`}>
+        
         <div className={styles.sideTitle}>
-            <h1>MovieApp</h1>
+            <TitleBar title="MovieApp" isRed={isRed}/>
         </div>
         <div className={styles.profileContainer}>
             <div className={styles.userInitials}>{initials}</div>

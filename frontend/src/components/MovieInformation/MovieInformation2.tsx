@@ -7,10 +7,40 @@ import { GoPencil } from "react-icons/go";
 import { SlTrash } from "react-icons/sl";
 import { format } from "date-fns";
 
-const MovieInformation2 = ({ movie }) => {
+type MovieProps = {
+    movie: {
+        id: string;
+        title: string;
+        director: string;
+        duration: number;
+        release_year: number;
+        category: string;
+        date_of_include: string;
+    };
+    onDelete: (id: string) => void;
+    onUpdate: (id: string) => void;
+};
+
+const MovieInformation2 = ({ movie, onDelete, onUpdate }:MovieProps) => {
     const [openModal, setOpenModal] = useState<boolean>(false);
     const [openDeleteModal, setDeleteOpenModal] = useState<boolean>(false);
+    const [editableMovie, setEditableMovie] = useState(movie);
     const formattedDate = format(new Date(movie.date_of_include), "dd-MM-yyyy");
+
+    const handleDelete = () => {
+        onDelete(movie.id);
+        setDeleteOpenModal(false);
+    };
+
+    const handleOpenUpdateModal = () => {
+        setEditableMovie(movie);
+        setOpenModal(true);
+    };
+
+    const handleUpdate = (updatedMovie: any) => {
+        onUpdate(movie.id, updatedMovie);
+        setOpenModal(false);
+    };
 
     const setInitials = (title: string) => {
         const ignoredWords = [
@@ -52,13 +82,15 @@ const MovieInformation2 = ({ movie }) => {
             <div className={styles.buttons}>
                 <button
                     className={styles.button}
-                    onClick={() => setOpenModal(true)}
+                    onClick={handleOpenUpdateModal}
                 >
                     <GoPencil />
                 </button>
                 <Modal
                     isOpen={openModal}
                     setModalOpen={() => setOpenModal(!openModal)}
+                    movie={editableMovie}
+                    onSave={handleUpdate}
                 />
                 <button
                     className={styles.button}
@@ -69,9 +101,9 @@ const MovieInformation2 = ({ movie }) => {
                 <DeleteModal
                     isOpen={openDeleteModal}
                     setDeleteModal={() => setDeleteOpenModal(false)}
+                    onDelete={handleDelete}
                 />
             </div>
-            
         </div>
     );
 };

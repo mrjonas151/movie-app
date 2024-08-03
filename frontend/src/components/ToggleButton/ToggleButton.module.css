@@ -20,11 +20,12 @@
     width: 1em;
     height: 1em;
     border-radius: 50%;
-    background-color: rgb(223, 223, 223);
+    background: radial-gradient(circle at 20% 20%, #e0e0e0, #bdbdbd);
     position: absolute;
     top: 0.1em;
     left: 0.1em;
     transition: all 0.1 ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .toggled {
