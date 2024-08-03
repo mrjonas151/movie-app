@@ -132,6 +132,8 @@ const MyMovies = () => {
                     containerClassName={styles.pagination}
                     subContainerClassName={"pages pagination"}
                     activeClassName={styles.active}
+                    previousClassName={currentPage == 0 ? `${styles.previous} ${styles.disabled}` : styles.previous}
+                    nextClassName={currentPage == pageCount - 1 ? `${styles.next} ${styles.disabled}` : styles.next}
                 />
             </div>
 
