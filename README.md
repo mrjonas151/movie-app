@@ -68,9 +68,36 @@ Mencione as ferramentas que você usou para criar seu projeto
 
 Autores que contribuíram para a construção dessa aplicação:
 
-* [Alisson Akio](https://nodejs.org/en)
-* [Jonas Tomaz](https://www.typescriptlang.org/) 
-* [Keila Prado](https://expressjs.com/pt-br/)
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <a href="https://github.com/Kio-Suzuki">
+          <img src="https://avatars.githubusercontent.com/u/116661015?v=4" width="100px; " alt="Foto do Akio" /><br>
+          <sub>
+            <b>Alisson Akio Suzuki</b>
+          </sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/mrjonas151">
+          <img src="https://avatars.githubusercontent.com/u/89425034?v=4" width="100px;" alt="Foto do Jonas"/><br>
+          <sub>
+            <b>Jonas Tomaz de Aquinos</b>
+          </sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/aliek57">
+          <img src="https://avatars.githubusercontent.com/u/91800715?v=4" width="100px;" alt="Foto da Keila"/><br>
+          <sub>
+            <b>Keila Prado de Jesus</b>
+          </sub>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ## 🎁 Expressões de gratidão
 
