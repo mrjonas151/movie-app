@@ -14,5 +14,12 @@
     top: 0;
     bottom: 0;
     width: 7px; 
-    background-color: #A31717; 
+}
+
+.titleContainerRed h1::before {
+    background-color: #A31717;
+}
+
+.titleContainerBlue h1::before {
+    background-color: #0D80BF;;
 }

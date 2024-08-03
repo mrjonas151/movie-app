@@ -3,7 +3,7 @@
 .cardContainer {
     position: fixed;
     top: 10vh;
-    left: 17vw;
+    left: 18vw;
     width: 14vw;
     height: 18vh;
     background-color: #CECECE;
@@ -61,7 +61,7 @@ Link {
 
     .cardContainer {
         top: 15vh;
-        left: 25vw;
+        left: 20vw;
         width: 18vw;
         height: 24vh;
     }

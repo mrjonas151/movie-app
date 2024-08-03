@@ -1,0 +1,122 @@
+.movieContainer {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.75em;
+    height: 8vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 2vh;
+    font-size: 1.05em;
+    z-index: -1;
+}
+
+.frame {
+    width: 6vw;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-weight: 700;  
+}
+
+.titleLetter {
+    border: 1px solid #ACACAC;
+    border-radius: 10px;
+    width: 3em;
+    height: 2.5em;
+    background-color: #CECECE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleMovie {
+    width: 22vw;  
+}
+
+.titleDirector {
+    width: 16vw;   
+}
+
+.titleGenre {
+    width: 10vw;      
+}
+
+.titleNumber {
+    width: 6vw;      
+}
+
+.titleDate {
+    width: 7vw;   
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button{
+    background-color: #FFF;
+    border: none;
+    border-radius: 10px;
+    width: 3vw;
+    height: 3vh;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    color: #A31717;
+}
+
+.button:hover {
+    color: #d32727;
+}
+
+@media screen and (max-width: 1366px) {
+    .movieContainer {
+        height: 9vh;
+        font-size: 0.75em;
+    }
+
+    .frame {
+        width: 6vw;
+    }
+
+    .titleLetter {
+        width: 3em;
+        height: 2.5em;
+    }
+
+    .titleMovie {
+        width: 22vw;  
+    }
+
+    .titleDirector {
+        width: 16vw;   
+    }
+
+    .titleGenre {
+        width: 10vw;      
+    }
+
+    .titleNumber {
+        width: 6vw;      
+    }
+
+    .titleDate {
+        width: 7vw;   
+    }
+
+    .button{
+        background-color: #FFF;
+        border: none;
+        border-radius: 10px;
+        width: 3vw;
+        height: 3vh;
+        font-size: 1em;
+        font-weight: 700;
+    }
+
+}

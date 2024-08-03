@@ -8,6 +8,7 @@ import styles from "./Sidebar.module.css";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
+import logout from "../../assets/logout.svg";
 
 const Sidebar = () => {
     const [sidebarIcon, setSidebarIcon] = useState(true);
@@ -95,10 +96,22 @@ const Sidebar = () => {
                         </NavLink>
                     </div>
                 </li>
+                <li>
+                    <div className={styles.navLinks}>
+                        <NavLink className={({isActive}) => (isActive ? styles.activeLink : "")} to="/movies2">
+                            <CiHeart className={styles.icon}/>
+                            My Movies
+                        </NavLink>
+                    </div>
+                </li>
             </ul>
         </div>
         <div className={styles.logout}>
-            <button className={styles.buttonLogout} onClick={handleLogout}>Logout <span className={styles.buttonIcon}><IoLogOutOutline /></span></button>
+            <button 
+                className={styles.buttonLogout} 
+                onClick={handleLogout}>Logout 
+                <img src={logout} alt="logout icon" />
+                </button>
         </div>
     </div>
     </>

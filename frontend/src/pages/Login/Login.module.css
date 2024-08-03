@@ -5,8 +5,15 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.redBackground {
+    background: linear-gradient(45deg, #ff0000, #e94040);    
+}
+
+.blueBackground {
+    background: linear-gradient(45deg, #94CEFA, #0066B3);
+}
+
 .screenBackground {
-    background: linear-gradient(45deg, #ff0000, #e94040);
     display: flex;
     justify-content: center;
     align-items: center;

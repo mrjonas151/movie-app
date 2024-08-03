@@ -4,13 +4,19 @@
     align-items: center;
     margin-top: 1.2em;
     text-decoration: none;
-    color: #A31717;
     font-weight: 600;
 }
 
-.linkSignup {
+.redLink {
     text-decoration: none;
-    color: #A31717;
+    color: #A31717; 
 }
+  
+.blueLink {
+    text-decoration: none;
+    color: #0D80BF;; 
+}
+
+
 
 

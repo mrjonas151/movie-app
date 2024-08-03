@@ -1,0 +1,48 @@
+.topBarContainer {
+    position: fixed;
+    top: 8vh;
+    left: 18.3vw;
+    width: 80vw;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(226, 226, 226);
+    z-index: 2;
+}
+
+.topBarTitle {
+    font-size: 1.4em;
+}
+
+.topBarButton {
+    width: 15em;
+    height: 3.5em;
+    background-color: #A31717;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+}
+
+.topBarButton:hover {
+    background-color: #d32727;
+}
+
+@media (max-width: 1366px) {
+
+    .topBarContainer {
+        top: 8vh;
+        height: 8vh;
+    }
+
+    .topBarTitle {
+        font-size: 1em;
+    }
+
+    .topBarButton {
+        width: 14em;
+        height: 3em;
+        font-size: 0.6em;
+    }
+ 
+}

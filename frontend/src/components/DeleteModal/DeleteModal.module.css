@@ -32,7 +32,7 @@
 
 .deleteModalBtn {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     gap: 1em;
 }
 
@@ -47,6 +47,10 @@
     cursor: pointer;
 }
 
+.deleteButton:hover {
+    background-color: #d32727;
+}
+
 .cancelButton {
     background-color: #EBE9E9;
     color: black;
@@ -58,13 +62,17 @@
     cursor: pointer;
 }
 
+.cancelButton:hover {
+    background-color: #ffffff;  
+}
+
 @media (max-width: 1366px) {
 
     .deleteModal {
         
         padding: 0 1em;
         width: 20vw;
-        height: 25vh;
+        height: 18vh;
     } 
     
     .title {

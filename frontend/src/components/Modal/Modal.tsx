@@ -15,8 +15,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, setModalOpen  }) => {
     const [duration, setDuration] = useState<number>(0);
     const [category, setCategory] = useState<string>("");
     const [releaseYear, setReleaseYear] = useState<number>(0);
-
-    
+    const [isRed, setIsRed] = useState<boolean>(true);
 
     async function getTokenId() {
         try {
@@ -78,7 +77,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, setModalOpen  }) => {
             <div className={styles.containerBackground}>
                 <div className={styles.modal}>
                 <div className={styles.topBar}>
-                    <TitleBar title="Add new movie" />
+                    <TitleBar title="Add new movie" isRed={isRed}/>
                     <button onClick={setModalOpen} className={styles.buttonClose}>X</button>
                 </div>
                 <div className={styles.modalForm}>

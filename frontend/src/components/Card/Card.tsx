@@ -10,7 +10,7 @@ interface CardProps{
 const Card: React.FC<CardProps> = ({ Icon, title, number }) => {
 
   return (
-    <Link to="/myMovies">
+    <Link to="/movies2">
         <div className={styles.cardContainer}>
             <div className={styles.cardText}>
                 {Icon && <Icon className={styles.cardIcon}/>}

@@ -26,7 +26,6 @@
 }
 
 .signInButton {
-    background-color: #A31717;
     color: #FFFFFF;
     border: none;
     height: 3em;
@@ -36,8 +35,20 @@
     margin-top: 2em;
 }
 
-.signInButton:hover {
+.redButton {
+    background-color: #A31717; 
+}
+  
+.blueButton {
+    background-color: #0D80BF;
+}
+
+.redButton:hover {
     background-color: #e60f0f;  
+}
+
+.blueButton:hover {
+    background-color: #2da4ff;
 }
 
 .googleButton {

@@ -1,0 +1,89 @@
+.titlesContainer{
+    position: fixed;
+    top: 20vh;
+    width: 83.3vw;
+    height: 3vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.titleLetter {
+    width: 6vw;      
+}
+
+.titleMovie {
+    width: 22vw;   
+}
+
+.titleDirector {
+    width: 16vw;    
+}
+
+.titleGenre {
+    width: 10vw;       
+}
+
+.titleNumber {
+    width: 6vw;       
+}
+
+.titleDate {
+    width: 7vw;    
+}
+
+.buttons {
+    width: 8vw;    
+}
+
+.titlesContainer h3 {
+    margin: 0;
+    padding: 0;
+    color: #ACACAC;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-align: start;
+}
+
+@media (max-width: 1366px) {
+    .titlesContainer {
+        top: 18vh;
+        width: 83vw;
+    }
+
+    .titlesContainer h3 {
+        font-size: 0.7rem;
+    }
+
+    .titleLetter {
+        width: 8vw;     
+    }
+    
+    .titleMovie {
+        width: 22vw; 
+    }
+    
+    .titleDirector {
+        width: 16vw;
+    
+    }
+    
+    .titleGenre {
+        width: 10vw;
+       
+    }
+    
+    .titleNumber {
+        width: 6vw;       
+    }
+    
+    .titleDate {
+        width: 7vw;    
+    }
+    
+    .buttons {
+        width: 8vw;    
+    }
+}

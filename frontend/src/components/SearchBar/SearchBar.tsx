@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CiSearch } from "react-icons/ci";
 import styles from "./SearchBar.module.css";
 
 type SearchBarProps = {
@@ -23,9 +24,9 @@ function SearchBar( { Icon, onSearchChange }: SearchBarProps ) {
                 placeholder="Search..."
                 className={styles.searchBar}
             />
-            <button>
-                {Icon && <Icon className={styles.searchIcon}/>}
-            </button>
+            <div className={styles.searchIcon}>
+                <CiSearch />  
+            </div>
         </div>
     );
 }

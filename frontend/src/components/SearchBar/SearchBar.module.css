@@ -8,7 +8,6 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    z-index: 10;
     margin-left: 2em;
 }
 
@@ -20,32 +19,36 @@
     border: 1px solid #969696;
     padding: 0.5em;
     position: fixed;
-    margin-right: 5em;
+    margin-right: 10em;
 }
 
 .searchIcon {
-    position: absolute;
-    right: 4vw;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 22px;
+    position: fixed;
+    top: 2.6vh;
+    margin-right: 7.5vw;
+    font-size: 1.5em;
     color: #969696;
 }
 
 @media screen and (max-width: 1366px) {
     
+    .searchContainer {
+        width: 90vw;
+        left: 10vw;
+    }
+
     .searchBar {
-        width: 15em;
-        margin-right: 4em;
-        margin-top: 2em;
+        position: fixed;
+        width: 11em;
+        height: 1em;
+        margin-right: 9em;
+        border-radius: 8px;
     }
 
     .searchIcon {
-        position: absolute;
-        right: 5vw;
-        top: 75%;
-        transform: translateY(-50%);
-        font-size: 22px;
-        color: #969696;
+        position: fixed;
+        top: 2.6vh;
+        margin-right: 9.7vw;
+        font-size: 1.1em;
     }
 }
