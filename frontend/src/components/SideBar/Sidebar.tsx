@@ -9,6 +9,7 @@ import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
 import logout from "../../assets/logout.svg";
 import TitleBar from "../TitleBar/TitleBar";
+import LogOutModal from "../LogOutModal/LogOutModal";
 
 const Sidebar = () => {
     const [sidebarIcon, setSidebarIcon] = useState(true);
@@ -16,6 +17,7 @@ const Sidebar = () => {
     const [initials, setInitials] = useState("");
     const [isRed, setIsRed] = useState<boolean>(true);
     const { signOut } = useContext(AuthContext);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const toggleSidebar = () => {
         setSidebarIcon(!sidebarIcon);
@@ -65,6 +67,14 @@ const Sidebar = () => {
         } catch (error) {
             return;
         }
+    };
+
+    const handleLogoutClick = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
     };
 
     return (
@@ -117,13 +127,18 @@ const Sidebar = () => {
                 <div className={styles.logout}>
                     <button
                         className={styles.buttonLogout}
-                        onClick={handleLogout}
+                        onClick={handleLogoutClick}
                     >
                         Logout
                         <img src={logout} alt="logout icon" />
                     </button>
                 </div>
             </div>
+            <LogOutModal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                onConfirm={handleLogout}
+            />
         </>
     );
 };
