@@ -57,8 +57,6 @@ Agora você será capaz de ter o servidor rodando no backend e entrar no link fo
 
 ## 🛠️ Construído com
 
-Mencione as ferramentas que você usou para criar seu projeto
-
 * [React Vite](https://vitejs.dev/guide/) - A biblioteca web utilizada.
 * [Node.Js](https://nodejs.org/en) - Ambiente de execução no servidor.
 * [Typescript](https://www.typescriptlang.org/) - Linguagem utilizada.
