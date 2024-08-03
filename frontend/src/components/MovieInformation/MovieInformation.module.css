@@ -1,81 +1,121 @@
-.main {
+.movieContainer {
     display: flex;
-    align-items: center;
-    background-color: #FFF;
-    padding: 16px;
+    flex-direction: row;
+    font-size: 0.75em;
+    height: 8vh;
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    margin: 10px 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 2vh;
+    font-size: 1.05em;
+    z-index: -1;
 }
 
-.alignContainer{
-    width: 90%;
+.frame {
+    width: 6vw;
     display: flex;
     justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-weight: 700;
 }
 
-.photo {
+.titleLetter {
+    border: 1px solid #acacac;
+    border-radius: 10px;
     width: 3em;
-    height: 3em;
-    border-radius: 10px;
-    background: #D9D9D9;
-    border: 1px solid #ACACAC;
+    height: 2.5em;
+    background-color: #cecece;
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 1em;
-    font-weight: bold;
-    margin-right: 15px;
-    box-sizing: border-box;
-}
-
-.text {
-    flex: 1;
-    display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
-.text span {
-    margin-bottom: 0;
-    font-size: 14px;
-    color: #333;
-    padding: 0 10px;
-    width: 15%;
+.titleMovie {
+    width: 22vw;
 }
 
-.actions {
+.titleDirector {
+    width: 16vw;
+}
+
+.titleGenre {
+    width: 10vw;
+}
+
+.titleNumber {
+    width: 6vw;
+}
+
+.titleDate {
+    width: 7vw;
+}
+
+.buttons {
     display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-left: 25px;
+    justify-content: space-around;
 }
 
 .button {
-    background: none;
+    background-color: #fff;
     border: none;
+    border-radius: 10px;
+    width: 3vw;
+    height: 3vh;
+    font-size: 1.2em;
+    font-weight: 700;
     cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #a31717;
 }
 
-.button i{
-    color: #A31717;
+.button:hover {
+    color: #d32727;
 }
 
-@media (min-width: 1920px) {
-
-    .main{
-        height: auto;
+@media screen and (max-width: 1366px) {
+    .movieContainer {
+        height: 9vh;
+        font-size: 0.75em;
     }
 
-    .alignContainer{
-        min-width: 100%;
-        margin-left: 0;
+    .frame {
+        width: 6vw;
+    }
+
+    .titleLetter {
+        width: 3em;
+        height: 2.5em;
+    }
+
+    .titleMovie {
+        width: 22vw;
+    }
+
+    .titleDirector {
+        width: 16vw;
+    }
+
+    .titleGenre {
+        width: 10vw;
+    }
+
+    .titleNumber {
+        width: 6vw;
+    }
+
+    .titleDate {
+        width: 7vw;
+    }
+
+    .button {
+        background-color: #fff;
+        border: none;
+        border-radius: 10px;
+        width: 3vw;
+        height: 3vh;
+        font-size: 1em;
+        font-weight: 700;
     }
 }

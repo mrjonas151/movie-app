@@ -18,8 +18,8 @@
 .topBarButton {
     width: 15em;
     height: 3.5em;
-    background-color: #A31717;
-    color: #FFFFFF;
+    background-color: #a31717;
+    color: #ffffff;
     border: none;
     border-radius: 6px;
 }
@@ -29,7 +29,6 @@
 }
 
 @media (max-width: 1366px) {
-
     .topBarContainer {
         top: 8vh;
         height: 8vh;
@@ -44,5 +43,4 @@
         height: 3em;
         font-size: 0.6em;
     }
- 
 }

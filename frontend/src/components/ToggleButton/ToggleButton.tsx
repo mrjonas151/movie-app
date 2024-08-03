@@ -1,4 +1,4 @@
-import styles from './ToggleButton.module.css';
+import styles from "./ToggleButton.module.css";
 
 interface ToggleButtonProps {
     isRed: boolean;
@@ -7,11 +7,19 @@ interface ToggleButtonProps {
 
 const ToggleButton: React.FC<ToggleButtonProps> = ({ isRed, toggleColor }) => {
     return (
-      <div className={`${styles.toggleButton} ${isRed ? styles.redBackground : styles.blueBackground}`}
-      onClick={toggleColor}>
-        <div className={`${styles.toggleCircle} ${isRed ? styles.toggled : ''}`}></div>
-      </div>
+        <div
+            className={`${styles.toggleButton} ${
+                isRed ? styles.redBackground : styles.blueBackground
+            }`}
+            onClick={toggleColor}
+        >
+            <div
+                className={`${styles.toggleCircle} ${
+                    isRed ? styles.toggled : ""
+                }`}
+            ></div>
+        </div>
     );
-  };
+};
 
 export default ToggleButton;

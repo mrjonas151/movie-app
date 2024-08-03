@@ -14,7 +14,7 @@
 .searchBar {
     height: 2em;
     width: 14em;
-    background-color: #FFF;
+    background-color: #fff;
     border-radius: 12px;
     border: 1px solid #969696;
     padding: 0.5em;
@@ -25,7 +25,6 @@
 
 .searchBar:focus {
     border: 1px solid #d32727;
-    ;
 }
 
 .searchIcon {
@@ -37,7 +36,6 @@
 }
 
 @media screen and (max-width: 1366px) {
-    
     .searchContainer {
         width: 90vw;
         left: 10vw;

@@ -7,8 +7,7 @@ type SearchBarProps = {
     onSearchChange: (newValue: string) => void;
 };
 
-function SearchBar( { Icon, onSearchChange }: SearchBarProps ) {
-
+function SearchBar({ Icon, onSearchChange }: SearchBarProps) {
     const [word, setWord] = useState<string>("");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,13 +18,13 @@ function SearchBar( { Icon, onSearchChange }: SearchBarProps ) {
 
     return (
         <div className={styles.searchContainer}>
-            <input 
+            <input
                 onChange={handleChange}
                 placeholder="Search..."
                 className={styles.searchBar}
             />
             <div className={styles.searchIcon}>
-                <CiSearch />  
+                <CiSearch />
             </div>
         </div>
     );

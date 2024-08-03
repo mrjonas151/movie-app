@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 interface ButtonProps {
     title: string;
@@ -7,18 +7,20 @@ interface ButtonProps {
     Icon?: React.ElementType;
 }
 
-const Button: React.FC<ButtonProps> = ( {title, onClick, className, Icon }: ButtonProps ) => {
-  return (
-    <div>
-      <button 
-        type="button"
-        onClick={onClick}
-        className={className}>
-        {Icon && <Icon className="icon"/>}
-        {title}
-        </button>
-    </div>
-  )
-}
+const Button: React.FC<ButtonProps> = ({
+    title,
+    onClick,
+    className,
+    Icon,
+}: ButtonProps) => {
+    return (
+        <div>
+            <button type="button" onClick={onClick} className={className}>
+                {Icon && <Icon className="icon" />}
+                {title}
+            </button>
+        </div>
+    );
+};
 
-export default Button
+export default Button;

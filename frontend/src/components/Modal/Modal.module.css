@@ -10,7 +10,7 @@
 }
 
 .modal {
-    background-color: #EBE9E9;
+    background-color: #ebe9e9;
     padding: 0 1.5em;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
@@ -39,7 +39,7 @@
     padding: 0;
     margin: 0;
     font-weight: 600;
-    background-color: #EBE9E9;
+    background-color: #ebe9e9;
 }
 
 .modalForm {
@@ -51,7 +51,6 @@
     position: relative;
     margin-bottom: 1rem;
     display: flex;
-    
 }
 
 .formLine {
@@ -61,19 +60,18 @@
 
 .formInput {
     height: 2em;
-    padding: 1rem 1rem 0.25rem 0.5rem; 
+    padding: 1rem 1rem 0.25rem 0.5rem;
     font-size: 14px;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     outline: none;
     border: 1px solid #969696;
     flex: 1;
-    
 }
 
 .formInputSameLine {
     height: 2em;
-    padding: 1rem 1rem 0.25rem 0.5rem; 
+    padding: 1rem 1rem 0.25rem 0.5rem;
     font-size: 14px;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
@@ -84,9 +82,9 @@
 
 .formLabel {
     position: absolute;
-    top: 0.1rem; 
+    top: 0.1rem;
     left: 0.5rem;
-    color: #A31717;
+    color: #a31717;
     font-weight: 600;
     font-size: 0.8rem;
     pointer-events: none;
@@ -103,7 +101,7 @@
 }
 
 .buttonModal {
-    background-color: #A31717;
+    background-color: #a31717;
     color: white;
     border: none;
     border-radius: 8px;
@@ -162,12 +160,12 @@ option {
 }
 
 .select::after {
-    content: '\25BC';
+    content: "\25BC";
     position: absolute;
     top: 0;
     right: 0;
     padding: 0.5em;
-    background: #A31717;
+    background: #a31717;
     pointer-events: none;
 }
 
@@ -187,7 +185,6 @@ option {
 }
 
 @media (max-width: 430px) {
-
     .containerBackground {
         width: 100%;
         display: flex;
@@ -205,8 +202,5 @@ option {
 
     .buttonModal {
         width: 18vw;
-    } 
+    }
 }
-
-
-

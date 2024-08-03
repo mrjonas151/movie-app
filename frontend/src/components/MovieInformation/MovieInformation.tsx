@@ -3,6 +3,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useState } from "react";
 import Modal from "../Modal/Modal";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import { GoPencil } from "react-icons/go";
+import { SlTrash } from "react-icons/sl";
 import { format } from "date-fns";
 
 type MovieProps = {
@@ -18,10 +20,11 @@ type MovieProps = {
     onDelete: (id: string) => void;
     onUpdate: (id: string) => void;
 };
- 
-const MovieInformation = ({ movie, onDelete, onUpdate }:MovieProps) => {
+
+const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
     const [openModal, setOpenModal] = useState<boolean>(false);
     const [openDeleteModal, setDeleteOpenModal] = useState<boolean>(false);
+    const [editableMovie, setEditableMovie] = useState(movie);
     const formattedDate = format(new Date(movie.date_of_include), "dd-MM-yyyy");
 
     const handleDelete = () => {
@@ -29,12 +32,36 @@ const MovieInformation = ({ movie, onDelete, onUpdate }:MovieProps) => {
         setDeleteOpenModal(false);
     };
 
-    const setInitials = (title: string) => {
-        const ignoredWords = ["and", "the", "of", "a", "in", "with", "for", "at", "an", "or", "by"];
-        const cleanTitle = title.replace(/[^a-zA-Z\s:]/g, "").toLowerCase();
-        const words = cleanTitle.split(/\s+|:/).filter(word => word.length > 0 && !ignoredWords.includes(word));
+    const handleOpenUpdateModal = () => {
+        setEditableMovie(movie);
+        setOpenModal(true);
+    };
 
-       const initials = words.slice(0, 2).map(word => word[0].toUpperCase());
+    const handleUpdate = (updatedMovie: any) => {
+        onUpdate(movie.id, updatedMovie);
+        setOpenModal(false);
+    };
+
+    const setInitials = (title: string) => {
+        const ignoredWords = [
+            "and",
+            "the",
+            "of",
+            "a",
+            "in",
+            "with",
+            "for",
+            "at",
+            "an",
+            "or",
+            "by",
+        ];
+        const cleanTitle = title.replace(/[^a-zA-Z\s:]/g, "").toLowerCase();
+        const words = cleanTitle
+            .split(/\s+|:/)
+            .filter((word) => word.length > 0 && !ignoredWords.includes(word));
+
+        const initials = words.slice(0, 2).map((word) => word[0].toUpperCase());
 
         return initials.join("");
     };
@@ -42,42 +69,42 @@ const MovieInformation = ({ movie, onDelete, onUpdate }:MovieProps) => {
     const movieInitials = setInitials(movie.title);
 
     return (
-        <tr className={styles.alignContainer}>
-            <tr className={styles.main}>
-                <td className={styles.photo}>{movieInitials}</td>
-                <td className={styles.text}>
-                    <span>{movie.title}</span>
-                    <span>{movie.director}</span>
-                    <span>{movie.duration}min</span>
-                    <span>{movie.category}</span>
-                    <span>{movie.release_year}</span>
-                    <span>{formattedDate}</span>
-                </td>
-                <td className={styles.actions}>
-                    <button
-                        className={styles.button}
-                        onClick={() => setOpenModal(true)}
-                    >
-                        <i className="fas fa-edit"></i>
-                    </button>
-                    <Modal
-                        isOpen={openModal}
-                        setModalOpen={() => setOpenModal(!openModal)}
-                    />
-                    <button
-                        className={styles.button}
-                        onClick={() => setDeleteOpenModal(true)}
-                    >
-                        <i className="fas fa-trash"></i>
-                    </button>
-                    <DeleteModal
-                        isOpen={openDeleteModal}
-                        setDeleteModal={() => setDeleteOpenModal(false)}
-                        onDelete={handleDelete}
-                    />
-                </td>
-            </tr>
-        </tr>
+        <div className={styles.movieContainer}>
+            <div className={styles.frame}>
+                <div className={styles.titleLetter}>{movieInitials}</div>
+            </div>
+            <div className={styles.titleMovie}>{movie.title}</div>
+            <div className={styles.titleDirector}>{movie.director}</div>
+            <div className={styles.titleNumber}>{movie.duration}</div>
+            <div className={styles.titleGenre}>{movie.category}</div>
+            <div className={styles.titleNumber}>{movie.release_year}</div>
+            <div className={styles.titleDate}>{formattedDate}</div>
+            <div className={styles.buttons}>
+                <button
+                    className={styles.button}
+                    onClick={handleOpenUpdateModal}
+                >
+                    <GoPencil />
+                </button>
+                <Modal
+                    isOpen={openModal}
+                    setModalOpen={() => setOpenModal(!openModal)}
+                    movie={editableMovie}
+                    onSave={handleUpdate}
+                />
+                <button
+                    className={styles.button}
+                    onClick={() => setDeleteOpenModal(true)}
+                >
+                    <SlTrash />
+                </button>
+                <DeleteModal
+                    isOpen={openDeleteModal}
+                    setDeleteModal={() => setDeleteOpenModal(false)}
+                    onDelete={handleDelete}
+                />
+            </div>
+        </div>
     );
 };
 

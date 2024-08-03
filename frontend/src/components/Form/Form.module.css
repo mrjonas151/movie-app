@@ -20,7 +20,7 @@
 }
 
 .signInLabel {
-    color: #6C6C6C
+    color: #6c6c6c;
 }
 
 .button-container {
@@ -30,7 +30,7 @@
 }
 
 .signInButton {
-    color: #FFFFFF;
+    color: #ffffff;
     border: none;
     height: 3em;
     width: 100%;
@@ -40,15 +40,15 @@
 }
 
 .redButton {
-    background-color: #A31717; 
+    background-color: #a31717;
 }
-  
+
 .blueButton {
-    background-color: #0D80BF;
+    background-color: #0d80bf;
 }
 
 .redButton:hover {
-    background-color: #e60f0f;  
+    background-color: #e60f0f;
 }
 
 .blueButton:hover {
@@ -71,7 +71,7 @@
 }
 
 .googleButton:hover {
-    border: 1px solid #6C6C6C;
+    border: 1px solid #6c6c6c;
 }
 
 .nameContainer {
