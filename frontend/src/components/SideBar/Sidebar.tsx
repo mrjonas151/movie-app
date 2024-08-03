@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { HiOutlineHome } from "react-icons/hi2";
 import { FiMenu } from "react-icons/fi";
-import { IoLogOutOutline } from "react-icons/io5";
 import styles from "./Sidebar.module.css";
 import axios from "axios";
 import { getAuth } from "firebase/auth";

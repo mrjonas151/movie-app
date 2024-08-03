@@ -15,6 +15,10 @@
     outline: none;
 }
 
+.signInInput:focus {
+    border: 1px solid #e60f0f;
+}
+
 .signInLabel {
     color: #6C6C6C
 }

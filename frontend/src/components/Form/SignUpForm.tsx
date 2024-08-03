@@ -3,7 +3,11 @@ import Button from "../Button/Button"
 import handleSignUp from "../../hooks/handleSignUp";
 import styles from "./Form.module.css"
 
-const LoginForm = () => {
+interface LoginFormProps {
+    isRed: boolean;
+}
+
+const LoginForm: React.FC<LoginFormProps> = ({ isRed }) => {
 
     const [firstName, setFirstName] = useState<string>("");
     const [lastName, setLastName] = useState<string>("");
@@ -80,7 +84,9 @@ const LoginForm = () => {
                 <Button 
                     title="SIGN UP"
                     onClick={handleSubmit}
-                    className={styles.signInButton}
+                    className={`${styles.signInButton} ${
+                        isRed ? styles.redButton : styles.blueButton
+                    }`}
                 />
             </form>
         </div>

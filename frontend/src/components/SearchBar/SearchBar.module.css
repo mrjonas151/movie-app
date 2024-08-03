@@ -18,13 +18,19 @@
     border-radius: 12px;
     border: 1px solid #969696;
     padding: 0.5em;
-    position: fixed;
+    position: absolute;
     margin-right: 10em;
+    outline: none;
+}
+
+.searchBar:focus {
+    border: 1px solid #d32727;
+    ;
 }
 
 .searchIcon {
-    position: fixed;
-    top: 2.6vh;
+    position: relative;
+    top: 0.5vh;
     margin-right: 7.5vw;
     font-size: 1.5em;
     color: #969696;

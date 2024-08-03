@@ -77,6 +77,8 @@
 
 .sidebarNav{
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .navLinks{
@@ -87,6 +89,8 @@
     color:#000000;
     transition: all ease 0.3s;
     font-size: 1.2em;
+    margin: 0;
+    padding: 0;
 }
 
 .sidebarNav .navLinks:hover,
@@ -102,12 +106,14 @@
     list-style: none;
     flex: 1;
     padding: 0;
+    
 }
 
 .sidebarNav li{
     display: flex;
     justify-content: center;
     margin: 0.5em 0;
+    padding: 0;
 }
 
 .sidebarNav a{
@@ -197,5 +203,17 @@
         margin-top: 15px;
         margin-left: 10px;
     }
+
+    .navLinks{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        transition: all ease 0.3s;
+        font-size: 1.2em;
+        padding: 0;
+        margin: 0;
+    }
+
 }
 

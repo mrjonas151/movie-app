@@ -7,6 +7,7 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
+import ReactPaginate from "react-paginate";
 import styles from "./MyMovies2.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,9 +24,10 @@ type Movie = {
 
 const MyMovies2 = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
-    const [openModal, setOpenModal] = useState<boolean>(false);
     const [searchTerm, setSearchTerm] = useState<string>("");
     const { userProvider } = useContext(AuthContext);
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 6;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -62,6 +64,7 @@ const MyMovies2 = () => {
 
     const handleSearchChange = (value: string) => {
         setSearchTerm(value);
+        setCurrentPage(0);
     };
 
     const handleDeleteMovie = async (movieId: Number) => {
@@ -93,14 +96,22 @@ const MyMovies2 = () => {
         movie.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    const offset = currentPage * itemsPerPage;
+    const currentItems = filteredMovies.slice(offset, offset + itemsPerPage);
+    const pageCount = Math.ceil(filteredMovies.length / itemsPerPage);
+
+    const handlePageClick = ({ selected }) => {
+        setCurrentPage(selected);
+    };
+
     return (
         <div className={styles.mymoviesContainer}>
             <Sidebar />
-            <SearchBar />
+            <SearchBar onSearchChange={handleSearchChange} />
             <TopBar title="My Movies" titleButton="ADD NEW MOVIE" />
             <TitleList2 />
             <div className={styles.movieListContainer}>
-                {filteredMovies.map((movie) => (
+                {currentItems.map((movie) => (
                     <MovieInformation2
                         key={movie.id}
                         movie={movie}
@@ -108,6 +119,22 @@ const MyMovies2 = () => {
                     />
                 ))}
             </div>
+            <div className={styles.paginate}>
+                <ReactPaginate
+                    previousLabel={"previous"}
+                    nextLabel={"next"}
+                    breakLabel={"..."}
+                    breakClassName={"break-me"}
+                    pageCount={pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={3}
+                    onPageChange={handlePageClick}
+                    containerClassName={styles.pagination}
+                    subContainerClassName={"pages pagination"}
+                    activeClassName={styles.active}
+                />
+            </div>
+
             <ToastContainer />
         </div>
     );
