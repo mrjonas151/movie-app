@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "../Modal/Modal";
+import CreateModal from "../CreateModal/CreateModal";
 import { useContext } from "react";
 import { ColorContext } from "../../contexts/ColorContext";
 
@@ -26,7 +26,7 @@ function TopBar({
             >
                 {titleButton}
             </button>
-            <Modal
+            <CreateModal
                 isOpen={openModal}
                 setModalOpen={() => setOpenModal(!openModal)}
                 isRed={isRed}

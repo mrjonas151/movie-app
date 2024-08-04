@@ -1,32 +1,33 @@
 import styles from "./MovieInformation.module.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { useState } from "react";
-import Modal from "../Modal/Modal";
+import { useState, useContext } from "react";
+import UpdateModal from "../UpdateModal/UpdateModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import { GoPencil } from "react-icons/go";
 import { SlTrash } from "react-icons/sl";
 import { format } from "date-fns";
-import { useContext } from "react";
 import { ColorContext } from "../../contexts/ColorContext";
 
+type Movie = {
+    id: string;
+    title: string;
+    director: string;
+    duration: number;
+    release_year: number;
+    category: string;
+    date_of_include: string;
+};
+
 type MovieProps = {
-    movie: {
-        id: string;
-        title: string;
-        director: string;
-        duration: number;
-        release_year: number;
-        category: string;
-        date_of_include: string;
-    };
+    movie: Movie;
     onDelete: (id: string) => void;
-    onUpdate: (id: string) => void;
+    onUpdate: (id: string, updatedMovie: Partial<Movie>) => void;
 };
 
 const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
-    const [openModal, setOpenModal] = useState<boolean>(false);
+    const [openUpdateModal, setUpdateModal] = useState<boolean>(false);
     const [openDeleteModal, setDeleteOpenModal] = useState<boolean>(false);
-    const [editableMovie, setEditableMovie] = useState(movie);
+    const [editableMovie, setEditableMovie] = useState<Movie>(movie);
     const formattedDate = format(new Date(movie.date_of_include), "dd-MM-yyyy");
     const { isRed } = useContext(ColorContext);
 
@@ -35,14 +36,9 @@ const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
         setDeleteOpenModal(false);
     };
 
-    const handleOpenUpdateModal = () => {
-        setEditableMovie(movie);
-        setOpenModal(true);
-    };
-
-    const handleUpdate = (updatedMovie: any) => {
+    const handleUpdate = (updatedMovie: Partial<Movie>) => {
         onUpdate(movie.id, updatedMovie);
-        setOpenModal(false);
+        setUpdateModal(false);
     };
 
     const setInitials = (title: string) => {
@@ -87,15 +83,19 @@ const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
                     className={`${styles.button} ${
                         isRed ? styles.redButton : styles.blueButton
                     }`}
-                    onClick={handleOpenUpdateModal}
+                    onClick={() => {
+                        setEditableMovie(movie); // Atualiza o estado antes de abrir o modal
+                        setUpdateModal(true);
+                    }}
                 >
                     <GoPencil />
                 </button>
-                <Modal
-                    isOpen={openModal}
-                    setModalOpen={() => setOpenModal(!openModal)}
+                <UpdateModal
+                    isOpen={openUpdateModal}
+                    setUpdateModal={() => setUpdateModal(false)}
                     movie={editableMovie}
-                    onSave={handleUpdate}
+                    onUpdate={handleUpdate}
+                    isRed={isRed}
                 />
                 <button
                     className={`${styles.button} ${
@@ -110,7 +110,6 @@ const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
                     setDeleteModal={() => setDeleteOpenModal(false)}
                     onDelete={handleDelete}
                     isRed={isRed}
-
                 />
             </div>
         </div>

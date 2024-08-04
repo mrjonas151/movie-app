@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import TitleBar from "../TitleBar/TitleBar";
 import axios from "axios";
-import styles from "./Modal.module.css";
+import styles from "./CreateModal.module.css";
 import { getAuth } from "firebase/auth";
 import { toast, ToastContainer } from "react-toastify";
 import { useContext } from "react";
 import { ColorContext } from "../../contexts/ColorContext";
 import "react-toastify/dist/ReactToastify.css";
 
-interface ModalProps {
+interface CreateModalProps {
     isOpen: boolean;
     setModalOpen: () => void;
     movie?: {
@@ -23,7 +23,7 @@ interface ModalProps {
     onSave: (movie: any) => void;
 }
 
-const Modal: React.FC<ModalProps> = ({
+const CreateModal: React.FC<CreateModalProps> = ({
     isOpen,
     setModalOpen,
     movie,
@@ -74,25 +74,13 @@ const Modal: React.FC<ModalProps> = ({
         };
 
         try {
-            if (movie) {
-                const response = await axios.put(
-                    `http://localhost:3333/users/movies/${movie.id}`,
-                    movieObj,
-                    axiosConfig
-                );
-                console.log(response.data);
-                onSave(movieObj);
-                toast.success("Movie updated successfully!");
-            } else {
-                const response = await axios.post(
-                    "http://localhost:3333/users/movies",
-                    movieObj,
-                    axiosConfig
-                );
-                console.log(response.data);
-                onSave(movieObj);
-                toast.success("Movie saved successfully!");
-            }
+            const response = await axios.post(
+                "http://localhost:3333/users/movies",
+                movieObj,
+                axiosConfig
+            );
+            console.log(response.data);
+            toast.success("CREATE MODAL - Movie saved successfully!");
             setTitle("");
             setDirector("");
             setDuration(0);
@@ -100,8 +88,8 @@ const Modal: React.FC<ModalProps> = ({
             setReleaseYear(0);
             setModalOpen();
         } catch (error) {
-            console.error("Error saving movie:", error);
-            toast.error("Error saving movie!");
+            console.error("CREATE MODAL -  Error saving movie:", error);
+            toast.error("CREATE MODAL -  Error saving movie!");
         }
     };
 
@@ -111,10 +99,7 @@ const Modal: React.FC<ModalProps> = ({
         <div className={styles.containerBackground}>
             <div className={styles.modal}>
                 <div className={styles.topBar}>
-                    <TitleBar
-                        title={movie ? "Edit Movie" : "Add new movie"}
-                        isRed={isRed}
-                    />
+                    <TitleBar title={"Add new movie"} isRed={isRed} />
                     <button
                         onClick={setModalOpen}
                         className={styles.buttonClose}
@@ -160,16 +145,20 @@ const Modal: React.FC<ModalProps> = ({
                             <div className={styles.formGroup}>
                                 <label
                                     className={`${styles.formLabel} ${
-                                        isRed ? styles.redLabel : styles.blueLabel
+                                        isRed
+                                            ? styles.redLabel
+                                            : styles.blueLabel
                                     }`}
                                     htmlFor="duration"
                                 >
-                                    Duration
+                                    Duration (min)
                                 </label>
                                 <input
                                     className={styles.formInputSameLine}
                                     type="number"
                                     value={duration}
+                                    min={0}
+                                    max={1000}
                                     onChange={(e) =>
                                         setDuration(Number(e.target.value))
                                     }
@@ -178,7 +167,9 @@ const Modal: React.FC<ModalProps> = ({
                             <div className={styles.formGroup}>
                                 <label
                                     className={`${styles.formLabel} ${
-                                        isRed ? styles.redLabel : styles.blueLabel
+                                        isRed
+                                            ? styles.redLabel
+                                            : styles.blueLabel
                                     }`}
                                     htmlFor="release-year"
                                 >
@@ -188,6 +179,8 @@ const Modal: React.FC<ModalProps> = ({
                                     className={styles.formInputSameLine}
                                     type="number"
                                     value={releaseYear}
+                                    min={1920}
+                                    max={2030}
                                     onChange={(e) =>
                                         setReleaseYear(Number(e.target.value))
                                     }
@@ -217,20 +210,26 @@ const Modal: React.FC<ModalProps> = ({
                                 <option value="Action">Action</option>
                                 <option value="Adventure">Adventure</option>
                                 <option value="Animation">Animation</option>
+                                <option value="Biography">Biography</option>
                                 <option value="Comedy">Comedy</option>
                                 <option value="Crime">Crime</option>
                                 <option value="Drama">Drama</option>
+                                <option value="Documentary">Documentary</option>
                                 <option value="Fantasy">Fantasy</option>
                                 <option value="Horror">Horror</option>
-                                <option value="Sci-Fi">Sci-Fi</option>
+                                <option value="Mystery">Mystery</option>
                                 <option value="Romance">Romance</option>
+                                <option value="Sci-Fi">Sci-Fi</option>
+                                <option value="Thriller">Thriller</option>
                             </select>
                         </div>
                         <div className={styles.endButton}>
                             <button
                                 type="submit"
                                 className={`${styles.buttonModal} ${
-                                    isRed ? styles.redButtonModal : styles.blueButtonModal
+                                    isRed
+                                        ? styles.redButtonModal
+                                        : styles.blueButtonModal
                                 }`}
                             >
                                 Save
@@ -244,4 +243,4 @@ const Modal: React.FC<ModalProps> = ({
     );
 };
 
-export default Modal;
+export default CreateModal;
