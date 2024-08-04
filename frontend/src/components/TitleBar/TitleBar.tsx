@@ -7,6 +7,7 @@ interface TitleBarProps {
 }
 
 const TitleBar: React.FC<TitleBarProps> = ({ title, isRed }) => {
+    console.log("TitleBar isRed value:", isRed); 
     return (
         <div
             className={`${styles.titleContainer} ${

@@ -24,8 +24,20 @@
     border-radius: 6px;
 }
 
-.topBarButton:hover {
+.redButton {
+    background-color: #a31717;
+}
+
+.redButton:hover {
     background-color: #d32727;
+}
+
+.blueButton {
+    background-color: #0066b3;
+}
+
+.blueButton:hover {
+    background-color: #24a0ff;
 }
 
 @media (max-width: 1366px) {

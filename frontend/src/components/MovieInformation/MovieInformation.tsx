@@ -6,6 +6,8 @@ import DeleteModal from "../DeleteModal/DeleteModal";
 import { GoPencil } from "react-icons/go";
 import { SlTrash } from "react-icons/sl";
 import { format } from "date-fns";
+import { useContext } from "react";
+import { ColorContext } from "../../contexts/ColorContext";
 
 type MovieProps = {
     movie: {
@@ -26,6 +28,7 @@ const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
     const [openDeleteModal, setDeleteOpenModal] = useState<boolean>(false);
     const [editableMovie, setEditableMovie] = useState(movie);
     const formattedDate = format(new Date(movie.date_of_include), "dd-MM-yyyy");
+    const { isRed } = useContext(ColorContext);
 
     const handleDelete = () => {
         onDelete(movie.id);
@@ -81,7 +84,9 @@ const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
             <div className={styles.titleDate}>{formattedDate}</div>
             <div className={styles.buttons}>
                 <button
-                    className={styles.button}
+                    className={`${styles.button} ${
+                        isRed ? styles.redButton : styles.blueButton
+                    }`}
                     onClick={handleOpenUpdateModal}
                 >
                     <GoPencil />
@@ -93,7 +98,9 @@ const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
                     onSave={handleUpdate}
                 />
                 <button
-                    className={styles.button}
+                    className={`${styles.button} ${
+                        isRed ? styles.redButton : styles.blueButton
+                    }`}
                     onClick={() => setDeleteOpenModal(true)}
                 >
                     <SlTrash />
@@ -102,6 +109,8 @@ const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
                     isOpen={openDeleteModal}
                     setDeleteModal={() => setDeleteOpenModal(false)}
                     onDelete={handleDelete}
+                    isRed={isRed}
+
                 />
             </div>
         </div>

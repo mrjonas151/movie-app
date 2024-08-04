@@ -30,21 +30,6 @@
     font-size: 0.7em;
 }
 
-.sideTitle h1 {
-    position: relative;
-    padding-left: 15px;
-}
-
-.sideTitle h1::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 7px;
-    background-color: #a31717;
-}
-
 .profileContainer {
     display: flex;
     flex-direction: column;
@@ -130,15 +115,26 @@
     font-size: 15px;
 }
 
-.sidebarNav .activeLink {
+.sidebarNav .redActiveLink {
     border-radius: 5px;
     background-color: #a31717;
     color: #ffffff;
     transition: all ease 0.3s;
 }
 
-.activeLink:hover {
+.redActiveLink:hover {
     background-color: #d32727;
+}
+
+.sidebarNav .blueActiveLink {
+    border-radius: 5px;
+    background-color: #0066b3;
+    color: #ffffff;
+    transition: all ease 0.3s;
+}
+
+.blueActiveLink:hover {
+    background-color: #0066b3;
 }
 
 .logout {

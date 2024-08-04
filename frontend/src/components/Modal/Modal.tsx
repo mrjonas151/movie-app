@@ -4,6 +4,8 @@ import axios from "axios";
 import styles from "./Modal.module.css";
 import { getAuth } from "firebase/auth";
 import { toast, ToastContainer } from "react-toastify";
+import { useContext } from "react";
+import { ColorContext } from "../../contexts/ColorContext";
 import "react-toastify/dist/ReactToastify.css";
 
 interface ModalProps {
@@ -32,7 +34,7 @@ const Modal: React.FC<ModalProps> = ({
     const [duration, setDuration] = useState<number>(0);
     const [category, setCategory] = useState<string>("");
     const [releaseYear, setReleaseYear] = useState<number>(0);
-    const [isRed, setIsRed] = useState<boolean>(true);
+    const { isRed } = useContext(ColorContext);
 
     useEffect(() => {
         if (movie) {
@@ -123,7 +125,12 @@ const Modal: React.FC<ModalProps> = ({
                 <div className={styles.modalForm}>
                     <form onSubmit={handleSubmit}>
                         <div className={styles.formGroup}>
-                            <label className={styles.formLabel} htmlFor="title">
+                            <label
+                                className={`${styles.formLabel} ${
+                                    isRed ? styles.redLabel : styles.blueLabel
+                                }`}
+                                htmlFor="title"
+                            >
                                 Title
                             </label>
                             <input
@@ -135,7 +142,9 @@ const Modal: React.FC<ModalProps> = ({
                         </div>
                         <div className={styles.formGroup}>
                             <label
-                                className={styles.formLabel}
+                                className={`${styles.formLabel} ${
+                                    isRed ? styles.redLabel : styles.blueLabel
+                                }`}
                                 htmlFor="director"
                             >
                                 Director
@@ -150,7 +159,9 @@ const Modal: React.FC<ModalProps> = ({
                         <div className={styles.formLine}>
                             <div className={styles.formGroup}>
                                 <label
-                                    className={styles.formLabel}
+                                    className={`${styles.formLabel} ${
+                                        isRed ? styles.redLabel : styles.blueLabel
+                                    }`}
                                     htmlFor="duration"
                                 >
                                     Duration
@@ -166,7 +177,9 @@ const Modal: React.FC<ModalProps> = ({
                             </div>
                             <div className={styles.formGroup}>
                                 <label
-                                    className={styles.formLabel}
+                                    className={`${styles.formLabel} ${
+                                        isRed ? styles.redLabel : styles.blueLabel
+                                    }`}
                                     htmlFor="release-year"
                                 >
                                     Release Year
@@ -183,7 +196,9 @@ const Modal: React.FC<ModalProps> = ({
                         </div>
                         <div className={styles.formGroup}>
                             <label
-                                className={styles.formLabel}
+                                className={`${styles.formLabel} ${
+                                    isRed ? styles.redLabel : styles.blueLabel
+                                }`}
                                 htmlFor="category"
                             >
                                 Category
@@ -214,7 +229,9 @@ const Modal: React.FC<ModalProps> = ({
                         <div className={styles.endButton}>
                             <button
                                 type="submit"
-                                className={styles.buttonModal}
+                                className={`${styles.buttonModal} ${
+                                    isRed ? styles.redButtonModal : styles.blueButtonModal
+                                }`}
                             >
                                 Save
                             </button>

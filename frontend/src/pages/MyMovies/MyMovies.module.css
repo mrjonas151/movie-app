@@ -15,43 +15,40 @@
 
 .paginate {
     position: absolute;
-    bottom: 0;
+    bottom: 3vh;
     right: calc(50% - 15vw);
 }
 
 .pagination {
     display: flex;
-    justify-content: center;
-    margin-bottom: 1.5em;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.pagination .active a{
-    background-color: #A31717;
-    color: #ffffff;
+.pagination a {
+    padding: 10px;
+    margin: 0 5px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: inherit;
+}
+
+.pagination .active a {
+    background-color: var(--activeBackgroundColor);
+    color: var(--activeTextColor);
     font-weight: bold;
-    border: 2px solid #A31717;
+    border: 2px solid var(--activeBackgroundColor);
 }
 
-.pagination .active a:hover{
-    background-color: #A31717;
-    color: #ffffff;
+.pagination .active a:hover {
+    background-color: var(--activeBackgroundColor);
+    color: var(--activeTextColor);
 }
 
 .pagination li {
     margin: 0 0.25rem;
     list-style: none;
-    
-}
-
-.pagination a {
-    padding: 0.5rem;
-    border: 2px solid #808080;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #ACACAC;
-    background-color: #ffffff;
-    font-size: 0.8em;
-    cursor: pointer;
 }
 
 .pagination a:hover {
@@ -59,7 +56,7 @@
     color: #000000;
 }
 
-.pagination .disabled a{
+.pagination .disabled a {
     cursor: not-allowed;
     opacity: 1;
     border: 2px solid #000000;

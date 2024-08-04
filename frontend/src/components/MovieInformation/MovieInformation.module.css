@@ -70,8 +70,20 @@
     color: #a31717;
 }
 
-.button:hover {
+.redButton {
+    color: #a31717;
+}
+
+.redButton:hover {
     color: #d32727;
+}
+
+.blueButton {
+    color: #0066b3;
+}
+
+.blueButton:hover {
+    color: #24a0ff;
 }
 
 @media screen and (max-width: 1366px) {

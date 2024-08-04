@@ -37,7 +37,6 @@
 }
 
 .deleteButton {
-    background-color: #a31717;
     color: white;
     border: none;
     padding: 0.5em 1em;
@@ -47,8 +46,20 @@
     cursor: pointer;
 }
 
-.deleteButton:hover {
+.redButton {
+    background-color: #a31717;
+}
+
+.redButton:hover {
     background-color: #d32727;
+}
+
+.blueButton {
+    background-color: #0066b3;
+}
+
+.blueButton:hover {
+    background-color: #24a0ff;
 }
 
 .cancelButton {

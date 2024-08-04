@@ -1,4 +1,6 @@
 import styles from "./DeleteModal.module.css";
+import { useContext } from "react";
+import { ColorContext } from "../../contexts/ColorContext";
 
 interface ModalProps {
     isOpen: boolean;
@@ -14,6 +16,8 @@ const DeleteModal: React.FC<ModalProps> = ({
     if (!isOpen) {
         return null;
     }
+
+    const { isRed } = useContext(ColorContext);
 
     return (
         <div className={styles.containerBackground}>
@@ -31,7 +35,9 @@ const DeleteModal: React.FC<ModalProps> = ({
                         </button>
                         <button
                             onClick={onDelete}
-                            className={styles.deleteButton}
+                            className={`${styles.deleteButton} ${
+                                isRed ? styles.redButton : styles.blueButton
+                            }`}
                         >
                             Delete
                         </button>

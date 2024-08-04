@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import TitleBar from "../../components/TitleBar/TitleBar";
 import Subtitle from "../../components/Subtitle/Subtitle";
 import SignInForm from "../../components/Form/SignInForm";
@@ -8,14 +9,16 @@ import { FcGoogle } from "react-icons/fc";
 import { ToastContainer } from "react-toastify";
 import styles from "./Login.module.css";
 import ToggleButton from "../../components/ToggleButton/ToggleButton";
-import { useState } from "react";
+import { ColorContext } from "../../contexts/ColorContext";
 
-const Login = () => {
-    const [isRed, setIsRed] = useState<boolean>(true);
+const Login: React.FC = () => {
+    const colorContext = useContext(ColorContext);
 
-    const toggleColor = () => {
-        setIsRed(!isRed);
-    };
+    if (!colorContext) {
+        return null;
+    }
+
+    const { isRed, toggleColor } = colorContext;
 
     return (
         <div
@@ -42,11 +45,14 @@ const Login = () => {
                     title="Don't have an account yet? Sign up"
                     isRed={isRed}
                 />
-                <ToastContainer>
-                    position="top-center" autoClose={3000}
+                <ToastContainer
+                    position="top-center"
+                    autoClose={3000}
                     hideProgressBar={false}
-                    closeOnClick pauseOnFocusLoss pauseOnHover
-                </ToastContainer>
+                    closeOnClick
+                    pauseOnFocusLoss
+                    pauseOnHover
+                />
             </div>
         </div>
     );

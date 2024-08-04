@@ -8,6 +8,7 @@ import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
 import ReactPaginate from "react-paginate";
+import { ColorContext } from "../../contexts/ColorContext";
 import styles from "./MyMovies.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,7 +28,19 @@ const MyMovies = () => {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const { userProvider } = useContext(AuthContext);
     const [currentPage, setCurrentPage] = useState(0);
+    const { isRed } = useContext(ColorContext);
     const itemsPerPage = 6;
+
+    useEffect(() => {
+        document.documentElement.style.setProperty(
+            '--activeBackgroundColor',
+            isRed ? '#A31717' : '#007bff' 
+        );
+        document.documentElement.style.setProperty(
+            '--activeTextColor',
+            '#ffffff'
+        );
+    }, [isRed]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -108,7 +121,7 @@ const MyMovies = () => {
         <div className={styles.mymoviesContainer}>
             <Sidebar />
             <SearchBar onSearchChange={handleSearchChange} />
-            <TopBar title="My Movies" titleButton="ADD NEW MOVIE" />
+            <TopBar title="My Movies" titleButton="ADD NEW MOVIE" isRed={isRed}/>
             <TitleList2 />
             <div className={styles.movieListContainer}>
                 {currentItems.map((movie) => (
@@ -116,6 +129,7 @@ const MyMovies = () => {
                         key={movie.id}
                         movie={movie}
                         onDelete={handleDeleteMovie}
+                        isRed={isRed}
                     />
                 ))}
             </div>

@@ -40,6 +40,7 @@
     margin: 0;
     font-weight: 600;
     background-color: #ebe9e9;
+    cursor: pointer;
 }
 
 .modalForm {
@@ -84,11 +85,18 @@
     position: absolute;
     top: 0.1rem;
     left: 0.5rem;
-    color: #a31717;
     font-weight: 600;
     font-size: 0.8rem;
     pointer-events: none;
     transition: all 0.2s ease-out;
+}
+
+.redLabel {
+    color: #a31717;
+}
+
+.blueLabel {
+    color: #0066b3;
 }
 
 .formInput:focus + .formLabel,
@@ -101,7 +109,6 @@
 }
 
 .buttonModal {
-    background-color: #a31717;
     color: white;
     border: none;
     border-radius: 8px;
@@ -113,8 +120,20 @@
     font-weight: 500;
 }
 
+.redButtonModal {
+    background-color: #a31717;
+}
+
 .buttonModal:hover {
     background-color: #d32727;
+}
+
+.blueButtonModal {
+    background-color: #0066b3;
+}
+
+.blueButtonModal:hover {
+    background-color: #24a0ff;
 }
 
 .endButton {

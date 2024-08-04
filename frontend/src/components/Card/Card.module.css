@@ -24,13 +24,24 @@
 
 .cardIcon {
     font-size: 4em;
-    color: #a31717;
     padding: 0;
     margin-top: 0.2em;
 }
 
-.cardContainer:hover .cardIcon {
+.redIcon {
+    color: #a31717;
+}
+
+.cardContainer:hover .redIcon {
     color: #d32727;
+}
+
+.blueIcon {
+    color: #0066b3;
+}
+
+.cardContainer:hover .blueIcon {
+    color: #24a0ff;
 }
 
 .cardTitle {
