@@ -5,15 +5,24 @@ import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "./pages/Home/Dashboard";
 import MyMovies from "./pages/MyMovies/MyMovies";
 import { ProtectedRoute } from "./pages/ProtectedRoute/ProtectedRoute";
+import { ColorProvider } from "./contexts/ColorContext";
 
 function App() {
     return (
-        <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
-            <Route path="/myMovies" element={<ProtectedRoute element={<MyMovies />} />} />
-        </Routes>
+        <ColorProvider>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route
+                    path="/dashboard"
+                    element={<ProtectedRoute element={<Dashboard />} />}
+                />
+                <Route
+                    path="/myMovies"
+                    element={<ProtectedRoute element={<MyMovies />} />}
+                />
+            </Routes>
+        </ColorProvider>
     );
 }
 

@@ -1,4 +1,4 @@
-.signupContainer {
+.linkContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,12 +7,12 @@
     font-weight: 600;
 }
 
-.redLink {
+.red {
     text-decoration: none;
     color: #a31717;
 }
 
-.blueLink {
+.blue {
     text-decoration: none;
     color: #0d80bf;
 }

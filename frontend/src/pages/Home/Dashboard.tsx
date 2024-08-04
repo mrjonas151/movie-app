@@ -1,4 +1,5 @@
-import { useEffect, useState, useContext } from "react";
+// src/pages/Dashboard/Dashboard.tsx
+import React, { useEffect, useState, useContext } from "react";
 import Sidebar from "../../components/SideBar/Sidebar";
 import Card from "../../components/Card/Card";
 import SearchBar from "../../components/SearchBar/SearchBar";
@@ -8,6 +9,7 @@ import { getAuth } from "firebase/auth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ColorContext } from "../../contexts/ColorContext";
 import styles from "./Dashboard.module.css";
 
 type Card = {
@@ -21,6 +23,7 @@ const Dashboard: React.FC = () => {
     const [cards, setCards] = useState<any[]>([]);
     const navigate = useNavigate();
     const { userProvider } = useContext(AuthContext);
+    const { isRed } = useContext(ColorContext);
 
     useEffect(() => {
         document.title = "MovieApp - Home";
@@ -74,8 +77,12 @@ const Dashboard: React.FC = () => {
 
     return (
         <>
-            <Sidebar />
-            <SearchBar Icon={IoIosSearch} onSearchChange={handleSearchChange} />
+            <Sidebar isRed={isRed} />
+            <SearchBar
+                Icon={IoIosSearch}
+                onSearchChange={handleSearchChange}
+                isRed={isRed}
+            />
             <div className={styles.card}>
                 {filteredCards.map((card) => (
                     <Card
@@ -84,6 +91,7 @@ const Dashboard: React.FC = () => {
                         title={card.title}
                         number={number}
                         handleClick={handleClick}
+                        isRed={isRed}
                     />
                 ))}
             </div>

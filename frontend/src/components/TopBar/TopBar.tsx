@@ -1,5 +1,7 @@
 import { useState } from "react";
-import Modal from "../Modal/Modal";
+import CreateModal from "../CreateModal/CreateModal";
+import { useContext } from "react";
+import { ColorContext } from "../../contexts/ColorContext";
 
 import styles from "./TopBar.module.css";
 
@@ -11,19 +13,23 @@ function TopBar({
     titleButton: string;
 }) {
     const [openModal, setOpenModal] = useState<boolean>(false);
+    const { isRed } = useContext(ColorContext);
 
     return (
         <div className={styles.topBarContainer}>
             <h1 className={styles.topBarTitle}>{title}</h1>
             <button
-                className={styles.topBarButton}
+                className={`${styles.topBarButton} ${
+                    isRed ? styles.redButton : styles.blueButton
+                }`}
                 onClick={() => setOpenModal(true)}
             >
                 {titleButton}
             </button>
-            <Modal
+            <CreateModal
                 isOpen={openModal}
                 setModalOpen={() => setOpenModal(!openModal)}
+                isRed={isRed}
             />
         </div>
     );

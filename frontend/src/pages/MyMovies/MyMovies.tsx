@@ -8,6 +8,7 @@ import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
 import ReactPaginate from "react-paginate";
+import { ColorContext } from "../../contexts/ColorContext";
 import styles from "./MyMovies.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,7 +28,19 @@ const MyMovies = () => {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const { userProvider } = useContext(AuthContext);
     const [currentPage, setCurrentPage] = useState(0);
+    const { isRed } = useContext(ColorContext);
     const itemsPerPage = 6;
+
+    useEffect(() => {
+        document.documentElement.style.setProperty(
+            "--activeBackgroundColor",
+            isRed ? "#A31717" : "#007bff"
+        );
+        document.documentElement.style.setProperty(
+            "--activeTextColor",
+            "#ffffff"
+        );
+    }, [isRed]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,7 +61,7 @@ const MyMovies = () => {
                         );
                         setMovies(response.data);
                     } catch (error) {
-                        console.error("Error movies:", error);
+                        console.error("Error fetching movies:", error);
                     }
                 } else {
                     console.error("User is not logged in");
@@ -67,7 +80,7 @@ const MyMovies = () => {
         setCurrentPage(0);
     };
 
-    const handleDeleteMovie = async (movieId: Number) => {
+    const handleDeleteMovie = async (movieId: string) => {
         try {
             const auth = getAuth();
             const user = auth.currentUser;
@@ -83,12 +96,45 @@ const MyMovies = () => {
                     }
                 );
                 setMovies((prevMovies) =>
-                    prevMovies.filter((movie) => parseInt(movie.id) !== movieId)
+                    prevMovies.filter((movie) => movie.id !== movieId)
                 );
                 toast.success("Movie deleted successfully!");
             }
         } catch (error) {
-            console.error("Error delete movie!!!:", error);
+            console.error("Error deleting movie:", error);
+        }
+    };
+
+    const handleUpdateMovie = async (
+        movieId: string,
+        updatedMovie: Partial<Movie>
+    ) => {
+        try {
+            const auth = getAuth();
+            const user = auth.currentUser;
+
+            if (user) {
+                const token = await user.getIdToken(true);
+                await axios.put(
+                    `http://localhost:3333/users/movies/${movieId}`,
+                    updatedMovie,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+                setMovies((prevMovies) =>
+                    prevMovies.map((movie) =>
+                        movie.id === movieId
+                            ? { ...movie, ...updatedMovie }
+                            : movie
+                    )
+                );
+                toast.success("Movie updated successfully!");
+            }
+        } catch (error) {
+            console.error("Error updating movie:", error);
         }
     };
 
@@ -108,14 +154,20 @@ const MyMovies = () => {
         <div className={styles.mymoviesContainer}>
             <Sidebar />
             <SearchBar onSearchChange={handleSearchChange} />
-            <TopBar title="My Movies" titleButton="ADD NEW MOVIE" />
+            <TopBar
+                title="My Movies"
+                titleButton="ADD NEW MOVIE"
+                isRed={isRed}
+            />
             <TitleList2 />
             <div className={styles.movieListContainer}>
                 {currentItems.map((movie) => (
                     <MovieInformation
                         key={movie.id}
                         movie={movie}
+                        onUpdate={handleUpdateMovie}
                         onDelete={handleDeleteMovie}
+                        isRed={isRed}
                     />
                 ))}
             </div>
@@ -132,8 +184,16 @@ const MyMovies = () => {
                     containerClassName={styles.pagination}
                     subContainerClassName={"pages pagination"}
                     activeClassName={styles.active}
-                    previousClassName={currentPage == 0 ? `${styles.previous} ${styles.disabled}` : styles.previous}
-                    nextClassName={currentPage == pageCount - 1 ? `${styles.next} ${styles.disabled}` : styles.next}
+                    previousClassName={
+                        currentPage === 0
+                            ? `${styles.previous} ${styles.disabled}`
+                            : styles.previous
+                    }
+                    nextClassName={
+                        currentPage === pageCount - 1
+                            ? `${styles.next} ${styles.disabled}`
+                            : styles.next
+                    }
                 />
             </div>
 

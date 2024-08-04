@@ -6,7 +6,7 @@ interface TitleBarProps {
     isRed: boolean;
 }
 
-const TitleBar: React.FC<TitleBarProps> = ({ title, isRed }) => {
+const TitleBar: React.FC<TitleBarProps> = ({ title, isRed }) => { 
     return (
         <div
             className={`${styles.titleContainer} ${

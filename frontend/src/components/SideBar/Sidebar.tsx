@@ -7,6 +7,7 @@ import styles from "./Sidebar.module.css";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ColorContext } from "../../contexts/ColorContext";
 import logout from "../../assets/logout.svg";
 import TitleBar from "../TitleBar/TitleBar";
 import LogOutModal from "../LogOutModal/LogOutModal";
@@ -15,9 +16,9 @@ const Sidebar = () => {
     const [sidebarIcon, setSidebarIcon] = useState(true);
     const [username, setUsername] = useState("");
     const [initials, setInitials] = useState("");
-    const [isRed, setIsRed] = useState<boolean>(true);
     const { signOut } = useContext(AuthContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { isRed } = useContext(ColorContext);
 
     const toggleSidebar = () => {
         setSidebarIcon(!sidebarIcon);
@@ -100,7 +101,11 @@ const Sidebar = () => {
                             <div className={styles.navLinks}>
                                 <NavLink
                                     className={({ isActive }) =>
-                                        isActive ? styles.activeLink : ""
+                                        isActive
+                                            ? isRed
+                                                ? styles.redActiveLink
+                                                : styles.blueActiveLink
+                                            : ""
                                     }
                                     to="/dashboard"
                                 >
@@ -113,7 +118,11 @@ const Sidebar = () => {
                             <div className={styles.navLinks}>
                                 <NavLink
                                     className={({ isActive }) =>
-                                        isActive ? styles.activeLink : ""
+                                        isActive
+                                            ? isRed
+                                                ? styles.redActiveLink
+                                                : styles.blueActiveLink
+                                            : ""
                                     }
                                     to="/myMovies"
                                 >

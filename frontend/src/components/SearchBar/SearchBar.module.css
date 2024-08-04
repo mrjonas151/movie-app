@@ -24,7 +24,7 @@
 }
 
 .searchBar:focus {
-    border: 1px solid #d32727;
+    border: 2px solid #b9b9b9;
 }
 
 .searchIcon {
