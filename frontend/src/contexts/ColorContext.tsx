@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode, FC } from "react";
+import { createContext, useState, useEffect, ReactNode, FC } from "react";
 
 interface ColorContextProps {
     isRed: boolean;
@@ -16,8 +16,18 @@ interface ColorProviderProps {
 export const ColorProvider: FC<ColorProviderProps> = ({ children }) => {
     const [isRed, setIsRed] = useState<boolean>(true);
 
+    // Load the color preference from localStorage on initial load
+    useEffect(() => {
+        const savedColor = localStorage.getItem('isRed');
+        if (savedColor !== null) {
+            setIsRed(JSON.parse(savedColor));
+        }
+    }, []);
+
     const toggleColor = () => {
-        setIsRed(!isRed);
+        const newIsRed = !isRed;
+        setIsRed(newIsRed);
+        localStorage.setItem('isRed', JSON.stringify(newIsRed));
     };
 
     return (

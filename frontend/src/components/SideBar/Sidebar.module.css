@@ -12,7 +12,7 @@
     padding: 1em;
     transition: transform 0.3s ease;
     transform: translateX(0);
-    z-index: 1000;
+    z-index: 1;
 }
 
 .hamburger {
