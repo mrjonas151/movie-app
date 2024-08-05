@@ -75,13 +75,9 @@ const Dashboard: React.FC = () => {
     );
 
     return (
-        <>
+        <div className={styles.dashboardContainer}>
             <Sidebar isRed={isRed} />
-            <SearchBar
-                Icon={IoIosSearch}
-                onSearchChange={handleSearchChange}
-                isRed={isRed}
-            />
+            <SearchBar onSearchChange={handleSearchChange} />
             <div className={styles.card}>
                 {filteredCards.map((card) => (
                     <Card
@@ -94,7 +90,7 @@ const Dashboard: React.FC = () => {
                     />
                 ))}
             </div>
-        </>
+        </div>
     );
 };
 

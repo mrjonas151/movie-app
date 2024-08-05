@@ -84,6 +84,11 @@
         width: 20vw;
         height: 18vh;
     }
+
+    .title {
+        text-align: center;
+        font-size: 0.8em;
+    }
 }
 
 @media (max-width: 430px) {

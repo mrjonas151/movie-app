@@ -213,8 +213,9 @@ option {
         width: 80vw;
         height: 43vh;
         padding: 0 1em;
+        position: absolute;
         top: 50%;
-        left: 46%;
+        left: 50%;
     }
 
     .formInputSameLine {

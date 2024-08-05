@@ -59,7 +59,7 @@
 .pagination .disabled a {
     cursor: not-allowed;
     opacity: 1;
-    border: 2px solid #000000;
+    border: 1px solid #000000;
     color: #000000;
 }
 
@@ -71,7 +71,6 @@
 .pagination .next.disabled {
     cursor: not-allowed;
     opacity: 0.2;
-    border: 2px solid #d3d3d3;
     background-color: #f0f0f0;
 }
 
