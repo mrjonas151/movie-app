@@ -45,14 +45,7 @@ const Login: React.FC = () => {
                     title="Don't have an account yet? Sign up"
                     isRed={isRed}
                 />
-                <ToastContainer
-                    position="top-center"
-                    autoClose={3000}
-                    hideProgressBar={false}
-                    closeOnClick
-                    pauseOnFocusLoss
-                    pauseOnHover
-                />
+                <ToastContainer />
             </div>
         </div>
     );
