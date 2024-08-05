@@ -1,32 +1,32 @@
 # Movie App
 
-Movie App é uma aplicação web desenvolvida com Node.js e TypeScript que permite aos usuários gerenciar sua coleção de filmes. Com uma interface responsiva, os usuários podem adicionar, visualizar, editar e excluir filmes associados às suas contas. Experimente uma experiência rica e personalizada para gerenciar suas preferências de filmes!
+Movie App is a web application developed with Node.js and TypeScript that allows users to manage their movie collection. With a responsive interface, users can add, view, edit, and delete movies associated with their accounts. Experience a rich and personalized way to manage your movie preferences!
 
-## 🚀 Começando
+## 🚀 Getting Started
 
-Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
+These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
 
-### 📋 Pré-requisitos
+### 📋 Prerequisites
 
-De que coisas você precisa para instalar o software e como instalá-lo:
-Primeiramente apenas tenha seu ambiente de desenvolvimento com nodejs instalado funcionando, recomendamos a IDE VSCode e pelo próprio terminal do VSCode digitar o seguinte comando:
+What you need to install the software and how to install it:
+First, make sure you have your development environment with Node.js installed and running. We recommend using VSCode as your IDE, and from the VSCode terminal, type the following command:
 
 ```
 git clone https://github.com/mrjonas151/movie-app
 ```
 
-### 🔧 Instalação
+### 🔧 Installation
 
-Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução:
+A series of step-by-step examples informing what you need to run to have a working development environment:
 
-Primeiramente identifique as 2 principais pastas de nossa aplicação: "frontend" e "backend".
-navegue até a pasta "frontend" e prossiga com o seguinte comando para instalar todas as dependências do node_modules.
+First, identify the 2 main folders in our application: "frontend" and "backend".
+Navigate to the "frontend" folder and run the following command to install all the necessary dependencies:
 
 ```
 npm install
 ```
 
-Após isso, retorne e navegue na pasta "backend" e repita o processo:
+After that, return to the "backend" folder and repeat the process:
 
 ```
 npm install
@@ -34,44 +34,48 @@ npm install
 
 Agora você tem todas as dependências necessárias instaladas, quase lá!
 
+
+Now you have all the necessary dependencies installed. Almost there!
+
 ### 🔥Firebase
-Por fim, como utilizamos o Firebase para gerenciar a autenticação dos usuários da nossa aplicação, você deve criar um projeto no Firebase e resgatar sua Key para conseguir ter acesso ao Firebase:
-Observe que na nossa aplicação temos 2 arquivos em referência ao exemplo do .env como ele deve ficar, siga aquele exemplo para colocar as Keys de seu firebase de maneira segura!
-Por fim, você precisa resgatar e baixar o json do Firebase admin sdk diretamente do site do Firebase e colar este arquivo diretamente na pasta backend e nomear como "ServiceAccountKey.json".
+Finally, since we use Firebase to manage user authentication in our application, you need to create a project in Firebase and retrieve your Key to access Firebase:
+Note that our application includes 2 example files for how the .env file should be configured. Follow those examples to securely place your Firebase keys!
+Additionally, you need to retrieve and download the Firebase admin SDK json from the Firebase website and place this file directly in the backend folder, naming it "ServiceAccountKey.json".
 
+## ⚙️ Running the environment on your local browser
 
-## ⚙️ Executando o ambiente no seu navegador local
+Now that you have configured your Firebase keys correctly and installed the packages, it's time to run the project on your local browser. First, navigate to the frontend folder and run the command:
 
-Agora que você configurou suas chaves do Firebase corretamente e já possui os pacotes instalados, hora de rodar o projeto em seu navegador local. Primeiramente navegue até a pasta frontend e execute o comando:
+```
+npm run dev
+```
+
+Then, return and navigate to the backend folder and run:
 
 ```
 npm run dev
 ```
 
-Logo após, retorne e se direcione até a pasta backend e digite novamente:
 
-```
-npm run dev
-```
-Agora você será capaz de ter o servidor rodando no backend e entrar no link fornecido pelo frontend para poder navegar na interface de nossa aplicação!
+You'll be able now to have the server running in the backend and be able to visit the link provided by the frontend to navigate through the application's interface!
 
-## 🛠️ Construído com
+## 🛠️ Built with
 
-* [React Vite](https://vitejs.dev/guide/) - A biblioteca web utilizada.
-* [Node.Js](https://nodejs.org/en) - Ambiente de execução no servidor.
-* [Typescript](https://www.typescriptlang.org/) - Linguagem utilizada.
-* [Express.js](https://expressjs.com/pt-br/) - Framework para o servidor.
+* [React Vite](https://vitejs.dev/guide/) - The web library used.
+* [Node.Js](https://nodejs.org/en) - Server runtime environment.
+* [Typescript](https://www.typescriptlang.org/) - The language used.
+* [Express.js](https://expressjs.com/pt-br/) - Framework for the server.
 
-## ✒️ Autores
+## ✒️ Authors
 
-Autores que contribuíram para a construção dessa aplicação:
+Authors who contributed to building this application:
 
 <div align="center">
   <table>
     <tr>
       <td align="center">
         <a href="https://github.com/Kio-Suzuki">
-          <img src="https://avatars.githubusercontent.com/u/116661015?v=4" width="100px; " alt="Foto do Akio" /><br>
+          <img src="https://avatars.githubusercontent.com/u/116661015?v=4" width="100px; " alt="Akio's Photo" /><br>
           <sub>
             <b>Alisson Akio Suzuki</b>
           </sub>
@@ -79,7 +83,7 @@ Autores que contribuíram para a construção dessa aplicação:
       </td>
       <td align="center">
         <a href="https://github.com/mrjonas151">
-          <img src="https://avatars.githubusercontent.com/u/89425034?v=4" width="100px;" alt="Foto do Jonas"/><br>
+          <img src="https://avatars.githubusercontent.com/u/89425034?v=4" width="100px;" alt="Jonas's Photo"/><br>
           <sub>
             <b>Jonas Tomaz de Aquinos</b>
           </sub>
@@ -87,7 +91,7 @@ Autores que contribuíram para a construção dessa aplicação:
       </td>
       <td align="center">
         <a href="https://github.com/aliek57">
-          <img src="https://avatars.githubusercontent.com/u/91800715?v=4" width="100px;" alt="Foto da Keila"/><br>
+          <img src="https://avatars.githubusercontent.com/u/91800715?v=4" width="100px;" alt="Keila's Photo"/><br>
           <sub>
             <b>Keila Prado de Jesus</b>
           </sub>
@@ -97,12 +101,11 @@ Autores que contribuíram para a construção dessa aplicação:
   </table>
 </div>
 
-## 🎁 Expressões de gratidão
+## 🎁 Acknowledgements
 
-* Primeiramente gostaríamos de agradecer a Compass UOL e sua equipe de instrutores e Scrum Masters para o apoio a construção do projeto, além dos materiais de apoio fornecido. 📢;
-* Um grande agradecimento ao esforço de todos os 3 membros que desenvolveram a aplicação desde o planejamento a execução do banco de dados, frontend e backend da aplicação 🤘;
-* Um agradecimento publicamente a quem está lendo e pretende utilizar nossa aplicação para se inspirar ou apenas por curiosidade 🫂;
-
+* First, we would like to thank Compass UOL and its team of instructors and Scrum Masters for their support in building the project, as well as the provided support materials. 📢;
+* A big thank you to the effort of all 3 members who developed the application from planning to executing the database, frontend, and backend of the application 🤘;
+* A public thank you to anyone reading and planning to use our application for inspiration or just out of curiosity 🫂;
 
 ---
-⌨️ com ❤️ por Alisson Akio, Jonas Tomaz e Keila Prado.
+⌨️ with ❤️ by Alisson Akio, Jonas Tomaz, and Keila Prado.
