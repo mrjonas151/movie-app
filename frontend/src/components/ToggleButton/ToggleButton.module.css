@@ -31,3 +31,17 @@
 .toggled {
     left: 1.1em;
 }
+
+@media (max-width: 1366px) {
+    .toggleButton {
+        top: 16vh;
+        left: 59vw;
+    }
+}
+
+@media (max-width: 430px) {
+    .toggleButton {
+        top: 25vh;
+        left: 75vw;
+    }
+}

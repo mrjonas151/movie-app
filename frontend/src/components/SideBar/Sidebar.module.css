@@ -12,7 +12,7 @@
     padding: 1em;
     transition: transform 0.3s ease;
     transform: translateX(0);
-    z-index: 1;
+    z-index: 9997;
 }
 
 .hamburger {
@@ -21,12 +21,13 @@
     top: 1em;
     left: 1em;
     cursor: pointer;
-    z-index: 999;
+    z-index: 9999;
+    font-size: 1.5em;
 }
 
 .sideTitle {
     width: 100%;
-    padding: 0.2em 0;
+    padding: 1.5em 0;
     font-size: 0.7em;
 }
 
@@ -39,8 +40,8 @@
 }
 
 .profileContainer .userInitials {
-    width: 17vh;
-    height: 17vh;
+    width: 3em;
+    height: 3em;
     border-radius: 50%;
     background: #d9d9d9;
     border-radius: 50%;

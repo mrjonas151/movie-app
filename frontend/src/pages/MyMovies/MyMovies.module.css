@@ -81,3 +81,27 @@
         height: 68vh;
     }
 }
+
+@media (max-width: 430px) {
+    .paginate {
+        position: absolute;
+        bottom: 3vh;
+        right: 0%;
+    }
+
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 90vw; 
+    }
+
+    .movieListContainer {
+        position: fixed;
+        top: 22vh;
+        left: 5vw;
+        width: 90vw;
+        height: 70vh;
+    }
+}

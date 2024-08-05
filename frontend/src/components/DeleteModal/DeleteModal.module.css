@@ -88,3 +88,14 @@
         text-align: center;
     }
 }
+
+@media (max-width: 430px) {
+    .deleteModal { 
+        width: 70vw;
+        height: 17vh;
+        left: 45%;
+        transform: translate(-50%, -50%);
+        border-radius: 0.5em;
+        border: none;
+    }
+}

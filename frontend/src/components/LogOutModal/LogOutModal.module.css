@@ -6,7 +6,7 @@
     right: 0;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(4px);
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .logoutModal {
@@ -24,20 +24,11 @@
     border: none;
 }
 
-.content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-}
-
 .title {
-    font-size: 80%;
-    text-align: center;
+    font-size: 1em;
     font-weight: 500;
-    margin: 1.3em;
+    margin: 2em;
+    text-align: center;
 }
 
 .logoutModalBtn {
@@ -46,29 +37,41 @@
     gap: 1em;
 }
 
-.logoutModalBtn button {
-    font-size: 70%;
-    padding: 0.5em 1em;
-    border-radius: 0.5em;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-weight: 600;
-}
-
 .confirmButton {
-    background-color: #a31717;
     color: white;
     border: none;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;    
 }
 
-.confirmButton:hover {
+.redButton {
+    background-color: #a31717;
+}
+
+.redButton:hover {
     background-color: #d32727;
+}
+
+.blueButton {
+    background-color: #0066b3;
+}
+
+.blueButton:hover {
+    background-color: #24a0ff;
 }
 
 .cancelButton {
     background-color: #ebe9e9;
     color: black;
     border: 1px solid gray;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .cancelButton:hover {
@@ -80,5 +83,13 @@
         padding: 0 1em;
         width: 20vw;
         height: 18vh;
+    }
+}
+
+@media (max-width: 430px) {
+    .logoutModal {
+        padding: 0 1em;
+        width: 70vw;
+        height: 17vh;
     }
 }

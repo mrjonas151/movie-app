@@ -1,4 +1,3 @@
-// src/pages/Dashboard/Dashboard.tsx
 import React, { useEffect, useState, useContext } from "react";
 import Sidebar from "../../components/SideBar/Sidebar";
 import Card from "../../components/Card/Card";

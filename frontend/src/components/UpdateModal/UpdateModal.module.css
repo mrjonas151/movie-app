@@ -213,6 +213,8 @@ option {
         width: 80vw;
         height: 43vh;
         padding: 0 1em;
+        top: 50%;
+        left: 46%;
     }
 
     .formInputSameLine {

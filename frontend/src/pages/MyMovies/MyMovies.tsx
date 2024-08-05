@@ -1,7 +1,7 @@
 import Sidebar from "../../components/SideBar/Sidebar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import TopBar from "../../components/TopBar/TopBar";
-import TitleList2 from "../../components/TitleList/TitleList";
+import TitleList from "../../components/TitleList/TitleList";
 import MovieInformation from "../../components/MovieInformation/MovieInformation";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
@@ -12,6 +12,8 @@ import { ColorContext } from "../../contexts/ColorContext";
 import styles from "./MyMovies.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MovieInformationMobile from "../../components/MovieInformationMobile/MovieInformationMobile";
+import MovieInformationResponsive from "../../components/MovieInformationResponsive/MovieInformationResponsive";
 
 type Movie = {
     id: string;
@@ -159,10 +161,10 @@ const MyMovies = () => {
                 titleButton="ADD NEW MOVIE"
                 isRed={isRed}
             />
-            <TitleList2 />
+            <TitleList />
             <div className={styles.movieListContainer}>
                 {currentItems.map((movie) => (
-                    <MovieInformation
+                    <MovieInformationResponsive
                         key={movie.id}
                         movie={movie}
                         onUpdate={handleUpdateMovie}

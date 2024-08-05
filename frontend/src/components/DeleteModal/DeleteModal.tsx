@@ -17,7 +17,7 @@ const DeleteModal: React.FC<ModalProps> = ({
         return null;
     }
 
-    const { isRed } = useContext(ColorContext);
+    const { isRed } = useContext(ColorContext) || { isRed: false };
 
     return (
         <div className={styles.containerBackground}>

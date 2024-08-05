@@ -81,3 +81,19 @@ Link {
         font-size: 1em;
     }
 }
+
+@media (max-width: 430px) {
+    .cardContainer {
+        top: 15vh;
+        left: 20vw;
+        width: 60vw;
+        height: 18vh;
+    }
+
+    .cardIcon {
+        font-size: 3.5em;
+    }
+    .cardTitle {
+        font-size: 1.2em;
+    }
+}
