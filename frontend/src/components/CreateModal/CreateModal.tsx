@@ -7,6 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useContext } from "react";
 import { ColorContext } from "../../contexts/ColorContext";
 import "react-toastify/dist/ReactToastify.css";
+import Movie from "../../pages/MyMovies"
 
 interface CreateModalProps {
     isOpen: boolean;
@@ -21,6 +22,7 @@ interface CreateModalProps {
         date_of_include: string;
     };
     onSave: (movie: any) => void;
+    addMovie: (newMovie: Movie) => void;
 }
 
 const CreateModal: React.FC<CreateModalProps> = ({
@@ -28,6 +30,7 @@ const CreateModal: React.FC<CreateModalProps> = ({
     setModalOpen,
     movie,
     onSave,
+    addMovie,
 }) => {
     const [title, setTitle] = useState<string>("");
     const [director, setDirector] = useState<string>("");
@@ -79,8 +82,9 @@ const CreateModal: React.FC<CreateModalProps> = ({
                 movieObj,
                 axiosConfig
             );
-            console.log(response.data);
-            toast.success("CREATE MODAL - Movie saved successfully!");
+            const newMovie = response.data;
+            addMovie(newMovie);
+            toast.success("Movie saved successfully!");
             setTitle("");
             setDirector("");
             setDuration(0);
@@ -88,8 +92,8 @@ const CreateModal: React.FC<CreateModalProps> = ({
             setReleaseYear(0);
             setModalOpen();
         } catch (error) {
-            console.error("CREATE MODAL -  Error saving movie:", error);
-            toast.error("CREATE MODAL -  Error saving movie!");
+            console.error("Error saving movie:", error);
+            toast.error("Error saving movie!");
         }
     };
 
@@ -238,7 +242,6 @@ const CreateModal: React.FC<CreateModalProps> = ({
                     </form>
                 </div>
             </div>
-            <ToastContainer />
         </div>
     );
 };

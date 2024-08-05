@@ -2,15 +2,22 @@ import { useState } from "react";
 import CreateModal from "../CreateModal/CreateModal";
 import { useContext } from "react";
 import { ColorContext } from "../../contexts/ColorContext";
-
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import styles from "./TopBar.module.css";
+
+interface TopBarProps {
+    title: string;
+    titleButton: string;
+    addMovie: (movie: any) => void;
+}
 
 function TopBar({
     title,
     titleButton,
+    addMovie,
 }: {
-    title: string;
-    titleButton: string;
+    TopBarProps;
 }) {
     const [openModal, setOpenModal] = useState<boolean>(false);
     const { isRed } = useContext(ColorContext);
@@ -30,7 +37,9 @@ function TopBar({
                 isOpen={openModal}
                 setModalOpen={() => setOpenModal(!openModal)}
                 isRed={isRed}
+                addMovie={addMovie}
             />
+            <ToastContainer />
         </div>
     );
 }

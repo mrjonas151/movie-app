@@ -62,7 +62,23 @@
     font-size: 1.2em;
     font-weight: 700;
     cursor: pointer;
+    
+}
+
+.redButton {
     color: #a31717;
+}
+
+.redButton:hover {
+    color: #d32727;
+}
+
+.blueButton {
+    color: #0066b3;
+}
+
+.blueButton:hover {
+    color: #24a0ff;
 }
 
 .movieTitle {

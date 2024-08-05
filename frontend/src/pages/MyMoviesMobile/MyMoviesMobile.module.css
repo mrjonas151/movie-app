@@ -1,22 +1,28 @@
 .mymoviesContainer {
     background-color: #f8f8f8;
-    height: 100vh;
-    width: 100vw;
+    height: 932px;
+    width: 430px;
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: -1000;
+    display: flex;
+    justify-content: center;
 }
 
 .movieListContainer {
-    position: fixed;
-    bottom: 8vh;
-    right: 1vw;
-    width: 81vw;
-    height: 67vh;
+    position: absolute;
+    width: 380px;
+    height: 700px;
+    top: 180px;
 }
 
 .paginate {
     position: absolute;
+    width: 100%;
+    max-width: 400px;
     bottom: 3vh;
-    right: calc(50% - 15vw);
+    overflow: hidden;
 }
 
 .pagination {
@@ -24,6 +30,9 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%; 
+    overflow: hidden;
+    justify-content: center; 
 }
 
 .pagination a {
@@ -73,11 +82,3 @@
     opacity: 0.2;
     background-color: #f0f0f0;
 }
-
-@media (max-width: 1366px) {
-    .movieListContainer {
-        width: 80vw;
-        height: 68vh;
-    }
-}
-

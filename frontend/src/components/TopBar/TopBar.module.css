@@ -22,6 +22,10 @@
     color: #ffffff;
     border: none;
     border-radius: 6px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+
 }
 
 .redButton {

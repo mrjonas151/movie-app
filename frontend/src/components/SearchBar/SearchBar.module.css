@@ -29,13 +29,13 @@
 
 .searchIcon {
     position: relative;
-    top: 0.5vh;
+    top: 0.3vh;
     margin-right: 7.5vw;
     font-size: 1.5em;
     color: #969696;
 }
 
-@media screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
     .searchContainer {
         width: 90vw;
         left: 10vw;
@@ -51,18 +51,17 @@
 
     .searchIcon {
         position: fixed;
-        top: 2.6vh;
-        margin-right: 9.7vw;
+        top: 1.3vw;
+        margin-right: 9.4vw;
         font-size: 1.1em;
     }
 }
 
-@media screen and (max-width: 430px) {
+@media (max-width: 430px) {
     .searchContainer {
         background-color: #f8f8f8;
         width: 82vw;
         left: 10vw;
-        
     }
 
     .searchBar {

@@ -1,19 +1,16 @@
 import Sidebar from "../../components/SideBar/Sidebar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import TopBar from "../../components/TopBar/TopBar";
-import TitleList from "../../components/TitleList/TitleList";
-import MovieInformation from "../../components/MovieInformation/MovieInformation";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
 import ReactPaginate from "react-paginate";
 import { ColorContext } from "../../contexts/ColorContext";
-import styles from "./MyMovies.module.css";
+import styles from "./MyMoviesMobile.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MovieInformationMobile from "../../components/MovieInformationMobile/MovieInformationMobile";
-import MovieInformationResponsive from "../../components/MovieInformationResponsive/MovieInformationResponsive";
 
 export type Movie = {
     id: string;
@@ -25,13 +22,13 @@ export type Movie = {
     date_of_include: string;
 };
 
-const MyMovies = () => {
+const MyMoviesMobile = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>("");
     const { userProvider } = useContext(AuthContext);
     const [currentPage, setCurrentPage] = useState(0);
     const { isRed } = useContext(ColorContext);
-    const itemsPerPage = 6;
+    const itemsPerPage = 3;
 
     useEffect(() => {
         document.documentElement.style.setProperty(
@@ -166,10 +163,9 @@ const MyMovies = () => {
                 isRed={isRed}
                 addMovie={addMovie}
             />
-            <TitleList />
             <div className={styles.movieListContainer}>
                 {currentItems.map((movie) => (
-                    <MovieInformation
+                    <MovieInformationMobile
                         key={movie.id}
                         movie={movie}
                         onUpdate={handleUpdateMovie}
@@ -185,8 +181,8 @@ const MyMovies = () => {
                     breakLabel={"..."}
                     breakClassName={"break-me"}
                     pageCount={pageCount}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={3}
+                    marginPagesDisplayed={1}
+                    pageRangeDisplayed={1}
                     onPageChange={handlePageClick}
                     containerClassName={styles.pagination}
                     subContainerClassName={"pages pagination"}
@@ -209,4 +205,4 @@ const MyMovies = () => {
     );
 };
 
-export default MyMovies;
+export default MyMoviesMobile;
