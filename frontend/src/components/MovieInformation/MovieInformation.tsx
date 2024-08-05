@@ -36,8 +36,8 @@ const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
         setDeleteOpenModal(false);
     };
 
-    const handleUpdate = (updatedMovie: Partial<Movie>) => {
-        onUpdate(movie.id, updatedMovie);
+    const handleUpdate = (id: string, updatedMovie: Partial<Movie>) => {
+        onUpdate(id, updatedMovie);
         setUpdateModal(false);
     };
 
@@ -84,7 +84,7 @@ const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
                         isRed ? styles.redButton : styles.blueButton
                     }`}
                     onClick={() => {
-                        setEditableMovie(movie); // Atualiza o estado antes de abrir o modal
+                        setEditableMovie(movie); 
                         setUpdateModal(true);
                     }}
                 >

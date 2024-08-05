@@ -3,10 +3,8 @@ import TitleBar from "../TitleBar/TitleBar";
 import axios from "axios";
 import styles from "./UpdateModal.module.css";
 import { getAuth } from "firebase/auth";
-import { toast, ToastContainer } from "react-toastify";
 import { useContext } from "react";
 import { ColorContext } from "../../contexts/ColorContext";
-import "react-toastify/dist/ReactToastify.css";
 
 interface UpdateModalProps {
     isOpen: boolean;
@@ -75,17 +73,15 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
 
         try {
             const response = await axios.put(
-                `http://localhost:3333/users/movies/${movie.id}`,
+                `http://localhost:3333/users/movies/${movie?.id}`,
                 movieObj,
                 axiosConfig
             );
             console.log(response.data);
-            onUpdate(movieObj);
-            toast.success("Movie updated successfully!");
+            onUpdate(movie?.id || "", movieObj);
             setUpdateModal();
         } catch (error) {
             console.error("Error saving movie:", error);
-            toast.error("Error saving movie!");
         }
     };
 
@@ -233,7 +229,6 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
                     </form>
                 </div>
             </div>
-            <ToastContainer />
         </div>
     );
 };

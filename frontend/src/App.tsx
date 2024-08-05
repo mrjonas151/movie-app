@@ -6,6 +6,7 @@ import Dashboard from "./pages/Home/Dashboard";
 import MyMovies from "./pages/MyMovies/MyMovies";
 import { ProtectedRoute } from "./pages/ProtectedRoute/ProtectedRoute";
 import { ColorProvider } from "./contexts/ColorContext";
+import { ToastContainer } from "react-toastify";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                     element={<ProtectedRoute element={<MyMovies />} />}
                 />
             </Routes>
+            <ToastContainer />
         </ColorProvider>
     );
 }
