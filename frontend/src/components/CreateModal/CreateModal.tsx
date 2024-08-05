@@ -58,7 +58,7 @@ const CreateModal: React.FC<CreateModalProps> = ({
                 return token;
             }
         } catch (error) {
-            console.log("Error getting token:", error);
+            console.error("Error getting token:", error);
         }
     }
 

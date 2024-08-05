@@ -16,9 +16,8 @@ interface ColorProviderProps {
 export const ColorProvider: FC<ColorProviderProps> = ({ children }) => {
     const [isRed, setIsRed] = useState<boolean>(true);
 
-    // Load the color preference from localStorage on initial load
     useEffect(() => {
-        const savedColor = localStorage.getItem('isRed');
+        const savedColor = localStorage.getItem("isRed");
         if (savedColor !== null) {
             setIsRed(JSON.parse(savedColor));
         }
@@ -27,7 +26,7 @@ export const ColorProvider: FC<ColorProviderProps> = ({ children }) => {
     const toggleColor = () => {
         const newIsRed = !isRed;
         setIsRed(newIsRed);
-        localStorage.setItem('isRed', JSON.stringify(newIsRed));
+        localStorage.setItem("isRed", JSON.stringify(newIsRed));
     };
 
     return (

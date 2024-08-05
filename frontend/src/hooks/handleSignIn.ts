@@ -16,7 +16,7 @@ const handleSignIn = ({
             toast.success("Signed in successfully");
         })
         .catch((error) => {
-            console.log(error.message);
+            console.error(error.message);
             toast.error("Failed to sign in");
         });
 };

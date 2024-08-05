@@ -33,7 +33,6 @@ const handleSignUp = async ({
         try {
             await axios.post("http://localhost:3333/users", userObj);
             console.log(userCredential);
-            console.log(userObj);
             toast.success("Account created!");
         } catch (error) {
             console.log(error);

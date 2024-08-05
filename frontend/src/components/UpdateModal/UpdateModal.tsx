@@ -53,7 +53,7 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
                 return token;
             }
         } catch (error) {
-            console.log("Error getting token:", error);
+            console.error("Error getting token:", error);
         }
     }
 
@@ -77,7 +77,6 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
                 movieObj,
                 axiosConfig
             );
-            console.log(response.data);
             onUpdate(movie?.id || "", movieObj);
             setUpdateModal();
         } catch (error) {

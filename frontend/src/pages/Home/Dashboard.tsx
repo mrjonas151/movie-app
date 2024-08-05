@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import Sidebar from "../../components/SideBar/Sidebar";
 import Card from "../../components/Card/Card";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { IoIosSearch } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { getAuth } from "firebase/auth";
 import axios from "axios";

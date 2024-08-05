@@ -84,7 +84,7 @@ const MovieInformation = ({ movie, onDelete, onUpdate }: MovieProps) => {
                         isRed ? styles.redButton : styles.blueButton
                     }`}
                     onClick={() => {
-                        setEditableMovie(movie); 
+                        setEditableMovie(movie);
                         setUpdateModal(true);
                     }}
                 >

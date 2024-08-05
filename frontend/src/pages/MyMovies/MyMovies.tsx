@@ -100,7 +100,7 @@ const MyMovies = () => {
                 setMovies((prevMovies) =>
                     prevMovies.filter((movie) => movie.id !== movieId)
                 );
-                toast.success("My Movies - Movie deleted successfully!");
+                toast.success("Movie deleted successfully!");
             }
         } catch (error) {
             console.error("Error deleting movie:", error);
@@ -133,7 +133,7 @@ const MyMovies = () => {
                             : movie
                     )
                 );
-                toast.success("My Movies - Movie updated successfully!");
+                toast.success("Movie updated successfully!");
             }
         } catch (error) {
             console.error("Error updating movie:", error);

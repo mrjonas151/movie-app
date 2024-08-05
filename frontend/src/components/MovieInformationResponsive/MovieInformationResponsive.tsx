@@ -9,8 +9,7 @@ const MovieInformationResponsive = (props: any) => {
     const windowWidth = windowSize();
     const breakpoint = 430;
     const { isRed } = useContext(ColorContext);
-    console.log(isRed);
-
+    
     return (
         <>
             {windowWidth > breakpoint ? <MovieInformation movie={props.movie} onDelete={props.onDelete} onUpdate={props.onUpdate} isRed={props.isRed}/> : <MovieInformationMobile movie={props.movie} onDelete={props.onDelete} onUpdate={props.onUpdate} isRed={props.isRed}/>}

@@ -4,7 +4,7 @@ import { auth } from "../services/firebase";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 
-const handleGoogleSignIn = async (e) => {
+const handleGoogleSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const provider = new GoogleAuthProvider();
 
@@ -25,9 +25,7 @@ const handleGoogleSignIn = async (e) => {
 
         try {
             await axios.post("http://localhost:3333/users", userObj);
-            console.log(result);
-            console.log(userObj);
-            console.log(userPhoto);
+
             toast.success("Signed in successfully");
         } catch (error) {
             console.log(error);
